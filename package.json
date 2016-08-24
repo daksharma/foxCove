@@ -1,0 +1,63 @@
+{
+  "name": "foxcove",
+  "version": "1.0.0",
+  "description": "Project foxCove",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelinacodes/foxCove.git"
+  },
+  "author": "Angelina May, Casey Childers, Daksh Sharma, Eric Churchill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelinacodes/foxCove/issues"
+  },
+  "homepage": "https://github.com/angelinacodes/foxCove#readme",
+    "devDependencies": {
+    "browser-sync": "^1.5.7",
+    "clone-stats": "0.0.1",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.5",
+    "gulp-if": "^1.2.5",
+    "gulp-jshint": "^1.6.3",
+    "gulp-karma": "0.0.4",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-shell": "^0.2.7",
+    "jshint-stylish": "^0.2.0",
+    "karma": "^0.12.16",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.1.5",
+    "karma-mocha": "^0.1.4",
+    "karma-nested-reporter": "^0.1.1",
+    "karma-nyan-reporter": "0.0.43",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-unicorn-reporter": "^0.1.4",
+    "mocha": "^1.20.1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "1.0.8",
+    "body-parser": "^1.4.3",
+    "bookshelf": "^0.9.1",
+    "chai": "^1.9.0",
+    "express": "^4.4.5",
+    "express-partials": "~0.2.0",
+    "express-session": "^1.7.2",
+    "forever": "^0.10.11",
+    "jwt-simple": "^0.2.0",
+    "knex": "^0.9.0",
+    "mongoose": "^4.1.0",
+    "morgan": "^1.1.1",
+    "nodemon": "^1.10.2",
+    "passport": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "q": "^1.0.1",
+    "request": "^2.36.0",
+    "sqlite3": "^3.1.1",
+    "x2js": "^2.0.1"
+  }
+}
