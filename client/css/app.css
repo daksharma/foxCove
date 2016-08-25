@@ -1,0 +1,9 @@
+.outside {
+  height:100%;
+  width: 100%;
+  position:absolute; }
+
+.inside {
+  position:absolute;
+  height:10em;
+  margin-top:20%; }
