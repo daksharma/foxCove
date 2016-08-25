@@ -8,9 +8,8 @@ angular.module('app.home', [])
 })
 
 .factory('userLocationFactory', function($http){
-  var serverUrl = 'localhost:3000'; // TODO : properly change server/localhost
   function sendZipCode(userZipCode) {
-    $http.post(serverUrl + '/getreps', userZipCode)
+    $http.post('/getreps', userZipCode)
          .then(function (data, error) {
            console.log(data);
            if (error) {

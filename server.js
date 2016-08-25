@@ -15,5 +15,4 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, '/client')));
 
-var port = server.env.PORT || 3000;
-app.listen(port, function(){console.log('server started...')});
+app.listen(3000, function(){console.log('server started...')});
