@@ -9,11 +9,12 @@ angular.module('app.home', [])
 
 .factory('userLocationFactory', function($http){
   function sendZipCode(userZipCode) {
-    $http.post('/getReps', {zipcode: userZipCode})
-         .then(function(data){
+    console.log(userZipCode);
+    $http.post('/getReps', {zipcode:userZipCode})
+         .then(function (data){
            console.log(data);
          }, function(error) {
-           console.log(error);
+              console.log(error);
          });
   }
   return {
