@@ -1,0 +1,25 @@
+{
+  "name": "foxcove",
+  "description": "Project foxCove",
+  "main": "client/index.html",
+  "authors": [
+    "Angelina May",
+    "Casey Childers",
+    "Daksh Sharma",
+    "Eric Churchill"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/spicecurls/foxCove",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  }
+}
