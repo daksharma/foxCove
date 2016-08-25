@@ -9,7 +9,7 @@ angular.module('app.home', [])
 
 .factory('userLocationFactory', function($http){
   function sendZipCode(userZipCode) {
-    $http.post('/getreps', userZipCode)
+    $http.post('/getReps', {zipcode: userZipCode})
          .then(function (data, error) {
            console.log(data);
            if (error) {
