@@ -10,9 +10,9 @@ angular.module('foxCove', [
     templateUrl: 'app/home/view.html',
     url: '/',
     controller: 'HomeController'
-  })
+  });
 
   // DEFAULT route
   $urlRouterProvider.otherwise('/');
 
-})
+});
