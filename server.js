@@ -1,5 +1,7 @@
 var express = require('express');
+
 var db = require('./db/db-config.js');
+//db
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
@@ -46,5 +48,6 @@ app.post('/getReps', function(req, res){
         console.log(obj)
         res.send(obj)
     })
-})
+});
+
 app.listen(3000, function(){console.log('server started...')});
