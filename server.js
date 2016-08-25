@@ -1,6 +1,6 @@
 var express = require('express');
 //db
-var request = require('request')
+var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
@@ -11,9 +11,9 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
-}))
+}));
 
-app.use(express.static(path.join(__dirname, '/client')))
+app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getReps', function(req, res){
     console.log(req.body.zipcode)
@@ -47,5 +47,4 @@ app.post('/getReps', function(req, res){
         res.send(obj)
     })
 })
-app.listen(3000, function(){console.log('server started...')})
-
+app.listen(3000, function(){console.log('server started...')});

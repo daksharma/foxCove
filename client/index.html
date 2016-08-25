@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title>Project foxCove</title>
     <!-- TODO: CREATE and IMPORT stylesheet -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
   </head>
 
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
 
   <body>
     <center>
@@ -18,8 +18,9 @@
       <div ui-view></div>
     </center>
 
-    <script src="app/home/controller.js"></script>
 
+    <!-- TODO NOTE: angular controller and factory are required here -->
+    <script src="app/home/controller.js"></script>
     <script src="app/app.js"></script>
 
   </body>
