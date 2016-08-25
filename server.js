@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, '/client')));
 
-<<<<<<< dc4d00b692b6115b88ffa05260a6d07b4a15bf6a
 app.post('/getReps', function(req, res){
     console.log(req.body.zipcode)
     var zip = req.body.zipcode //front end request should be in the format {zipcode: zipcode}
@@ -51,6 +50,4 @@ app.post('/getReps', function(req, res){
     })
 });
 
-=======
->>>>>>> [Server] server port change and factory post change
 app.listen(3000, function(){console.log('server started...')});
