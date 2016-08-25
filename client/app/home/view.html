@@ -1,9 +1,15 @@
 <div ng-controller="HomeController">
-  <h2>Enter your location</h2>
-  <br>
-  <form name="location-form" ng-submit="submit()">
-    <input type="text" ng-model="location" placeholder="Your location">
-    <br><br>
-    <button>Submit</button>
-  </form>
-</div>
+
+  <div class="row">
+    <div class="small-4 large-centered columns">
+      <div class="primary callout">
+        <div name="location-form" class="input-group" ng-submit="submit()">
+          <!--This style will vastly improve. For now, the framework is implemented-->
+          <input type="text" placeholder="Enter your location" class="input-group-field" ng-model="location" /><br />
+          <button class="button" name="reset" ng-click="submit()">SUBMIT</a>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+
