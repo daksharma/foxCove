@@ -4,6 +4,10 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    // TODO: CONFIGURE mochaTest task
+    //
+    //
+
     watch: {
       scripts: {
         files: [ 'client/**/*' ],
@@ -11,11 +15,37 @@ module.exports = function(grunt) {
       },
     },
 
-    // TODO: CONFIGURE ochaTest task
-    //
-    // TODO: CONFIGURE cssmin task
-    //
-    // TODO: CONFIGURE shell task
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: [ 'public/client/app/**/*.js', '!*.min.js' ],
+        dest: 'public/client/dist/scripts.min.js',
+      },
+    },
+
+    cssmin: {
+      target: {
+        files: {
+          'dist/dist.min.css': ['**/*.css', '!client/lib', '!*.min.css' ],
+        },
+      },
+    },
+
+    shell: {
+      debug: {
+        command: 'node debug server.js',
+      },
+      deploy: {
+        command: [
+          'heroku create',
+          'git push heroku master',
+          'heroku ps:scale web=1',
+          'heroku open',
+        ].join('&&'),
+      }
+    },
 
     nodemon: {
       dev: {
@@ -85,10 +115,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [ 'jshint', 'nodemon' ]);
 
+  grunt.registerTask('debug', 'Type "next" to continue to the next line and ".exit" to quit', function(){
+    grunt.task.run([ 'shell:debug' ])
+  });
+
   grunt.registerTask('lint', [ 'jshint' ]);
 
   // grunt.registerTask('test', [ 'mochaTest' ]);
 
-  grunt.registerTask('deploy', [ 'concat', 'uglify', 'cssmin', 'mochaTest', 'shell' ]);
+  grunt.registerTask('deploy', [ 'concat', 'uglify', 'cssmin', 'mochaTest', 'shell:deploy' ]);
 
 }
