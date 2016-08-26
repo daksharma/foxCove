@@ -1,27 +1,30 @@
 angular.module('app.home', [])
 
-.controller('HomeController', function($scope, userLocationFactory) {
+.controller('HomeController', function($scope, Location) {
   $scope.submit = function() {
-    // alert($scope.location);
-    userLocationFactory.sendZipCode($scope.location);
+    Location.getRepFromZip($scope.location)
+      .then(function(results){
+        $scope.reps = results.reps;
+        $scope.reps.forEach(function(rep) {
+          rep.img = 'http://theunitedstates.io/images/congress/original/' + rep.bioguide_id + '.jpg'
+        })
+      })
   };
-  $scope.reps = userLocationFactory.result;
 })
 
-.factory('userLocationFactory', function($http){
-  var result = { data : null};
-  function sendZipCode(userZipCode) {
-    console.log(userZipCode);
-    $http.post('/getReps', {zipcode:userZipCode})
-         .then(function (data){
-           result.data = data;
-           console.log(result.data);
-         }, function(error) {
-              console.log(error);
-         });
+.factory('Location', function($http){
+  function getRepFromZip(zipCode) {
+    return $http({
+      method: 'POST',
+      url: '/getReps',
+      data: { zipcode: zipCode },
+    })
+    .then(function(res){
+      return res.data;
+    })
   }
+
   return {
-    sendZipCode : sendZipCode,
-    result : result
+    getRepFromZip : getRepFromZip,
   }
 });

@@ -1,15 +1,8 @@
 var express = require('express');
-<<<<<<< HEAD
 
-=======
-<<<<<<< Updated upstream
-=======
 var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
->>>>>>> Stashed changes
->>>>>>> features
 var db = require('./db/db-config.js');
-//db
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
