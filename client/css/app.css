@@ -1,9 +1,7 @@
-.outside {
-  height:100%;
-  width: 100%;
-  position:absolute; }
-
-.inside {
-  position:absolute;
-  height:10em;
-  margin-top:20%; }
+.circular {
+  height: 120px;
+  width: 120px;
+	border-radius: 60px;
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px;
+	}
