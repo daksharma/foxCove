@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./db/db-config');
+var db = require('./db/db-config.js');
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
