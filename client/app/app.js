@@ -1,7 +1,7 @@
 angular.module('foxCove', [
   'app.home',
-  'ui.router',
-  'app.helperFactories'
+  'app.helperFactories',
+  'ui.router'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -11,6 +11,11 @@ angular.module('foxCove', [
     templateUrl: 'app/home/view.html',
     url: '/',
     controller: 'HomeController'
+  })
+  .state('profile', {
+    templateUrl: 'app/profile/profile.html',
+    url: '/hello',
+    controller: 'profileController'
   });
 
   // DEFAULT route
