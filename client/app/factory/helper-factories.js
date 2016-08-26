@@ -1,6 +1,6 @@
 angular.module('app.helperFactories', [])
 
-.factory('Location', function() {
+.factory('Location', function($http) {
   function getRepFromZip(zipCode) {
     return $http({
       method: 'POST',
