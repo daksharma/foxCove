@@ -4,6 +4,10 @@ var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
+var key = require('./server/secret/api-keys');
+var sponsorship = require('./server/modules/sponsorship-history');
+var newsfeed = require('./server/modules/news-feed');
+var info = require('./server/modules/basic-info')
 
 
 var app = express();
@@ -17,18 +21,12 @@ app.use(express.static(path.join(__dirname, '/client')));
 
 //this handler responds with detailed data for a given rep specified by client
 app.post('/getProfile', function(req, res){
-    var rep = req.body.bioguide_id; //front end request should be in the format {bioguide_id: idNumber}
-    request('https://www.govtrack.us/api/v2/role?current=true', function(error, response, data){
-        data=JSON.parse(data)
-        var result = data.objects.filter(function(currentValue){
-            if(currentValue.person.bioguideid === rep){
-                return true;
-            }
-            return false
+    var inputPackage = req.body.inputPackage;
+    var outputPackage = {};
+    newsfeed.getNews(inputPackage, outputPackage, function(){
+        info.getGovTrack(inputPackage, outputPackage, function(){
+            res.send(outputPackage)
         })
-
-        res.send(result)
-
     })
 
 })
