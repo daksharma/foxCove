@@ -2,7 +2,7 @@
   <div class="row">
     <div class="small-4 large-centered columns">
       <div class="primary callout">
-        <div name="location-form" class="input-group" ng-submit="submit()">
+        <div name="location-form" class="input-group">
           <!--This style will vastly improve. For now, the framework is implemented-->
           <input type="text" placeholder="Enter your location" class="input-group-field" ng-model="location" /><br />
           <button class="button" name="reset" ng-click="submit()">SUBMIT</a>
@@ -10,4 +10,10 @@
       </div>
     </div>
   </div>
+	<div ng-repeat="rep in reps.data">
+		<!--<p>{{rep.reps}}</p>-->
+		<div ng-repeat="single in rep.reps">
+			<p>{{single.name}}</p>
+		</div>
+	</div>
 </div>

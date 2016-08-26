@@ -5,19 +5,23 @@ angular.module('app.home', [])
     // alert($scope.location);
     userLocationFactory.sendZipCode($scope.location);
   };
+  $scope.reps = userLocationFactory.result;
 })
 
 .factory('userLocationFactory', function($http){
+  var result = { data : null};
   function sendZipCode(userZipCode) {
     console.log(userZipCode);
     $http.post('/getReps', {zipcode:userZipCode})
          .then(function (data){
-           console.log(data);
+           result.data = data;
+           console.log(result.data);
          }, function(error) {
               console.log(error);
          });
   }
   return {
-    sendZipCode : sendZipCode
+    sendZipCode : sendZipCode,
+    result : result
   }
 });
