@@ -13,7 +13,12 @@
   <div class="row">
     <div class="small-8 large-centered columns">
       <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px">
-        <a ng-href="{{rep.website}}"><img class="circular" ng-src="{{rep.img}}" alt="{{rep.name}}" width="120"></a><h4 class="subheader">{{rep.title}} {{rep.name}} ({{rep.affiliation}})</h4>
+        <a class="th" ng-href="{{rep.website}}">
+          <div class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></div>
+        </a>
+        <h4 class="subheader">
+          {{rep.title}} {{rep.name}} ({{rep.affiliation}})
+        </h4>
       </div>
     </div>
   </div>
