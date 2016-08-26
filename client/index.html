@@ -1,27 +1,38 @@
-<!DOCTYPE html>
-<html ng-app='foxCove'>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" ng-app="foxCove">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project foxCove</title>
-    <!-- TODO: CREATE and IMPORT stylesheet -->
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1></h1>
+      </div>
+    </div>
+    <div class="row outside">
+      <div class="large-12 columns inside">
+        <div>
+          <div ui-view></div>
+        </div>
+      </div>
+    </div>
+
+
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-  </head>
-
-
-  <body>
-    <center>
-      <h1><a href="/">Project foxCove</a></h1>
-    </center>
-    <center>
-      <div ui-view></div>
-    </center>
-
-
-    <!-- TODO NOTE: angular controller and factory are required here -->
     <script src="app/home/controller.js"></script>
     <script src="app/app.js"></script>
 
+    <!-- IMPORTANT: vendor and jquery stuff needs to stay in the same folder -->
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/app.js"></script>
+    <script src="vendor/foundation.min.js"></script>
+    <script src="vendor/what-input.js"></script>
   </body>
 </html>

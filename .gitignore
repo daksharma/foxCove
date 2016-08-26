@@ -1,3 +1,5 @@
 /node_modules
 
 /client/lib
+
+uri-config.js
