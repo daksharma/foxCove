@@ -11,7 +11,7 @@ module.exports = function(bioguide_id, callback){
     headers: {
       'X-APIKEY': key.sunlight,
     }
-  }
+  };
 
   request(httpRequestOptions, callback);
 
