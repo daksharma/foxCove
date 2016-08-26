@@ -10,10 +10,8 @@
       </div>
     </div>
   </div>
-	<div ng-repeat="rep in reps.data">
-		<!--<p>{{rep.reps}}</p>-->
-		<div ng-repeat="single in rep.reps">
-			<p>{{single.name}} ({{single.affiliation}}) - District: {{single.district}}</p>
-		</div>
+	<div ng-repeat="rep in reps | orderBy : '-title'">
+		<p><img ng-src="{{rep.img}}" alt="{{rep.name}}" width="120">{{rep.title}} {{rep.name}}</p>
 	</div>
+  </div>
 </div>
