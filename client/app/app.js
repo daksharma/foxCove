@@ -1,7 +1,9 @@
 angular.module('foxCove', [
   'app.home',
-  'ui.router',
-  'app.helperFactories'
+  'app.search',
+  // 'app.repProfileController',
+  'app.helperFactories',
+  'ui.router'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -12,11 +14,16 @@ angular.module('foxCove', [
     url: '/',
     controller: 'HomeController'
   })
-  .state('profile', {
-    templateUrl: 'app/profile/profile.html',
-    url: '/hello',
-    controller: 'profileController'
-  });
+  .state('search', {
+    templateUrl: 'app/search/search.html',
+    url: '/search',
+    controller: 'SearchResultController'
+  })
+  // .state('profile',{
+  //   templateUrl: 'app/profile/rep-profile-view.html',
+  //   url: "/profile",
+  //   controller: 'ProfileController'
+  // });
 
   // DEFAULT route
   $urlRouterProvider.otherwise('/');
