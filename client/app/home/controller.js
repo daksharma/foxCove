@@ -1,6 +1,7 @@
 angular.module('app.home', [])
 
 .controller('HomeController', function($scope, Location) {
+
   $scope.submit = function() {
     Location.getRepFromZip($scope.location)
       .then(function(results){
@@ -13,6 +14,7 @@ angular.module('app.home', [])
 })
 
 .factory('Location', function($http){
+
   function getRepFromZip(zipCode) {
     return $http({
       method: 'POST',
@@ -21,10 +23,10 @@ angular.module('app.home', [])
     })
     .then(function(res){
       return res.data;
-    })
+    });
   }
 
   return {
     getRepFromZip : getRepFromZip,
-  }
+  };
 });
