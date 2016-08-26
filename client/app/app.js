@@ -1,7 +1,7 @@
 angular.module('foxCove', [
   'app.home',
-  'app.helperFactories',
-  'ui.router'
+  'ui.router',
+  'app.helperFactories'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {

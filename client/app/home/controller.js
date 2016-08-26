@@ -1,4 +1,5 @@
 angular.module('app.home', [])
+
 .controller('HomeController', ['$scope','Location', function($scope, Location) {
   $scope.submit = function() {
     Location.getRepFromZip($scope.location)
@@ -10,5 +11,4 @@ angular.module('app.home', [])
         });
       });
   };
-
 }]);
