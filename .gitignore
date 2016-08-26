@@ -3,3 +3,5 @@
 /client/lib
 
 uri-config.js
+
+/server/secret

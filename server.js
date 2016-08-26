@@ -1,4 +1,9 @@
 var express = require('express');
+<<<<<<< Updated upstream
+=======
+var key = require('./server/secret/api-keys');
+var sponsorship = require('./server/modules/sponsorship-history');
+>>>>>>> Stashed changes
 var db = require('./db/db-config.js');
 var request = require('request');
 var path = require('path');
@@ -47,4 +52,5 @@ app.post('/getReps', function(req, res){
         res.send(obj)
     })
 })
+
 app.listen(3000, function(){console.log('server started...')});
