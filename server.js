@@ -35,12 +35,9 @@ app.post('/getProfile', function(req, res){
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
-<<<<<<< ffde889e33936b2c160c8cd59bc4d106fba155d5
     var zip = req.body.zipcode //front end request should be in the format {zipcode: zipcode}
-=======
     console.log(req.body.zipcode);
     var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
->>>>>>> [style] Add missing semi-colons
     request('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip + '&apikey=fca53d5418a64a6a81b29bb71c97b9a1', function(error, response, data){
         data = JSON.parse(data);
         var obj = {};
