@@ -3,7 +3,6 @@ var express = require('express');
 var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var db = require('./db/db-config.js');
-//db
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');

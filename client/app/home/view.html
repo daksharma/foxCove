@@ -13,7 +13,7 @@
 	<div ng-repeat="rep in reps.data">
 		<!--<p>{{rep.reps}}</p>-->
 		<div ng-repeat="single in rep.reps">
-			<p>{{single.name}}</p>
+			<p>{{single.name}} ({{single.affiliation}}) - District: {{single.district}}</p>
 		</div>
 	</div>
 </div>
