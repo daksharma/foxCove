@@ -1,7 +1,5 @@
 var express = require('express');
-var key = require('./server/secret/api-keys');
-var sponsorship = require('./server/modules/sponsorship-history');
-var db = require('./db/db-config.js');
+var db = require('./db/db-config');
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
@@ -37,14 +35,19 @@ app.post('/getProfile', function(req, res){
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
+<<<<<<< ffde889e33936b2c160c8cd59bc4d106fba155d5
     var zip = req.body.zipcode //front end request should be in the format {zipcode: zipcode}
+=======
+    console.log(req.body.zipcode);
+    var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
+>>>>>>> [style] Add missing semi-colons
     request('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip + '&apikey=fca53d5418a64a6a81b29bb71c97b9a1', function(error, response, data){
         data = JSON.parse(data);
         var obj = {};
         obj.reps = [];
         for(var i = 0; i < data.results.length; i++){
             var package = {};
-            var person = data.results[i]
+            var person = data.results[i];
             package.bioguide_id = person.bioguide_id;
             package.name = person.first_name + " " + person.last_name;
             package.title = person.title === "Sen" ?  "Senator" : "Representative";
@@ -53,19 +56,21 @@ app.post('/getReps', function(req, res){
             package.twitter = person.twitter_id;
             package.website = person.website;
             if(person.party === "R"){
-                package.affiliation = "Republican"
+                package.affiliation = "Republican";
             }
             else if (person.party === "D"){
-                package.affiliation = "Democrat"
+                package.affiliation = "Democrat";
             }
             else{
-                package.affiliation = "Independent"
+                package.affiliation = "Independent";
             }
-            obj.reps.push(package)
+            obj.reps.push(package);
         }
-        console.log(obj)
-        res.send(obj)
-    })
+        console.log(obj);
+        res.send(obj);
+    });
 });
 
-app.listen(3000, function(){console.log('server started...')});
+app.listen(3000, function(){
+  console.log('server started...');
+});
