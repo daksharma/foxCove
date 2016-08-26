@@ -16,7 +16,7 @@
     "url": "https://github.com/angelinacodes/foxCove/issues"
   },
   "homepage": "https://github.com/angelinacodes/foxCove#readme",
-    "devDependencies": {
+  "devDependencies": {
     "browser-sync": "^1.5.7",
     "clone-stats": "0.0.1",
     "expect.js": "^0.3.1",
@@ -48,6 +48,14 @@
     "express-partials": "~0.2.0",
     "express-session": "^1.7.2",
     "forever": "^0.10.11",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-nodemon": "^0.4.2",
+    "grunt-shell": "^1.3.1",
     "jwt-simple": "^0.2.0",
     "knex": "^0.9.0",
     "mongoose": "^4.1.0",
