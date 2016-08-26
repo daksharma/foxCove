@@ -3,7 +3,8 @@ angular.module('foxCove', [
   'app.search',
   // 'app.repProfileController',
   'app.helperFactories',
-  'ui.router'
+  'ui.router',
+  'app.directives'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
