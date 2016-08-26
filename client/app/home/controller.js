@@ -7,7 +7,8 @@ angular.module('app.home', [])
       .then(function(results){
         $scope.reps = results.reps;
         $scope.reps.forEach(function(rep) {
-          rep.img = 'http://theunitedstates.io/images/congress/original/' + rep.bioguide_id + '.jpg'
+          rep.img = 'http://theunitedstates.io/images/congress/450x550/' + rep.bioguide_id + '.jpg'
+          rep.thumb = 'http://theunitedstates.io/images/congress/225x275/' + rep.bioguide_id + '.jpg'
         })
       })
   };

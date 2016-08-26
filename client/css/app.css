@@ -1,7 +1,16 @@
 .circular {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 	border-radius: 60px;
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px;
 	}
+  
+.resize {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: block;
+    background-size: 100px auto;
+    background-position: 55% 55%;
+}
