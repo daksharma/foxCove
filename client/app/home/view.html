@@ -1,11 +1,12 @@
 <div ng-controller="HomeController">
   <div class="row">
     <div class="small-4 large-centered columns">
-      <div class="primary callout">
+      <div class="color1">
         <div name="location-form" class="input-group">
-          <!--This style will vastly improve. For now, the framework is implemented-->
-          <input type="text" placeholder="Enter your location" class="input-group-field" ng-model="location" /><br />
-          <button class="button" name="reset" ng-click="submit()">SUBMIT</a>
+          <input type="text" placeholder="Enter your location" class="input-group-field" ng-model="location">
+          <div class="input-group-button">
+            <a href="#" class="button" style="background-color: #00B297" name="submit" ng-click="submit()">SUBMIT</a>
+          </div>
         </div>
       </div>
     </div>
@@ -16,7 +17,7 @@
         <a class="th" ng-href="{{rep.website}}">
           <div class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></div>
         </a>
-        <h4 class="subheader">
+        <h4 class="subheader graff">
           {{rep.title}} {{rep.name}} ({{rep.affiliation}})
         </h4>
       </div>

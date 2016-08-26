@@ -1,10 +1,12 @@
+body {
+  background-color: #FBF7EB; }
+
 .circular {
   height: 100px;
   width: 100px;
 	border-radius: 60px;
 	-webkit-border-radius: 60px;
-	-moz-border-radius: 60px;
-	}
+	-moz-border-radius: 60px; }
   
 .resize {
     position: relative;
@@ -12,5 +14,23 @@
     height: 100px;
     display: block;
     background-size: 100px auto;
-    background-position: 55% 55%;
-}
+    background-position: 55% 55%; }
+
+.head {
+  font-family: 'Cutive', serif;
+  color: #FF530D }
+
+.graff {
+  font-family: 'Scope One', serif; }
+
+.color1 {
+  color: #00B297; }
+
+.color2 {
+  color: #0DFFD9;}
+
+.color3 {
+  color: #FF6526; }
+
+.color4 {
+  color: #B23705; }
