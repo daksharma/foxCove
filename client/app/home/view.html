@@ -10,10 +10,8 @@
       </div>
     </div>
   </div>
-	<div ng-repeat="rep in reps.data">
-		<!--<p>{{rep.reps}}</p>-->
-		<div ng-repeat="single in rep.reps">
-			<p>{{single.name}}</p>
-		</div>
+	<div ng-repeat="rep in apiResult.reps">
+		<p>{{rep.name}}</p>
 	</div>
+  </div>
 </div>
