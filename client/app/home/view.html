@@ -10,12 +10,15 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="small-3 large-centered columns">
-      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px" class="text-center">
-        <a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a>
-          <span class="graff">{{rep.title}} {{rep.name}} ({{rep.affiliation}})</span> 
-      </div>
+  <div class="row" style="margin-top: 1rem">
+    <div class="small-6 large-centered columns">
+      <ul class="row large-up-4">
+          <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'">
+          <span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})"><a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a></span>
+          <!--<span class="graff">{{rep.title}} {{rep.name}} ({{rep.affiliation}})</span> -->
+          </li>
+      </ul>
     </div>
   </div>
 </div>
+

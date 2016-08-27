@@ -44,6 +44,7 @@
     "body-parser": "^1.4.3",
     "bookshelf": "^0.9.1",
     "chai": "^1.9.0",
+    "dotenv": "^2.0.0",
     "express": "^4.4.5",
     "express-partials": "~0.2.0",
     "express-session": "^1.7.2",
