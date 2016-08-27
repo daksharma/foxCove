@@ -16,6 +16,12 @@ body {
     background-size: 100px auto;
     background-position: 55% 55%; }
 
+.blockLeft {
+  float: left;
+}
+
+
+
 .head {
   font-family: 'Cutive', serif;
   color: #FF530D }

@@ -1,25 +1,20 @@
 <div ng-controller="HomeController">
   <div class="row">
-    <div class="small-4 large-centered columns">
-      <div class="color1">
-        <div name="location-form" class="input-group">
-          <input type="text" placeholder="Enter your location" class="input-group-field" ng-model="location">
-          <div class="input-group-button">
-            <a href="#" class="button" style="background-color: #00B297" name="submit" ng-click="submit()">SUBMIT</a>
-          </div>
+    <div class="small-5 small-centered columns">
+      <div class="input-group small-3 columns" name="location-form" ng-submit="submit()" style="min-width: 150px">
+        <!--<span class="input-group-label">ZIP</span>-->
+        <input type="text" placeholder="Where do you live?" class="input-group-field" ng-model="location" ng-enter="submit()">
+        <div class="input-group-button">
+          <button class="button postfix" style="background-color: #00B297" name="submit" type="submit" ng-click="submit()">SUBMIT</button>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="small-8 large-centered columns">
-      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px">
-        <a class="th" ng-href="{{rep.website}}">
-          <div class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></div>
-        </a>
-        <h4 class="subheader graff">
-          {{rep.title}} {{rep.name}} ({{rep.affiliation}})
-        </h4>
+    <div class="small-3 large-centered columns">
+      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px" class="text-center">
+        <a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a>
+          <span class="graff">{{rep.title}} {{rep.name}} ({{rep.affiliation}})</span> 
       </div>
     </div>
   </div>
