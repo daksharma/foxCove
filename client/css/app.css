@@ -20,6 +20,11 @@ body {
   float: left;
 }
 
+.mid {
+  display: inline-block;
+  text-align: center;
+}
+
 .head {
   font-family: 'Cutive', serif;
   color: #FF530D }
