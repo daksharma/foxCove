@@ -20,8 +20,8 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: [ 'public/client/app/**/*.js', '!*.min.js' ],
-        dest: 'public/client/dist/scripts.min.js',
+        src: [ 'client/app/**/*.js', '!*.min.js' ],
+        dest: 'client/dist/scripts.min.js',
       },
     },
 
@@ -123,6 +123,6 @@ module.exports = function(grunt) {
 
   // grunt.registerTask('test', [ 'mochaTest' ]);
 
-  grunt.registerTask('deploy', [ 'concat', 'uglify', 'cssmin', 'mochaTest', 'shell:deploy' ]);
+  grunt.registerTask('deploy', [ 'shell:deploy' ]);
 
 }
