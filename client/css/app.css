@@ -5,20 +5,36 @@ body {
 
   height: 100px;
   width: 100px;
-  border: #FF6526;
-  border-style: solid;
-  border-width: 1px;
+  margin-top: 2rem;
 	border-radius: 60px;
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px; }
+
+.Republican {
+  border: #E85620;
+  border-style: solid;
+  border-width: 4px; }
+
+.Democrat {
+  border: #1F2FCC;
+  border-style: solid;
+  border-width: 4px; }
+
+.rep-cols {
+  display: block;
+  width: 320;
+  position: relative;
+  left: 20px;
+  margin-left: auto;
+  margin-right: auto; }
   
 .resize {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: block;
-    background-size: 100px auto;
-    background-position: 55% 55%; }
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-size: 100px auto;
+  background-position: 55% 55%; }
 
 .grid-list {
   list-style-type: none;
@@ -42,7 +58,12 @@ body {
   background-size: 40px; }
 
 .search-bar {
-  position: relative; left:20px; }
+  position: relative;
+  left:20px;
+  text-align: center;
+  font-family: 'Scope One', serif;
+  font-size: 130%;
+  letter-spacing: 4px; }
 
 .head {
   font-family: 'Cutive', serif;
