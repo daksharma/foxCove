@@ -24,7 +24,25 @@ body {
   list-style-type: none;
   list-style: none; }
 
+.centered {
+  position: absolute;
+  display: block;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
+.search-button {
+  position: relative; left:30px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: 40px; }
+
+.search-bar {
+  position: relative; left:20px; }
 
 .head {
   font-family: 'Cutive', serif;
