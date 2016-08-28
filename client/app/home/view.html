@@ -1,21 +1,22 @@
-<div ng-controller="HomeController">
-  <div class="row">
-    <div class="small-5 small-centered columns">
-      <div class="input-group small-3 columns" name="location-form" ng-submit="submit()" style="min-width: 150px">
-        <!--<span class="input-group-label">ZIP</span>-->
-        <input type="text" placeholder="Where do you live?" class="input-group-field" ng-model="location" ng-enter="submit()">
-        <div class="input-group-button">
-          <button class="button postfix" style="background-color: #00B297" name="submit" type="submit" ng-click="submit()">SUBMIT</button>
-        </div>
+<div class="row centered" ng-controller="HomeController">
+  <h1 class="head" style="text-align: center">Foxcove</h1>
+  <div>
+    <div class="input-group" name="location-form" ng-submit="submit()">
+      <input type="text" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-enter="submit()">
+      <div class="input-group-button">
+        <button class="button-clear postfix search-button" style="background-image: url('/images/searchLoc.png')" name="submit" type="submit" ng-click="submit()"></button>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-3 large-centered columns">
-      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px" class="text-center">
-        <a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a>
-          <span class="graff">{{rep.title}} {{rep.name}} ({{rep.affiliation}})</span> 
-      </div>
-    </div>
+    <ul class="row small-up-3 rep-cols">
+      <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'">
+        <span data-tooltip aria-haspopup="true" class="has-tip tip-top round" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
+          <a ng-href="{{rep.website}}">
+            <!--<span class="success badge"><i class="fi-check"></i></span>-->
+            <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span>
+            <!--<span class="info badge"><i class="fi-share"></i></span>-->
+          </a>
+        </span>
+      </li>
+    </ul>
   </div>
 </div>
