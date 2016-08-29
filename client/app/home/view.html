@@ -8,13 +8,13 @@
       </div>
     </div>
     <ul class="row small-up-3 rep-cols">
-      <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'">
+      <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
         <span data-tooltip aria-haspopup="true" class="has-tip tip-top round" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
-          <a ng-href="{{rep.website}}">
+          <!--<a ui-sref="{{rep.profile}}">-->
             <!--<span class="success badge"><i class="fi-check"></i></span>-->
-            <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span>
+            <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)"></span>
             <!--<span class="info badge"><i class="fi-share"></i></span>-->
-          </a>
+          <!--</a>-->
         </span>
       </li>
     </ul>
