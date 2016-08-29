@@ -22,6 +22,13 @@ angular.module('foxCove', [
       $scope.location = $stateParams.zipcode;
     }
   })
+  .state('repProfile', {
+    templateUrl: 'app/home/profile.html',
+    url: '/rep/:bioguide_id',
+    controller: function($scope, $stateParams) {
+      $scope.bioguide_id = $stateParams.bioguide_id;
+    }
+  })
   // .state('profile',{
   //   templateUrl: 'app/profile/rep-profile-view.html',
   //   url: "/profile",
