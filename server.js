@@ -11,6 +11,7 @@ var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')
+var favicon = require('serve-favicon');
 
 
 var app = express();
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(favicon(__dirname + '/client/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 //this handler responds with detailed data for a given rep specified by client
