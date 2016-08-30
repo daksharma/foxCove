@@ -114,7 +114,7 @@ app.post('/getReps', function(req, res){
         res.send(obj);
       }
     })
-});
+  });
 
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
