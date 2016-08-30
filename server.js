@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
-var info = require('./server/modules/basic-info')
+var info = require('./server/modules/basic-info');
+var billSum = require('./server/modules/bill-summary');
 
 
 var app = express();
@@ -85,6 +86,11 @@ app.post('/getRep', function(req, res){
       res.sendStatus(500);
     }
   });
+});
+
+app.post('/billSummary', function(req, res) {
+  var bill_id = req.body.bill_id;
+  billSum.govTrackBillSummary(bill_id, res.send);
 });
 
 app.listen(3000, function(){

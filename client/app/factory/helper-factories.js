@@ -40,4 +40,15 @@ angular.module('app.helperFactories', [])
     rep: repObject,
     getRepFromBioId: getRepFromBioId
   }
+})
+.factory('GetBillSummary', function($http) {
+  var billSum = {};
+  function getBillSummary(bill_id) {
+    return $http.post('/billSummary', {bill_id : bill_id})
+                .then(function(data){
+                  billSum.summary = data.data;
+                }, function(error) {
+                  console.log(error);
+                })
+  }
 });
