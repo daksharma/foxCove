@@ -27,7 +27,7 @@ module.exports = function(zip, callback) {
   var httpRequestOptions = {
     url: url + querystring.unescape(queryFields),
     headers: {
-      'X-APIKEY': key.sunlight,
+      'X-APIKEY': process.env.SUNLIGHT_API,
     }
   };
 

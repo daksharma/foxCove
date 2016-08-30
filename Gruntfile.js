@@ -40,6 +40,9 @@ module.exports = function(grunt) {
       deploy: {
         command: [
           'heroku create',
+          'heroku config:get SUNLIGHT_API -s  >> .env',
+          'heroku config:get MONGO_DB_URI -s  >> .env',
+          'heroku config:get POSTGRES_DB_URI -s  >> .env',
           'git push heroku master',
           'heroku ps:scale web=1',
           'heroku open',
@@ -101,7 +104,6 @@ module.exports = function(grunt) {
     });
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
-
     grunt.task.run([ 'watch' ]);
   });
 

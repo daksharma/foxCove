@@ -1,9 +1,8 @@
 var pg = require('pg');
 pg.defaults.ssl = true;
-var config = require('./uri-config.js')
 var knex = require('knex')({
   client: 'pg',
-  connection: config.postgresUrl
+  connection: process.env.POSTGRES_DB_URI
 });
 
 module.exports = require('bookshelf')(knex);
