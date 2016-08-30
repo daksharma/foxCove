@@ -1,7 +1,14 @@
 var express = require('express');
 require('dotenv').config();
+<<<<<<< 349389b0f3f70f23c51c5d12d67093de4c65d219
 var mongoDb = require('./db/mongo-db-config.js');
 var bookshelf = require('./db/postgres-db-config.js');
+=======
+var mongoDb = require('./db/mongo-db-config');
+var bookshelf = require('./db/postgres-db-config');
+var models = require('./db/models');
+var collections = require('./db/collections');
+>>>>>>> [merge conflict] Fix merge conflict
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
