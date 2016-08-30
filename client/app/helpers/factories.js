@@ -71,3 +71,19 @@ angular.module('app.helperFactories', [])
     getOfficials: getOfficials
   }
 })
+.factory('GetBillSummary', function($http) {
+  var billSum = {};
+  function getBillSummary(bill_id) {
+    return $http.post('/billSummary', {bill_id : bill_id})
+                .then(function(data){
+                  billSum.summary = data.data;
+                  return billSum.summary;
+                }, function(error) {
+                  console.log(error);
+                })
+  }
+  return {
+    billSummary : billSum,
+    getBillSummary : getBillSummary
+  }
+});

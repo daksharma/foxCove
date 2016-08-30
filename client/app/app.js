@@ -31,6 +31,11 @@ angular.module('foxCove', [
       $scope.bioguide_id = $stateParams.bioguide_id;
     }
   })
+  .state('billsummary',{
+    templateUrl: 'app/billsummary/bill-summary.html',
+    url: '/billSummary',
+    controller: 'BillSummary'
+  });
 
   // DEFAULT route
   $urlRouterProvider.otherwise('/');

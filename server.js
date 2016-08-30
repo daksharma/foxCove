@@ -10,13 +10,14 @@ var convert = require('x2js');
 var bodyParser = require('body-parser');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
-var info = require('./server/modules/basic-info')
+var info = require('./server/modules/basic-info');
 var favicon = require('serve-favicon');
 var govTrack = require('govtrack-node');
 var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
 var localReps = require('./server/modules/local-officials');
 
-
+var info = require('./server/modules/basic-info');
+var billSum = require('./server/modules/bill-summary');
 
 var app = express();
 
@@ -36,7 +37,7 @@ app.post('/getLocalReps', function(req, res){
     // localReps.getOfficials(inputPackage, outputPackage, function(){
     //     res.send(outputPackage)
     // })
-})
+});
 
 
 //IGNORE FOR NOW!!! It's a total failure :(
@@ -46,9 +47,9 @@ app.post('/getVotes', function(req, res){
     //     res.send(data)
     // })
     govTrack.findPerson("P000523", function(err, data) {
-        console.log(data)
-        res.send(data)
-    })
+        console.log(data);
+        res.send(data);
+    });
     // civicInfo.elections(function(error, data) {
     // console.log('whatever');
     // // res.send(JSON.stringify(data))
@@ -56,7 +57,7 @@ app.post('/getVotes', function(req, res){
   //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
   // console.log(data);
 // });
-})
+});
 
 //this handler responds with detailed data for a given rep specified by client
 
@@ -69,10 +70,9 @@ app.post('/getProfile', function(req, res){
     var outputPackage = {};
     newsfeed.getNews(inputPackage, outputPackage, function(){
         info.getGovTrack(inputPackage, outputPackage, function(){
-            res.send(outputPackage)
-        })
-    })
-
+            res.send(outputPackage);
+        });
+    });
 });
 
 //this handler responds with all reps in a given zipcode from client
@@ -86,11 +86,11 @@ app.post('/getReps', function(req, res){
         console.log('There was a problem with that request.');
         res.sendStatus(500);
       } else {
-        var dupCheck = []
+        var dupCheck = [];
         var obj = {};
         obj.reps = [];
           for(var i = 0; i < data.rows.length; i++){
-            var person = data.rows[i]
+            var person = data.rows[i];
             if (dupCheck.indexOf(person.bioguide_id) < 0) {
               dupCheck.push(person.bioguide_id);
               var package = {};
@@ -101,7 +101,7 @@ app.post('/getReps', function(req, res){
               if(person.party === "R"){
                 package.affiliation = "Republican";
               }
-              else if (person.party === "D"){
+              else if (person.party === "D") {
                 package.affiliation = "Democrat";
               }
               else{
@@ -112,8 +112,8 @@ app.post('/getReps', function(req, res){
           }
         res.send(obj);
       }
-    })
-  });
+    });
+});
 
 // This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
@@ -156,11 +156,15 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
         }
       });
     });
-  }
+  };
   pollWiki(res.send.bind(res));
+});
+
+app.post('/billSummary', function(req, res) {
+  billSum.govTrackBillSummary(req.body.bill_id, res);
 });
 
 app.listen(3000, function(){
   console.log('server started...');
-var port = process.env.PORT || 3000;
-})
+  var port = process.env.PORT || 3000;
+});
