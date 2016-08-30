@@ -1,5 +1,5 @@
-var bookshelf = require('./postgres-db-config')
-var models = require('./models')
+var bookshelf = require('./pg-db-config')
+var models = require('./pg-models')
 
 module.exports = {
   zips: bookshelf.Collection.extend({
