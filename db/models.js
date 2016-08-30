@@ -1,4 +1,4 @@
-var bookshelf = require('./postgres-db-config.js')
+var bookshelf = require('./postgres-db-config')
 
 module.exports = {
   Zip: bookshelf.Model.extend({
@@ -11,7 +11,7 @@ module.exports = {
   Legislator: bookshelf.Model.extend({
     tableName: 'legislators',
     books: function() {
-      return this.belongsToMany(Zip);
+      return this.belongsToMany(Zip).withPivot(['state', 'district']);
     }
   })
 };
