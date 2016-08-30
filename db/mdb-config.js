@@ -12,10 +12,10 @@ db.once('open', function() {
 /*
 
 Hi! I'm your friendly, go with the flow Mongo database. You can use me for all sorts
-of stuff, Bill data, State Capitols, parking hours. All you have to do is make
-a schema to get started, and my model based record management is a snap to use.
+of stuff: Bill data, State Capitols, parking hours. All you have to do is make
+a schema to get started, and my model-based record management is a snap to use.
 
-For now let's keep the schemas here, but like children, in time, they will move out.
+For now let's keep the schemas here, but, like children, in time they will move out.
 
 */
 
@@ -26,7 +26,7 @@ var sampleSchema = mongoose.Schema({
     // More schema options live here. Sky's the limit.
 });
 
-// This is where we roduce models from schemas:
+// This is where we produce models from schemas:
 
 var Sample = mongoose.model('Sample', sampleSchema);
 
