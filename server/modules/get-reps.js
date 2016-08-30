@@ -1,5 +1,4 @@
 var request = require('request');
-var key = require('../secret/api-keys');
 var querystring = require('querystring');
 
 // Retrieve a location's legislative representatives

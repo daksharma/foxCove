@@ -1,5 +1,4 @@
 var request = require('request');
-var key = require('../secret/api-keys');
 
 // Retrieve a legislator's legislative sponsorship history from Sunlight Foundation
 // Congressional API

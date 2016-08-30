@@ -1,5 +1,4 @@
 var request = require('request');
-var key = require('../secret/api-keys');
 
 // Retrieve news from Guardian for a specific rep
 
@@ -26,5 +25,3 @@ module.exports.getNews = function(inputPackage, outputPackage, nextCB){
   request(httpRequestOptions, requestCallback);
 
 };
-
-
