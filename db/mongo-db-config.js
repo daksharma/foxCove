@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
-var mongo = require('./uri-config.js');
+var config = require('./uri-config.js');
 
-var uri = mongo.getUri();
-
-mongoose.connect(uri);
+mongoose.connect(config.mongoUri);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Something went wrong with MongoDB.'));
 db.once('open', function() {
-  console.log('Database is connected.');
+  console.log('Connected to MongoDB!');
 });
 
 // Define schemas

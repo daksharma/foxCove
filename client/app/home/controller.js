@@ -13,7 +13,6 @@ angular.module('app.home', [])
     }
   }
   $scope.submit = function() {
-    console.log($scope.location)
     $state.go('searchZip', {zipcode: $scope.location})
   }
   $scope.loadProfile = function (rep) {
@@ -26,7 +25,6 @@ angular.module('app.home', [])
     RepProfile.getRepFromBioId($state.params)
       .then(function(results){
         $scope.rep = results.rep;
-        console.log($scope.rep.bioguide_id)
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
       })
   };

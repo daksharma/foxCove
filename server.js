@@ -1,5 +1,6 @@
 var express = require('express');
-var db = require('./db/db-config.js');
+var mongoDb = require('./db/mongo-db-config.js');
+var postgresDb = require('./db/postgres-db-config.js');
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
