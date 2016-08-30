@@ -4,8 +4,9 @@ angular.module('app.helperFactories', [])
   function getRepFromZip(zipCode) {
     return $http.post('/getReps', {zipcode: zipCode})
       .then(function (response) {
-        repsObject.reps = response.data.reps;
-        return response.data;
+        console.log(response.data.results);
+        repsObject.reps = response.data.results;
+        return repsObject;
       }, function (error) {
         console.log(error);
       });
