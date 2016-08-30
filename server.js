@@ -59,7 +59,7 @@ app.post('/getReps', function(req, res){
               dupCheck.push(person.bioguide_id);
               var package = {};
               package.bioguide_id = person.bioguide_id;
-              package.name = person.first_name + " " + person.last_name;
+              package.name = person.firstname + " " + person.lastname;
               package.title = person.title === "Sen" ?  "Senator" : "Representative";
               package.district = person.district;
               if(person.party === "R"){
