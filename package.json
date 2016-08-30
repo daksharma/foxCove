@@ -44,6 +44,7 @@
     "bluebird": "1.0.8",
     "body-parser": "^1.4.3",
     "bookshelf": "^0.9.5",
+    "bower": "^1.7.9",
     "chai": "^1.9.0",
     "civic-info": "0.0.5",
     "dotenv": "^2.0.0",
