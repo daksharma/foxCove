@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cutive|Scope+One" rel="stylesheet">
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/foxcove.css">
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
   </head>
   <body>
     <div ui-view></div>
@@ -23,8 +25,11 @@
 
     <!-- IMPORTANT: vendor and jquery stuff needs to stay in the same folder -->
     <script src="vendor/jquery.js"></script>
-    <script src="vendor/app.js"></script>
     <script src="vendor/foundation.min.js"></script>
+    <script src="vendor/app.js"></script>
     <script src="vendor/what-input.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
   </body>
 </html>
