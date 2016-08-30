@@ -82,6 +82,8 @@ app.post('/getProfile', function(req, res){
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
+  console.log('process.env.MONGO_DB_URI:', process.env.MONGO_DB_URI);
+  console.log('process.env.POSTGRES_DB_URI:', process.env.POSTGRES_DB_URI);
   var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
   // This (▽) is not pretty. There is a better way to write it. Bookshelf is difficult. Call it a first draft.
   var repLookup = 'select bioguide_id, firstname, lastname, title, Zips.district, party from Legislators, Zips where Zips.zipcode = ' + zip + ' and Legislators.in_office = \'1\' and Legislators.state = Zips.state and (Legislators.district = Zips.district or length(Legislators.district) > 2)';
@@ -91,8 +93,6 @@ app.post('/getReps', function(req, res){
         console.log('There was a problem with that request.');
         res.sendStatus(500);
       } else {
-        console.log('process.env.MONGO_DB_URI:', process.env.MONGO_DB_URI);
-        console.log('process.env.POSTGRES_DB_URI:', process.env.POSTGRES_DB_URI);
         var dupCheck = []
         var obj = {};
         obj.reps = [];
