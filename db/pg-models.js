@@ -1,4 +1,4 @@
-var bookshelf = require('./postgres-db-config')
+var bookshelf = require('./pg-db-config')
 
 module.exports = {
   Zip: bookshelf.Model.extend({
