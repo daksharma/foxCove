@@ -91,6 +91,8 @@ app.post('/getReps', function(req, res){
         console.log('There was a problem with that request.');
         res.sendStatus(500);
       } else {
+        console.log('process.env.MONGO_DB_URI:', process.env.MONGO_DB_URI);
+        console.log('process.env.POSTGRES_DB_URI:', process.env.POSTGRES_DB_URI);
         var dupCheck = []
         var obj = {};
         obj.reps = [];
