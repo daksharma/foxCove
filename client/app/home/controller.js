@@ -5,7 +5,6 @@ angular.module('app.home', [])
     if ($scope.location) {
       Location.getRepFromZip($scope.location)
         .then(function(results){
-          console.log('results:', results);
           $scope.reps = results.reps;
           $scope.reps.forEach(function(rep) {
             rep.thumb = 'http://theunitedstates.io/images/congress/225x275/' + rep.bioguide_id + '.jpg';
