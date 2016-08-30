@@ -13,7 +13,6 @@ var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
-var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')

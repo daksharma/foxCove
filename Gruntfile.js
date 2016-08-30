@@ -37,13 +37,24 @@ module.exports = function(grunt) {
       debug: {
         command: 'node debug server.js',
       },
-      deploy: {
+      stable: {
         command: [
           'heroku create',
           'heroku config:get SUNLIGHT_API -s  >> .env',
           'heroku config:get MONGO_DB_URI -s  >> .env',
           'heroku config:get POSTGRES_DB_URI -s  >> .env',
-          'git push heroku master',
+          'git push -f heroku master',
+          'heroku ps:scale web=1',
+          'heroku open',
+        ].join('&&'),
+      },
+      develop: {
+        command: [
+          'heroku create',
+          'heroku config:get SUNLIGHT_API -s  >> .env',
+          'heroku config:get MONGO_DB_URI -s  >> .env',
+          'heroku config:get POSTGRES_DB_URI -s  >> .env',
+          'git push -f heroku develop:master',
           'heroku ps:scale web=1',
           'heroku open',
         ].join('&&'),
@@ -125,6 +136,8 @@ module.exports = function(grunt) {
 
   // grunt.registerTask('test', [ 'mochaTest' ]);
 
-  grunt.registerTask('deploy', [ 'shell:deploy' ]);
+  grunt.registerTask('deploy:stable', [ 'shell:stable' ]);
+
+  grunt.registerTask('deploy:develop', [ 'shell:develop' ]);
 
 }
