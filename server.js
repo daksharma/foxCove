@@ -1,5 +1,6 @@
 var express = require('express');
-var db = require('./db/db-config.js');
+var mongoDb = require('./db/mongo-db-config.js');
+var bookshelf = require('./db/postgres-db-config.js');
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
@@ -33,8 +34,6 @@ app.post('/getProfile', function(req, res){
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
-    var zip = req.body.zipcode //front end request should be in the format {zipcode: zipcode}
-    console.log(req.body.zipcode);
     var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
     request('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip + '&apikey=fca53d5418a64a6a81b29bb71c97b9a1', function(error, response, data){
         if (!data.includes('<')) {
@@ -62,13 +61,30 @@ app.post('/getReps', function(req, res){
                 }
                 obj.reps.push(package);
             }
-            console.log(obj);
             res.send(obj);
         } else {
             console.log('There was a problem with the data provider.');
             res.sendStatus(500);
         }
     });
+});
+
+// This is currently a WET copy paste of the function above.
+
+app.post('/getRep', function(req, res){
+  console.log('THIS IS THE REQUEST: ', req.body)
+  var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
+  request('https://congress.api.sunlightfoundation.com/legislators?bioguide_id=' + bioguide_id + '&all_legislators=true&apikey=fca53d5418a64a6a81b29bb71c97b9a1', function(error, response, data){
+    if (!data.includes('<')) {
+      data = JSON.parse(data);
+      var obj = {};
+      obj.rep = data.results[0];
+      res.send(obj);
+    } else {
+      console.log('There was a problem with the data provider.');
+      res.sendStatus(500);
+    }
+  });
 });
 
 app.listen(3000, function(){

@@ -1,1 +1,2 @@
-exports.getUri = function() { return 'TEAM URI HERE' }
+exports.mongoUri = 'TEAM URI HERE';
+exports.postgresUrl = 'TEAM POSTGRES URL';
