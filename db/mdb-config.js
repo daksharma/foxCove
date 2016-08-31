@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
-var config = require('./uri-config.js');
-
-mongoose.connect(config.mongoUri);
+mongoose.connect(process.env.MONGO_DB_URI);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Something went wrong with MongoDB.'));

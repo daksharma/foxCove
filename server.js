@@ -1,18 +1,14 @@
 var express = require('express');
 require('dotenv').config();
-<<<<<<< 349389b0f3f70f23c51c5d12d67093de4c65d219
-var mongoDb = require('./db/mongo-db-config.js');
-var bookshelf = require('./db/postgres-db-config.js');
-=======
 var mongoDb = require('./db/mongo-db-config');
 var bookshelf = require('./db/postgres-db-config');
 var models = require('./db/models');
 var collections = require('./db/collections');
->>>>>>> [merge conflict] Fix merge conflict
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
+var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')
@@ -82,8 +78,6 @@ app.post('/getProfile', function(req, res){
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
-  console.log('process.env.MONGO_DB_URI:', process.env.MONGO_DB_URI);
-  console.log('process.env.POSTGRES_DB_URI:', process.env.POSTGRES_DB_URI);
   var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
   // This (▽) is not pretty. There is a better way to write it. Bookshelf is difficult. Call it a first draft.
   var repLookup = 'select bioguide_id, firstname, lastname, title, Zips.district, party from Legislators, Zips where Zips.zipcode = ' + zip + ' and Legislators.in_office = \'1\' and Legislators.state = Zips.state and (Legislators.district = Zips.district or length(Legislators.district) > 2)';
