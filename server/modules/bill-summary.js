@@ -19,7 +19,7 @@ exports.govTrackBillSummary = function (bill_id, callback) {
   var govTrackUrl = 'https://www.govtrack.us/api/v2/bill/' + bill_id;
   request(govTrackUrl, function (error, response, data) {
     if (!error && response.statusCode === 200) {
-      callback(data);
+      callback.send(data);
     } else {
       console.log(error);
     }

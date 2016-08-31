@@ -47,6 +47,7 @@ angular.module('app.helperFactories', [])
     return $http.post('/billSummary', {bill_id : bill_id})
                 .then(function(data){
                   billSum.summary = data.data;
+                  return billSum.summary;
                 }, function(error) {
                   console.log(error);
                 })

@@ -1,5 +1,6 @@
 angular.module('foxCove', [
   'app.home',
+  'app.bill',
   'app.search',
   // 'app.repProfileController',
   'app.helperFactories',
