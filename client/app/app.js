@@ -17,7 +17,7 @@ angular.module('foxCove', [
   })
 
   .state('searchZip', {
-    templateUrl: 'app/home/home-view.html',
+    templateUrl: 'app/local-results/local-results-view.html',
     url: '/:zipcode',
     controller: function($scope, $stateParams) {
       $scope.location = $stateParams.zipcode;
