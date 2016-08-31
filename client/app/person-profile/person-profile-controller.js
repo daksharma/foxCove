@@ -12,7 +12,7 @@ angular.module('app.personProfile',[])
   $scope.getBio = function(rep) {
     RepBio.getBioFromRepName({searchString: rep.firstname + '%20' + rep.lastname})
       .then(function(results) {
-        rep.bio = results;
+        rep.bio = results.split('\n')[0];
       })
   }
 }]);
