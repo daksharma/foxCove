@@ -1,4 +1,4 @@
-angular.module('app.home', [])
+angular.module('app.bill', [])
        .controller('BillSummary', ['$scope', 'GetBillSummary', '$state', function ($scope, GetBillSummary, $state) {
 
          $scope.getBillSum = function () {

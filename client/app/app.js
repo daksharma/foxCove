@@ -2,6 +2,9 @@ angular.module('foxCove', [
   'app.home',
   'app.localResults',
   'app.personProfile',
+  'app.bill',
+  'app.search',
+  // 'app.repProfileController',
   'app.helperFactories',
   'ui.router',
   'app.directives'
