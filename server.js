@@ -13,6 +13,10 @@ var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')
 var favicon = require('serve-favicon');
+var govTrack = require('govtrack-node');
+var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
+var localReps = require('./server/modules/local-officials');
+
 
 
 var app = express();
@@ -24,6 +28,36 @@ app.use(bodyParser.urlencoded({
 
 app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
+
+app.post('/getLocalReps', function(req, res){
+    console.log("HELLO")
+    var inputPackage = req.body;
+    console.log(inputPackage)
+    var outputPackage = {};
+    localReps.getOfficials(inputPackage, outputPackage, function(){
+        res.send(outputPackage)
+    })
+})
+
+
+//IGNORE FOR NOW!!! It's a total failure :(
+app.post('/getVotes', function(req, res){
+    // govTrack.findVoteVoter({id: 31425718}, function(err, data){
+    //     console.log("VOTE DATA:", data)
+    //     res.send(data)
+    // })
+    govTrack.findPerson("P000523", function(err, data) {
+        console.log(data)
+        res.send(data)
+    }) 
+    // civicInfo.elections(function(error, data) {
+    // console.log('whatever');
+    // // res.send(JSON.stringify(data))
+    // }); 
+  //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
+  // console.log(data);
+// });
+})
 
 //this handler responds with detailed data for a given rep specified by client
 

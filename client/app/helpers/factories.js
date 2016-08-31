@@ -55,4 +55,17 @@ angular.module('app.helperFactories', [])
     bio: repBio,
     getBioFromRepName: getBioFromRepName
   }
-});
+})
+.factory('LocalOfficials', function($http){
+  function getOfficials(zipcode){
+    return $http.post('/getLocalReps', {zip: zipcode})
+      .then(function(res){
+        return res.data
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    getOfficials: getOfficials
+  }
+})
