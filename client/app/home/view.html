@@ -2,7 +2,7 @@
   <h1 class="head" style="text-align: center">Foxcove</h1>
   <div>
     <div class="input-group" name="location-form" ng-submit="submit()" ng-init="loadZip()">
-      <input type="text" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-enter="submit()">
+      <input type="text" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-pattern="/^\d{5}$/" ng-enter="submit()">
       <div class="input-group-button">
         <button class="button-clear postfix search-button" style="background-image: url('/images/searchLoc.png')" name="submit" type="submit" ng-click="submit()"></button>
       </div>
@@ -16,5 +16,13 @@
         </span>
       </li>
     </ul>
+
+
+
+    <ul>
+      <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a>
+      </li>
+    </ul>
+
   </div>
 </div>
