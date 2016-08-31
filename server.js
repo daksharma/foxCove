@@ -97,8 +97,7 @@ app.post('/getRep', function(req, res){
 });
 
 app.post('/billSummary', function(req, res) {
-  var bill_id = req.body.bill_id;
-  billSum.govTrackBillSummary(bill_id, res.send);
+  billSum.govTrackBillSummary(req.body.bill_id, res.send);
 });
 
 app.listen(3000, function(){

@@ -51,4 +51,8 @@ angular.module('app.helperFactories', [])
                   console.log(error);
                 })
   }
+  return {
+    billSummary : billSum,
+    getBillSummary : getBillSummary
+  }
 });
