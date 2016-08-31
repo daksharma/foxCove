@@ -1,13 +1,18 @@
-<div class="row centered" ng-controller="ResultsController">
-  <h1 class="head" style="text-align: center">Foxcove</h1>
-  <div>
-    <div class="input-group" name="location-form" ng-submit="submit()" ng-init="loadZip()">
-      <input type="text" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-pattern="/^\d{5}$/" ng-enter="submit()">
-      <div class="input-group-button">
-        <button class="button-clear postfix search-button" style="background-image: url('/images/searchLoc.png')" name="submit" type="submit" ng-click="submit()"></button>
-      </div>
+<div ng-controller="ResultsController" ng-init="loadZip()">
+
+  <div class="title-bar" style="height: 35px">
+    <div class="left">
+      <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
-    <ul class="row small-up-3 rep-cols">
+    <div class="right">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 75%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+    </div>
+  </div>
+  <!-- /Navigation -->
+
+  <br>
+
+    <ul class="row small-up-5 rep-cols">
       <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
         <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
           <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
@@ -21,7 +26,7 @@
       <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a>
       </li>
     </ul>
-  </div>
+
   <script>
   </script>
 </div>
