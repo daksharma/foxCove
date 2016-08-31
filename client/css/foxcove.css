@@ -82,12 +82,10 @@ body {
   font-size: 130%;
   letter-spacing: 4px; }
 
-.search-bar-menu {
-  display: block;
-  position: relative;
-  font-family: 'Scope One', serif;
-  font-size: 50%;
-  letter-spacing: 2px; }
+.menu-search {
+  float: right;
+  margin-top: 15px;
+  height: 24px }
 
 .head {
   font-family: 'Cutive', serif;
