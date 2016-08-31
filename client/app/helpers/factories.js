@@ -2,9 +2,11 @@ angular.module('app.helperFactories', [])
 .factory('Location', function ($http) {
   var repsObject = {};
   function getRepFromZip(zipCode) {
+    console.log('sending:', {zipcode: zipCode});
     return $http.post('/getReps', {zipcode: zipCode})
       .then(function (response) {
-        repsObject.reps = response.data.reps;
+        console.log(response.data);
+        repsObject.reps = response.data;
         return response.data;
       }, function (error) {
         console.log(error);
@@ -50,7 +52,7 @@ angular.module('app.helperFactories', [])
         console.log(error);
       });
   }
-  
+
   return {
     bio: repBio,
     getBioFromRepName: getBioFromRepName

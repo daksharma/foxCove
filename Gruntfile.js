@@ -33,18 +33,17 @@ module.exports = function(grunt) {
       },
     },
 
+    env: {
+      dev: {
+        src: [ '.env' ],
+      }
+    },
+
+    // .env variables cannot be loaded here because they are undefined on init
     shell: {
       debug: {
         command: 'node debug server.js',
       },
-      deploy: {
-        command: [
-          'heroku create',
-          'git push heroku master',
-          'heroku ps:scale web=1',
-          'heroku open',
-        ].join('&&'),
-      }
     },
 
     nodemon: {
@@ -91,6 +90,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test')
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-env');
 
   // Run nodejs in a different process and display output on the main console
   grunt.registerTask('server-dev', function (target) {
@@ -101,7 +101,6 @@ module.exports = function(grunt) {
     });
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
-
     grunt.task.run([ 'watch' ]);
   });
 
@@ -115,14 +114,66 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [ 'jshint', 'nodemon' ]);
 
-  grunt.registerTask('debug', 'Type "next" to continue to the next line and ".exit" to quit', function(){
-    grunt.task.run([ 'shell:debug' ])
+  // LOAD .env variables and MERGE into shell config
+  grunt.registerTask('loadconst', 'Load constants', function() {
+    grunt.config('SUNLIGHT_API', process.env.SUNLIGHT_API);
+    grunt.config('MONGO_DB_URI', process.env.MONGO_DB_URI);
+    grunt.config('POSTGRES_DB_URI', process.env.POSTGRES_DB_URI);
+    grunt.config('GUARDIAN_API', process.env.GUARDIAN_API);
+    grunt.config('OPENSECRETS_API', process.env.OPENSECRETS_API);
+    grunt.config('PROPUBLICA_API', process.env.PROPUBLICA_API);
+    grunt.config('GOOGLE_API', process.env.GOOGLE_API);
+    grunt.config.merge({
+      shell: {
+        develop: {
+          command: [
+            'heroku create',
+            'heroku local',
+            'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
+            'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
+            'heroku config:set POSTGRES_DB_URI=' + grunt.config.get(['POSTGRES_DB_URI']),
+            'heroku config:set GUARDIAN_API=' + grunt.config.get(['GUARDIAN_API']),
+            'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
+            'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
+            'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
+            'echo The following ENVIRONMENT variables have assigned to heroku config',
+            'heroku config',
+            'git push -f heroku develop:master',
+            'heroku ps:scale web=1',
+            'heroku open',
+          ].join('&&'),
+        },
+        stable: {
+          command: [
+            'heroku create',
+            'heroku local',
+            'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
+            'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
+            'heroku config:set POSTGRES_DB_URI=' + grunt.config.get(['POSTGRES_DB_URI']),
+            'heroku config:set GUARDIAN_API=' + grunt.config.get(['GUARDIAN_API']),
+            'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
+            'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
+            'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
+            'echo The following ENVIRONMENT variables have assigned to heroku config',
+            'heroku config',
+            'git push -f heroku master',
+            'heroku ps:scale web=1',
+            'heroku open',
+          ].join('&&'),
+        },
+      },
+    })
+  });
+
+  grunt.registerTask('test', '', function(){
+    grunt.task.run([ 'env:dev' ]);
+    grunt.task.run([ 'loadconst' ]);
   });
 
   grunt.registerTask('lint', [ 'jshint' ]);
 
-  // grunt.registerTask('test', [ 'mochaTest' ]);
+  grunt.registerTask('deploy:stable', [ 'env:dev', 'loadconst', 'shell:stable' ]);
 
-  grunt.registerTask('deploy', [ 'shell:deploy' ]);
+  grunt.registerTask('deploy:develop', [ 'env:dev', 'loadconst', 'shell:develop' ]);
 
 }

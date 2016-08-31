@@ -1,5 +1,5 @@
 var express = require('express');
-var https = require('https');
+require('dotenv').config();
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
 var models = require('./db/pg-models');
@@ -8,7 +8,6 @@ var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
-var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')
@@ -49,11 +48,11 @@ app.post('/getVotes', function(req, res){
     govTrack.findPerson("P000523", function(err, data) {
         console.log(data)
         res.send(data)
-    }) 
+    })
     // civicInfo.elections(function(error, data) {
     // console.log('whatever');
     // // res.send(JSON.stringify(data))
-    // }); 
+    // });
   //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
   // console.log(data);
 // });
@@ -114,8 +113,9 @@ app.post('/getReps', function(req, res){
         res.send(obj);
       }
     })
-});
+  });
 
+// This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
   new models.Legislator({bioguide_id: bioguide_id})
@@ -162,4 +162,5 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
 
 app.listen(3000, function(){
   console.log('server started...');
-});
+var port = process.env.PORT || 3000;
+})

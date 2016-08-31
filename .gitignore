@@ -4,4 +4,6 @@
 
 uri-config.js
 
+.env
+
 /server/secret

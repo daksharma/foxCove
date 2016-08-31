@@ -4,7 +4,8 @@
   "description": "Project foxCove",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "bluebird": "1.0.8",
     "body-parser": "^1.4.3",
     "bookshelf": "^0.9.5",
+    "bower": "^1.7.9",
     "chai": "^1.9.0",
     "civic-info": "0.0.5",
     "dotenv": "^2.0.0",
@@ -56,6 +58,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-env": "^0.4.4",
     "grunt-mocha-test": "^0.12.7",
     "grunt-nodemon": "^0.4.2",
     "grunt-shell": "^1.3.1",
