@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(favicon(__dirname + '/client/favicon.ico'));
+app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 //this handler responds with detailed data for a given rep specified by client

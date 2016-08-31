@@ -1,4 +1,5 @@
-angular.module('app.search', [])
+angular.module('app.localResults', [])
+
 .controller('SearchResultController', ['$scope',function($scope) {
 
 }]);

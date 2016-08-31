@@ -1,0 +1,240 @@
+<div class="row centered" ng-controller="ProfileController">
+  <h1 class="head" style="text-align: center">Foxcove</h1>
+  <div>
+    <div ng-init="build()">
+      <span class="resize-big circular-big" style="background-image: url({{rep.img}})" >{{rep.firstname}} {{rep.lastname}}</span>
+    </div>
+  </div>
+</div>
+
+
+
+<!--This is an extremely primitive view to be updated tomorrow. If you want to get started, the rep
+object looks like the following. These hooks will all be present when we shift to SQL.
+
+ { bioguide_id: 'S001175',
+     birthday: '1950-05-14',
+     chamber: 'house',
+     contact_form: 'https://forms.house.gov/speier/webforms/email_jackie.shtml',
+     crp_id: 'N00029649',
+     district: 14,
+     facebook_id: '99332606976',
+     fax: '202-347-0956',
+     fec_ids: [ 'H8CA12171' ],
+     first_name: 'Jackie',
+     gender: 'F',
+     govtrack_id: '412259',
+     icpsr_id: 20762,
+     in_office: true,
+     last_name: 'Speier',
+     middle_name: null,
+     name_suffix: null,
+     nickname: null,
+     oc_email: 'Rep.Speier@opencongress.org',
+     ocd_id: 'ocd-division/country:us/state:ca/cd:14',
+     office: '2465 Rayburn House Office Building',
+     party: 'D',
+     phone: '202-225-3531',
+     state: 'CA',
+     state_name: 'California',
+     term_end: '2017-01-03',
+     term_start: '2015-01-06',
+     thomas_id: '01890',
+     title: 'Rep',
+     twitter_id: 'RepSpeier',
+     votesmart_id: 8425,
+     website: 'http://speier.house.gov',
+     youtube_id: 'jackiespeierca12' }-->
+
+     ---
+layout: templates
+name: Foundation For Sites
+---
+
+<!-- Navigation -->
+<div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="realEstateMenu">
+  <div class="top-bar-left">
+    <ul class="menu" data-responsive-menu="accordion">
+      <li class="menu-text">Interplanetary</li>
+      <li><a href="#">One</a></li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a href="#">My Account</a></li>
+      <li><a class="button">Login</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /Navigation -->
+
+<br>
+
+<div class="row">
+
+  <div class="medium-7 large-6 columns">
+    <h1>Close Your Eyes and Open Your Mind</h1>
+    <p class="subheader">There is beauty in space, and it is orderly. There is no weather, and there is regularity. It is predictable. Everything in space obeys the laws of physics. If you know these laws, and obey them, space will treat you kindly.</p>
+    <button class="button">Take a Tour</button>
+    <button class="button">Start a free trial</button>
+  </div>
+
+  <div class="show-for-large large-3 columns">
+    <img src="http://placehold.it/400x370&text=PSR1257 + 12 C" alt="picture of space">
+  </div>
+
+  <div class="medium-5 large-3 columns">
+    <div class="callout secondary">
+      <form>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Find Your Dream Planet
+              <input type="text" placeholder="Search destinations">
+            </label>
+          </div>
+          <div class="small-12 columns">
+            <label>Number of Moons
+              <input type="number" placeholder="Moons required">
+            </label>
+            <button type="submit" class="button">Search Now!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="row column">
+  <hr>
+</div>
+
+<div class="row column">
+  <p class="lead">Trending Planetary Destinations</p>
+</div>
+
+<div class="row small-up-1 medium-up-2 large-up-3">
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout">
+      <p>Pegasi B</p>
+      <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+      <p class="lead">Copernican Revolution caused an uproar</p>
+      <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="row column">
+  <a class="button hollow expanded">Load More</a>
+</div>
+
+<footer>
+  <div class="row expanded callout secondary">
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Offices</p>
+      <ul class="menu vertical">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+        <li><a href="#">Four</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Solar Systems</p>
+      <ul class="menu vertical">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+        <li><a href="#">Four</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Contact</p>
+      <ul class="menu vertical">
+        <li><a href="#"><i class="fi-social-twitter"></i> Twitter</a></li>
+        <li><a href="#"><i class="fi-social-facebook"></i> Facebook</a></li>
+        <li><a href="#"><i class="fi-social-instagram"></i> Instagram</a></li>
+        <li><a href="#"><i class="fi-social-pinterest"></i> Pinterest</a></li>
+      </ul>
+    </div>
+
+    <div class="small-6 large-3 columns">
+      <p class="lead">Offices</p>
+      <ul class="menu vertical">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+        <li><a href="#">Four</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="medium-6 columns">
+      <ul class="menu">
+        <li><a href="#">Legal</a></li>
+        <li><a href="#">Partner</a></li>
+        <li><a href="#">Explore</a></li>
+      </ul>
+    </div>
+
+    <div class="medium-6 columns">
+      <ul class="menu float-right">
+        <li class="menu-text">Copyright</li>
+      </ul>
+    </div>
+  </div>
+
+</footer>

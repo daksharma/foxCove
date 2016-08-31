@@ -1,7 +1,7 @@
 angular.module('foxCove', [
   'app.home',
-  'app.search',
-  // 'app.repProfileController',
+  'app.localResults',
+  'app.personProfile',
   'app.helperFactories',
   'ui.router',
   'app.directives'
@@ -15,6 +15,7 @@ angular.module('foxCove', [
     url: '/',
     controller: 'HomeController'
   })
+
   .state('searchZip', {
     templateUrl: 'app/home/home-view.html',
     url: '/:zipcode',
@@ -22,8 +23,9 @@ angular.module('foxCove', [
       $scope.location = $stateParams.zipcode;
     }
   })
+
   .state('repProfile', {
-    templateUrl: 'app/home/profile-view.html',
+    templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/rep/:bioguide_id',
     controller: function($scope, $stateParams) {
       $scope.bioguide_id = $stateParams.bioguide_id;

@@ -9,6 +9,14 @@ body {
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px; }
 
+.circular-big {
+
+  height: 300px;
+  width: 300px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px; }
+
 .Republican {
   position: relative;
   border: #E63946;
@@ -39,6 +47,14 @@ body {
   height: 100px;
   display: block;
   background-size: 100px auto;
+  background-position: 55% 55%; }
+
+.resize-big {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: block;
+  background-size: 300px auto;
   background-position: 55% 55%; }
 
 .grid-list {
