@@ -1,4 +1,5 @@
 var express = require('express');
+var https = require('https');
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
 var models = require('./db/pg-models');
@@ -39,7 +40,7 @@ app.post('/getProfile', function(req, res){
         })
     })
 
-})
+});
 
 //this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
@@ -95,6 +96,34 @@ app.post('/getRep', function(req, res){
         res.send(obj);
       }
     });
+});
+
+app.post('/getBio', function(req, res) { //front end request should be in the format {searchString: searchString}
+  var bio;
+  var pollWiki = function(cb) {
+    return https.get({
+      hostname: 'en.wikipedia.org',
+      path: '/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=' + req.body.searchString
+    }, function(res) {
+      var body = '';
+      res.on('data', function(chunk) {
+        body += chunk;
+      }).on('error', function(err) {
+        console.log(err);
+        res.sendStatus(500);
+      });
+      res.on('end', function() {
+        if (!body.includes('<')) {
+          var parsed = JSON.parse(body);
+          bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
+          cb(bio);
+        } else {
+          console.log('There was a problem with Wikipedia');
+        }
+      });
+    });
+  }
+  pollWiki(res.send.bind(res));
 });
 
 app.listen(3000, function(){

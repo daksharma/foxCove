@@ -7,7 +7,7 @@ angular.module('app.helperFactories', [])
         repsObject.reps = response.data.reps;
         return response.data;
       }, function (error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -29,12 +29,30 @@ angular.module('app.helperFactories', [])
         repObject = response.data;
         return response.data;
       }, function (error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
   return {
     rep: repObject,
     getRepFromBioId: getRepFromBioId
+  }
+})
+.factory('RepBio', function($http) {
+  var repBio = {};
+
+  function getBioFromRepName(searchString) {
+    return $http.post('/getBio', searchString)
+      .then(function (response) {
+        repBio = response.data;
+        return repBio
+      }, function (error) {
+        console.log(error);
+      });
+  }
+  
+  return {
+    bio: repBio,
+    getBioFromRepName: getBioFromRepName
   }
 });
