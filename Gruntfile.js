@@ -119,6 +119,10 @@ module.exports = function(grunt) {
     grunt.config('SUNLIGHT_API', process.env.SUNLIGHT_API);
     grunt.config('MONGO_DB_URI', process.env.MONGO_DB_URI);
     grunt.config('POSTGRES_DB_URI', process.env.POSTGRES_DB_URI);
+    grunt.config('GUARDIAN_API', process.env.GUARDIAN_API);
+    grunt.config('OPENSECRETS_API', process.env.OPENSECRETS_API);
+    grunt.config('PROPUBLICA_API', process.env.PROPUBLICA_API);
+    grunt.config('GOOGLE_API', process.env.GOOGLE_API);
     grunt.config.merge({
       shell: {
         develop: {
@@ -128,6 +132,10 @@ module.exports = function(grunt) {
             'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
             'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
             'heroku config:set POSTGRES_DB_URI=' + grunt.config.get(['POSTGRES_DB_URI']),
+            'heroku config:set GUARDIAN_API=' + grunt.config.get(['GUARDIAN_API']),
+            'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
+            'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
+            'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku develop:master',
@@ -142,6 +150,10 @@ module.exports = function(grunt) {
             'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
             'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
             'heroku config:set POSTGRES_DB_URI=' + grunt.config.get(['POSTGRES_DB_URI']),
+            'heroku config:set GUARDIAN_API=' + grunt.config.get(['GUARDIAN_API']),
+            'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
+            'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
+            'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku master',

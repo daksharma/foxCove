@@ -1,5 +1,4 @@
 var request = require('request');
-var key = require('../secret/api-keys');
 
 // Retrieve news from Guardian for a specific rep
 
@@ -28,11 +27,9 @@ module.exports.getOfficials = function(inputPackage, outputPackage, nextCB){
   }
 
   var httpRequestOptions = {
-    url: 'https://www.googleapis.com/civicinfo/v2/representatives?address='+inputPackage.zip+'&key=' + key.google,
+    url: 'https://www.googleapis.com/civicinfo/v2/representatives?address='+inputPackage.zip+'&key=' + process.env.GOOGLE_API,
   }
 
   request(httpRequestOptions, requestCallback);
 
 };
-
-

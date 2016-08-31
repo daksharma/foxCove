@@ -1,14 +1,13 @@
 var express = require('express');
 require('dotenv').config();
-var mongoDb = require('./db/mongo-db-config');
-var bookshelf = require('./db/postgres-db-config');
-var models = require('./db/models');
-var collections = require('./db/collections');
+var mongoDb = require('./db/mdb-config');
+var bookshelf = require('./db/pg-db-config');
+var models = require('./db/pg-models');
+var collections = require('./db/pg-collections');
 var request = require('request');
 var path = require('path');
 var convert = require('x2js');
 var bodyParser = require('body-parser');
-var key = require('./server/secret/api-keys');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
 var info = require('./server/modules/basic-info')
@@ -164,3 +163,4 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
 app.listen(3000, function(){
   console.log('server started...');
 var port = process.env.PORT || 3000;
+})
