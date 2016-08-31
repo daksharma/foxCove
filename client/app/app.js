@@ -3,7 +3,6 @@ angular.module('foxCove', [
   'app.localResults',
   'app.personProfile',
   'app.bill',
-  'app.search',
   // 'app.repProfileController',
   'app.helperFactories',
   'ui.router',
