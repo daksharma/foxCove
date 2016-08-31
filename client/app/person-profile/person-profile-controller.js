@@ -6,6 +6,6 @@ angular.module('app.personProfile',[])
       .then(function(results){
         $scope.rep = results.rep;
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
-      })
+      });
   };
 }]);
