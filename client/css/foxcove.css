@@ -1,0 +1,90 @@
+body {
+  background-color: #FBF7EB; }
+
+.circular {
+
+  height: 100px;
+  width: 100px;
+	border-radius: 60px;
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px; }
+
+.Republican {
+  position: relative;
+  border: #E63946;
+  border-style: solid;
+  border-width: 2px; }
+
+.Democrat {
+  position: relative;
+  border: #1D3557;
+  border-style: solid;
+  border-width: 2px; }
+
+.down-right {
+  float: right;
+  bottom: 0 }
+
+.rep-cols {
+  display: block;
+  width: 300;
+  position: relative;
+  left: 20px;
+  margin-left: auto;
+  margin-right: auto; }
+  
+.resize {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-size: 100px auto;
+  background-position: 55% 55%; }
+
+.grid-list {
+  list-style-type: none;
+  list-style: none; }
+
+.centered {
+  position: absolute;
+  display: block;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.search-button {
+  position: relative; left:30px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: 40px; }
+
+.search-bar {
+  position: relative;
+  left:20px;
+  text-align: center;
+  font-family: 'Scope One', serif;
+  font-size: 130%;
+  letter-spacing: 4px; }
+
+.head {
+  font-family: 'Cutive', serif;
+  color: #FF530D }
+
+.graff {
+  font-family: 'Scope One', serif; }
+
+.color1 {
+  color: #00B297; }
+
+.color2 {
+  color: #0DFFD9;}
+
+.color3 {
+  color: #FF6526; }
+
+.color4 {
+  color: #B23705; }
