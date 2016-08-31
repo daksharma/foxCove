@@ -2,6 +2,7 @@ angular.module('app.helperFactories', [])
 .factory('Location', function ($http) {
   var repsObject = {};
   function getRepFromZip(zipCode) {
+    console.log('sending:', {zipcode: zipCode});
     return $http.post('/getReps', {zipcode: zipCode})
       .then(function (response) {
         console.log(response.data);
