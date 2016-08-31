@@ -50,7 +50,7 @@ angular.module('app.helperFactories', [])
         console.log(error);
       });
   }
-  
+
   return {
     bio: repBio,
     getBioFromRepName: getBioFromRepName

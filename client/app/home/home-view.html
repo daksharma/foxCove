@@ -19,4 +19,12 @@
   </div>
   <script>
   </script>
+  <div class="row">
+    <div class="small-3 large-centered columns">
+      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px" class="text-center">
+        <a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a>
+          <span class="graff">{{rep.title}} {{rep.first_name + " " + rep.last_name}} ({{rep.party}})</span>
+      </div>
+    </div>
+  </div>
 </div>

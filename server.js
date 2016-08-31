@@ -18,7 +18,6 @@ var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05
 var localReps = require('./server/modules/local-officials');
 
 
-
 var app = express();
 
 app.use(bodyParser.json());
@@ -49,11 +48,11 @@ app.post('/getVotes', function(req, res){
     govTrack.findPerson("P000523", function(err, data) {
         console.log(data)
         res.send(data)
-    }) 
+    })
     // civicInfo.elections(function(error, data) {
     // console.log('whatever');
     // // res.send(JSON.stringify(data))
-    // }); 
+    // });
   //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
   // console.log(data);
 // });
@@ -116,6 +115,17 @@ app.post('/getReps', function(req, res){
     })
   });
 
+// app.post('/getReps', function(req, res) {
+//     getReps(req.body.zipcode, function(err, response, data){
+//       if( err ) {
+//         console.error(err);
+//       } else {
+//         res.send(data);
+//       }
+//     });
+// });
+
+// This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
   new models.Legislator({bioguide_id: bioguide_id})
@@ -163,7 +173,3 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
 app.listen(3000, function(){
   console.log('server started...');
 var port = process.env.PORT || 3000;
-
-app.listen(port, function(){
-  console.log('server started on port:', port);
-});
