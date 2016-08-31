@@ -123,7 +123,6 @@ app.post('/getReps', function(req, res){
     });
 });
 
-// This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
   new models.Legislator({bioguide_id: bioguide_id})
@@ -160,7 +159,7 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
           bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
           cb(bio);
         } else {
-          console.log('There was a problem with Wikipedia');
+          console.log('There was a problem with Wikipedia.');
         }
       });
     });
