@@ -1,6 +1,9 @@
-angular.module('app.home', [])
+angular.module('app.localResults', [])
 
-.controller('HomeController', ['$scope','Location', '$state', 'LocalOfficials', function($scope, Location, $state, LocalOfficials) {
+.controller('ResultsController', ['$scope','Location', '$state', 'LocalOfficials', function($scope, Location, $state, LocalOfficials) {
+  $scope.submit = function() {
+    $state.go('searchZip', {zipcode: $scope.location})
+  }
   $scope.loadZip = function() {
     if ($scope.location) {
       Location.getRepFromZip($scope.location)
@@ -27,20 +30,7 @@ angular.module('app.home', [])
         })
     }
   }
-  $scope.submit = function() {
-    $state.go('searchZip', {zipcode: $scope.location})
-  }
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguide_id});
   }
-}])
-
-.controller('ProfileController', ['$scope','RepProfile', '$state', function($scope, RepProfile, $state) {
-  $scope.build = function() {
-    RepProfile.getRepFromBioId($state.params)
-      .then(function(results){
-        $scope.rep = results.rep;
-        $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
-      })
-  };
-}])
+}]);

@@ -1,15 +1,13 @@
 angular.module('app.helperFactories', [])
 .factory('Location', function ($http) {
   var repsObject = {};
-
   function getRepFromZip(zipCode) {
     return $http.post('/getReps', {zipcode: zipCode})
       .then(function (response) {
         repsObject.reps = response.data.reps;
-        console.log(repsObject)
         return response.data;
       }, function (error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -26,13 +24,12 @@ angular.module('app.helperFactories', [])
   var repObject = {};
 
   function getRepFromBioId(bioguide_id) {
-    console.log(bioguide_id)
     return $http.post('/getRep', bioguide_id)
       .then(function (response) {
         repObject = response.data;
         return response.data;
       }, function (error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -41,8 +38,24 @@ angular.module('app.helperFactories', [])
     getRepFromBioId: getRepFromBioId
   }
 })
+.factory('RepBio', function($http) {
+  var repBio = {};
 
-
+  function getBioFromRepName(searchString) {
+    return $http.post('/getBio', searchString)
+      .then(function (response) {
+        repBio = response.data;
+        return repBio
+      }, function (error) {
+        console.log(error);
+      });
+  }
+  
+  return {
+    bio: repBio,
+    getBioFromRepName: getBioFromRepName
+  }
+})
 .factory('LocalOfficials', function($http){
   function getOfficials(zipcode){
     return $http.post('/getLocalReps', {zip: zipcode})

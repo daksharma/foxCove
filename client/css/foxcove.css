@@ -5,9 +5,30 @@ body {
 
   height: 100px;
   width: 100px;
+  cursor: pointer;
 	border-radius: 60px;
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px; }
+
+.resize {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-size: 100px auto;
+  background-position: 55% 55%; }
+
+.resize-profile-img {
+  width: 400px;
+  height: 370px; }
+
+.crop-profile-img {
+  position: relative;
+  width: 400px;
+  height: 370px;
+  display: block;
+  background-size: 400px auto;
+  background-position: 55% 55%; }
 
 .Republican {
   position: relative;
@@ -21,9 +42,8 @@ body {
   border-style: solid;
   border-width: 2px; }
 
-.down-right {
-  float: right;
-  bottom: 0 }
+.right {
+  float: right; }
 
 .rep-cols {
   display: block;
@@ -33,14 +53,6 @@ body {
   margin-left: auto;
   margin-right: auto; }
   
-.resize {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  display: block;
-  background-size: 100px auto;
-  background-position: 55% 55%; }
-
 .grid-list {
   list-style-type: none;
   list-style: none; }
@@ -70,21 +82,16 @@ body {
   font-size: 130%;
   letter-spacing: 4px; }
 
+.search-bar-menu {
+  display: block;
+  position: relative;
+  font-family: 'Scope One', serif;
+  font-size: 50%;
+  letter-spacing: 2px; }
+
 .head {
   font-family: 'Cutive', serif;
   color: #FF530D }
 
 .graff {
   font-family: 'Scope One', serif; }
-
-.color1 {
-  color: #00B297; }
-
-.color2 {
-  color: #0DFFD9;}
-
-.color3 {
-  color: #FF6526; }
-
-.color4 {
-  color: #B23705; }
