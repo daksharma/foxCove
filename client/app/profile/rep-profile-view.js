@@ -5,6 +5,6 @@ angular.module('app.repProfileController',[])
 
 
 
-.factory('finances' function($http){
+// .factory('finances' function($http){
     
-})
+// })
