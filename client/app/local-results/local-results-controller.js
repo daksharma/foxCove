@@ -1,6 +1,6 @@
 angular.module('app.localResults', [])
 
-.controller('ResultsController', ['$scope','Location', '$state', 'LocalOfficials', 'SalesTax', function($scope, Location, $state, LocalOfficials, SalesTax) {
+.controller('ResultsController', ['$scope','Location', '$state', 'LocalOfficials', 'ZipCoords', 'LocalMap', function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap) {
   $scope.submit = function() {
     $state.go('searchZip', {zipcode: $scope.location})
   }
@@ -38,6 +38,16 @@ angular.module('app.localResults', [])
         .then(function(results){
           $scope.taxes = results;
         })
+      ZipCoords.getGeoFromZip({zipcode: $scope.location})
+        .then(function(results) {
+          $scope.geo = results;
+        })
+        .then(function() {
+          LocalMap.getMapFromGeo($scope.geo, function(results) {
+            console.log('Local: ', results)
+            $scope.map = 'images/maps/' + results;
+          })
+        });    
     }
   }
   $scope.loadProfile = function (rep) {

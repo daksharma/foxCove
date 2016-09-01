@@ -6,14 +6,14 @@ angular.module('app.personProfile',[])
       .then(function(results){
         $scope.rep = results.rep;
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
-        $scope.getBio($scope.rep)
-        console.log($scope.rep)
+        $scope.getBio($scope.rep);
+        console.log($scope.rep);
       })
   }
   $scope.getBio = function(rep) {
     RepBio.getBioFromRepName({searchString: rep.firstname + '%20' + rep.lastname})
       .then(function(results) {
-        rep.bio = results.split('\n')[0] || 'No biographical information available at this time for' + rep.firstname + ' ' + rep.lastname;
+        rep.bio = results.split('\n')[0] || 'No biographical information available at this time for ' + rep.firstname + ' ' + rep.lastname;
       })
   }
 }]);
