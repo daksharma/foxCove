@@ -85,6 +85,11 @@ app.post('/sponsorship', function(req, res) {
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
+app.post('/sponsorship', function(req, res) {
+  // send method on res object loses this binding to res
+  sponsorship(req.body.bioguide_id, res.send.bind(res));
+});
+
 app.post('/billSummary', function(req, res) {
   billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
 });
