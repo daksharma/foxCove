@@ -9,10 +9,10 @@ var bodyParser    = require('body-parser');
 var https         = require('https');
 
 // DB MODULES
-var mongoDb       = require('./db/mdb-config');
+var mongoDb     = require('./db/mdb-config');
 var collections = require('./db/pg-collections');
-var models = require('./db/pg-models');
-var bookshelf = require('./db/pg-db-config');
+var models      = require('./db/pg-models');
+var bookshelf   = require('./db/pg-db-config');
 
 // SERVER REQUEST HANDLER MODULES
 var sponsorship   = require('./server/modules/sponsorship-history');
@@ -43,16 +43,12 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
-<<<<<<< 0ef925c38f3b56d9c3a8eb65e62011a798a88f5f
     getLocalReps(req, res);
-=======
-
 });
 
 //IGNORE FOR NOW!!! It's a total failure :(
 app.post('/getVotes', function(req, res){
     getVotes(res, req);
->>>>>>> [refactor] Refactor getLocalReps and getVotes into own modules
 });
 
 app.post('/getProfile', function(req, res){
