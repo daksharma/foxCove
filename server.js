@@ -61,13 +61,19 @@ app.post('/sponsorship', function(req, res) {
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
+app.post('/sponsorship', function(req, res) {
+  // send method on res object loses this binding to res
+  sponsorship(req.body.bioguide_id, res.send.bind(res));
+});
+
 app.post('/billSummary', function(req, res) {
   billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
 });
 
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
-})
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log('Server started, listening on port:', port);
