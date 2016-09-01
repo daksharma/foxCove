@@ -14,14 +14,10 @@ var collections = require('./db/pg-collections');
 var bodyParser = require('body-parser');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
-<<<<<<< 42d0dbde45ce4b072ef1d3fb846841a46ad9369f
 var info = require('./server/modules/basic-info');
 var favicon = require('serve-favicon');
 var govTrack = require('govtrack-node');
 var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
-=======
-var info = require('./server/modules/basic-info')
->>>>>>> [bug-out] Restore lost https require
 var localReps = require('./server/modules/local-officials');
 var https = require('https');
 var info = require('./server/modules/basic-info');
@@ -123,6 +119,7 @@ app.post('/getReps', function(req, res){
     });
 });
 
+// This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
   new models.Legislator({bioguide_id: bioguide_id})
@@ -159,7 +156,7 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
           bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
           cb(bio);
         } else {
-          console.log('There was a problem with Wikipedia.');
+          console.log('There was a problem with Wikipedia');
         }
       });
     });
