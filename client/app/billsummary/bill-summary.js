@@ -21,3 +21,4 @@ angular.module('app.bill', [])
 // <p>{{curBillStatus}}</p>
 // <p>{{officialIntro}}</p>
 // <p>{{introDate | date}}</p> // this will apply proper date format
+// test comment
