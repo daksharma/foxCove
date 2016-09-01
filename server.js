@@ -14,6 +14,7 @@ var collections = require('./db/pg-collections');
 var models      = require('./db/pg-models');
 var bookshelf   = require('./db/pg-db-config');
 
+var mongoDb       = require('./db/mdb-config');
 
 // SERVER REQUEST HANDLER MODULES
 var sponsorship   = require('./server/modules/sponsorship-history');
