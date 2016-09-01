@@ -25,7 +25,6 @@ var getLocalReps  = require('./server/modules/get-local-reps');
 var getSalesTax   = require('./server/modules/local-tax')
 
 
-
 var app = express();
 
 app.use(bodyParser.json());

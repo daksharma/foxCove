@@ -2,6 +2,7 @@
 
 // angular.module('app.home', [])
 
+
 // .controller('HomeController', ['$scope','Location', '$state', function($scope, Location, $state) {
 //   $scope.loadZip = function() {
 //     if ($scope.location) {
