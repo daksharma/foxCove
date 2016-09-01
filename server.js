@@ -22,6 +22,7 @@ var getReps       = require('./server/modules/get-reps');
 var getProfile    = require('./server/modules/get-profile');
 var getVotes      = require('./server/modules/get-votes');
 var getLocalReps  = require('./server/modules/get-local-reps');
+var getSalesTax   = require('./server/modules/local-tax')
 
 
 var app = express();
@@ -35,12 +36,7 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
-
-});
-
-//IGNORE FOR NOW!!! It's a total failure :(
-app.post('/getVotes', function(req, res){
-    getVotes(res, req);
+    getLocalReps(req, res);
 });
 
 app.post('/getProfile', function(req, res){
@@ -69,6 +65,9 @@ app.post('/billSummary', function(req, res) {
   billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
 });
 
+app.post('/getSalesTax', function(req, res) {
+  getSalesTax(req, res)
+})
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log('Server started, listening on port:', port);

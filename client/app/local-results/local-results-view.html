@@ -31,22 +31,35 @@
     </div>
 
     <div class="row graff" style="margin-top: 1rem">
-      <div class="medium-4 columns">
+      <div class="" ="medium-4 columns">
         <h3 class="head">Local Results</h3>
         
-        <ul>
-          <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a></li>
+        <ul class="row small-up-5 rep-cols">
+          <li class="column grid-list" ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>
+           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
+                <span class="resize circular {{official.party}}" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="">
+                  <span class="secondary badge"><img ng-src="images/{{official.party}}.svg" width="16px"></span>
+                </span>
+              </a>
+            </span>
+                  <p>{{official.title}}<br/>{{official.name}}</p>
+          </li>
         </ul>
-        
-        <p>That list of results ^ ?</p>
       </div>
+    </div>
+
+
       <div class="medium-4 columns">
         <h3 class="head">Figures</h3>
         <p>All of this is flexible. If you make a thing, we can dress it up for the dance.</p>
       </div>
       <div class="medium-4 columns">
-        <h3 class="head">Statistics</h3>
-        <p>Some of the native CSS is iffy. If things don't work, let me know. Also I'm gonna put a map up there in the box. Working on it as we speak.</p>
+        <h3 class="head">Sales Tax in {{location}}</h3>
+        <p>Total sales tax in {{location}}: {{taxes.total}}</p>
+        <ul>
+          <li ng-repeat="item in taxes.breakdowns">{{item}}</li>
+        </ul>
+        <!-- <p>Some of the native CSS is iffy. If things don't work, let me know. Also I'm gonna put a map up there in the box. Working on it as we speak.</p> -->
       </div>
     </div>
 
