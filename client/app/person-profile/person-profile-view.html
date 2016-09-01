@@ -1,11 +1,13 @@
 <div ng-controller="ProfileController" ng-init="build()">
 <!-- Navigation -->
-<div class="title-bar" data-responsive-toggle="profileMenu" data-hide-for="small">
-  <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
+<div class="title-bar" style="height: 35px">
+  <div class="left">
+    <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
+  </div>
+  <div class="right">
+      <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 75%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+  </div>
 </div>
-  <span width="200px" class="clearfix">
-    <input type="text" placeholder="enter anthother ZIP code" class="search-bar-menu float-right" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
-  </span>
 <!-- /Navigation -->
 
 <br>
