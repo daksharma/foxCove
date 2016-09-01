@@ -43,7 +43,16 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
+<<<<<<< 0ef925c38f3b56d9c3a8eb65e62011a798a88f5f
     getLocalReps(req, res);
+=======
+
+});
+
+//IGNORE FOR NOW!!! It's a total failure :(
+app.post('/getVotes', function(req, res){
+    getVotes(res, req);
+>>>>>>> [refactor] Refactor getLocalReps and getVotes into own modules
 });
 
 app.post('/getProfile', function(req, res){
