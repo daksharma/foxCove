@@ -1,5 +1,7 @@
 var https = require('https');
 
+// Makes API GET request to Wikipedia and returns introduction section
+
 module.exports = function(searchString, res, callback) {
   return https.get({
     hostname: 'en.wikipedia.org',

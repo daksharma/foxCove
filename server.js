@@ -23,6 +23,7 @@ var https = require('https');
 var info = require('./server/modules/basic-info');
 var billSum = require('./server/modules/bill-summary');
 var pollWiki = require('./server/modules/get-wiki');
+var getReps = require('./server/modules/get-reps');
 
 var app = express();
 
@@ -80,44 +81,8 @@ app.post('/getProfile', function(req, res){
     });
 });
 
-//this handler responds with all reps in a given zipcode from client
 app.post('/getReps', function(req, res){
-  var zip = req.body.zipcode; //front end request should be in the format {zipcode: zipcode}
-  // This (▽) is not pretty. There is a better way to write it. Bookshelf is difficult. Call it a first draft.
-  var repLookup = 'select bioguide_id, firstname, lastname, title, Zips.district, party from Legislators, Zips where Zips.zipcode = ' + zip + ' and Legislators.in_office = \'1\' and Legislators.state = Zips.state and (Legislators.district = Zips.district or length(Legislators.district) > 2)';
-  bookshelf.knex.raw(repLookup)
-    .then(function(data, err) {
-      if (err) {
-        console.log('There was a problem with that request.');
-        res.sendStatus(500);
-      } else {
-        var dupCheck = [];
-        var obj = {};
-        obj.reps = [];
-          for(var i = 0; i < data.rows.length; i++){
-            var person = data.rows[i];
-            if (dupCheck.indexOf(person.bioguide_id) < 0) {
-              dupCheck.push(person.bioguide_id);
-              var package = {};
-              package.bioguide_id = person.bioguide_id;
-              package.name = person.firstname + " " + person.lastname;
-              package.title = person.title === "Sen" ?  "Senator" : "Representative";
-              package.district = person.district;
-              if(person.party === "R"){
-                package.affiliation = "Republican";
-              }
-              else if (person.party === "D") {
-                package.affiliation = "Democrat";
-              }
-              else{
-                package.affiliation = "Independent";
-              }
-              obj.reps.push(package);
-            }
-          }
-        res.send(obj);
-      }
-    });
+  getReps(req.body.zipcode, res, res.send.bind(res));
 });
 
 app.post('/getRep', function(req, res) {
