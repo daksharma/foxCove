@@ -19,9 +19,12 @@ angular.module('app.localResults', [])
           $scope.officials = [];
           for(var key in results){
             if(key !== 'city'){
-              console.log("here", results[key][0].name)
+              // console.log("here", results[key][0].name)
               var arr = results[key];
               for(var i = 0; i < arr.length;i++){
+                if(!arr[i].photoUrl){
+                  arr[i].photoUrl = 'https://s-media-cache-ak0.pinimg.com/564x/2c/9d/07/2c9d0704ae49dfde914e2b477bf9279c.jpg'
+                }
                 arr[i].title = key;
                 $scope.officials.push(arr[i])
               }

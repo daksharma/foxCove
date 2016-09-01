@@ -35,17 +35,22 @@
         <h3 class="head">Local Results</h3>
         
         <ul>
-          <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a>
+          <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>
            <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
                 <span class="resize circular {{official.party}}" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="">
                   <span class="secondary badge"><img ng-src="images/Democrat.svg" width="16px"></span>
-                  </span>
-              </span>
+                </span>
+              </a>
+            </span>
+                  <p>{{official.name}}</p>
           </li>
         </ul>
         
         <p>That list of results ^ ?</p>
       </div>
+    </div>
+
+    
       <div class="medium-4 columns">
         <h3 class="head">Figures</h3>
         <p>All of this is flexible. If you make a thing, we can dress it up for the dance.</p>
