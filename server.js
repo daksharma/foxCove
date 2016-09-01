@@ -25,6 +25,8 @@ var billSum = require('./server/modules/bill-summary');
 var pollWiki = require('./server/modules/get-wiki');
 var getReps = require('./server/modules/get-reps');
 var getProfile = require('./server/modules/get-profile');
+var getVotes = require('./server/modules/get-votes');
+var getLocalReps = require('./server/modules/get-local-reps');
 
 var app = express();
 
@@ -37,40 +39,13 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
-    // console.log("HELLO")
-    // var inputPackage = req.body;
-    // console.log(inputPackage)
-    // var outputPackage = {};
-    // localReps.getOfficials(inputPackage, outputPackage, function(){
-    //     res.send(outputPackage)
-    // })
-});
 
+});
 
 //IGNORE FOR NOW!!! It's a total failure :(
 app.post('/getVotes', function(req, res){
-    // govTrack.findVoteVoter({id: 31425718}, function(err, data){
-    //     console.log("VOTE DATA:", data)
-    //     res.send(data)
-    // })
-    govTrack.findPerson("P000523", function(err, data) {
-        console.log(data);
-        res.send(data);
-    });
-    // civicInfo.elections(function(error, data) {
-    // console.log('whatever');
-    // // res.send(JSON.stringify(data))
-    // });
-  //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
-  // console.log(data);
-// });
+    getVotes(res, req);
 });
-
-//this handler responds with detailed data for a given rep specified by client
-
-// I depricated this with the getRep handler below. It uses our SQL db based on
-// Sunlight Foundation's data. This one remains valid as it's a different
-// dataset. -Casey
 
 app.post('/getProfile', function(req, res){
     getProfile(req, res);
