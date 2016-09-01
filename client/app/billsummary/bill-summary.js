@@ -2,6 +2,7 @@ angular.module('app.bill', [])
 .controller('BillSummary', ['$scope', 'GetBillSummary', '$state', function ($scope, GetBillSummary, $state) {
   $scope.getBillSum = function () {
     // for now get something back from server for one specific bill
+    // replace the bill_id number with $scope.bill_id or $stateParams.bill_id, one of these lol
     GetBillSummary.getBillSummary(71410)
                   .then(function(data){
                     // don't worry if these dot variables are complaining
