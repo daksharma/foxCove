@@ -1,32 +1,28 @@
-var express = require('express');
+// NODE MODULES
 require('dotenv').config();
-var request = require('request');
-var path = require('path');
-var convert = require('x2js');
-var favicon = require('serve-favicon');
-var govTrack = require('govtrack-node');
-var models = require('./db/pg-models');
-var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
-var mongoDb = require('./db/mdb-config');
-var bookshelf = require('./db/pg-db-config');
-var getRep = require('./server/modules/get-rep');
-var collections = require('./db/pg-collections');
-var bodyParser = require('body-parser');
-var sponsorship = require('./server/modules/sponsorship-history');
-var newsfeed = require('./server/modules/news-feed');
-var info = require('./server/modules/basic-info');
-var favicon = require('serve-favicon');
-var govTrack = require('govtrack-node');
-var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
-var localReps = require('./server/modules/local-officials');
-var https = require('https');
-var info = require('./server/modules/basic-info');
-var billSum = require('./server/modules/bill-summary');
-var pollWiki = require('./server/modules/get-wiki');
-var getReps = require('./server/modules/get-reps');
-var getProfile = require('./server/modules/get-profile');
-var getVotes = require('./server/modules/get-votes');
-var getLocalReps = require('./server/modules/get-local-reps');
+var express       = require('express');
+var request       = require('request');
+var path          = require('path');
+var favicon       = require('serve-favicon');
+var bodyParser    = require('body-parser');
+var https         = require('https');
+
+// DB MODULES
+var mongoDb       = require('./db/mdb-config');
+
+// SERVER REQUEST HANDLER MODULES
+var sponsorship   = require('./server/modules/sponsorship-history');
+var newsfeed      = require('./server/modules/news-feed');
+var info          = require('./server/modules/basic-info');
+var localReps     = require('./server/modules/local-officials');
+var getRep        = require('./server/modules/get-rep');
+var billSum       = require('./server/modules/bill-summary');
+var pollWiki      = require('./server/modules/get-wiki');
+var getReps       = require('./server/modules/get-reps');
+var getProfile    = require('./server/modules/get-profile');
+var getVotes      = require('./server/modules/get-votes');
+var getLocalReps  = require('./server/modules/get-local-reps');
+
 
 var app = express();
 
