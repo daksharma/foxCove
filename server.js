@@ -1,12 +1,16 @@
 var express = require('express');
 require('dotenv').config();
+var request = require('request');
+var path = require('path');
+var convert = require('x2js');
+var favicon = require('serve-favicon');
+var govTrack = require('govtrack-node');
+var https = require('https');
+var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
 var models = require('./db/pg-models');
 var collections = require('./db/pg-collections');
-var request = require('request');
-var path = require('path');
-var convert = require('x2js');
 var bodyParser = require('body-parser');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
@@ -115,7 +119,6 @@ app.post('/getReps', function(req, res){
     });
 });
 
-// This is currently a WET copy paste of the function above.
 app.post('/getRep', function(req, res){
   var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
   new models.Legislator({bioguide_id: bioguide_id})
@@ -152,7 +155,7 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
           bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
           cb(bio);
         } else {
-          console.log('There was a problem with Wikipedia');
+          console.log('There was a problem with Wikipedia.');
         }
       });
     });
