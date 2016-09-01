@@ -22,7 +22,7 @@ var getReps          = require('./server/modules/get-reps');
 var getProfile       = require('./server/modules/get-profile');
 var getVotes         = require('./server/modules/get-votes');
 var getLocalReps     = require('./server/modules/get-local-reps');
-var getSalesTax   = require('./server/modules/local-tax')
+var getSalesTax      = require('./server/modules/local-tax')
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 
