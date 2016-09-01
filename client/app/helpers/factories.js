@@ -86,4 +86,17 @@ angular.module('app.helperFactories', [])
     billSummary : billSum,
     getBillSummary : getBillSummary
   }
+})
+.factory('SalesTax', function($http){
+  function getSalesTax(zipcode){
+    return $http.post('/getSalesTax', {zip: zipcode})
+      .then(function(res){
+        return res.data
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    getSalesTax: getSalesTax
+  }
 });
