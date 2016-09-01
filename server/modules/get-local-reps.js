@@ -8,6 +8,14 @@ module.exports = function (req, res) {
   })
 };
 
+module.exports = function (req, res) {
+  var inputPackage  = req.body;
+  var outputPackage = {};
+  localReps.getOfficials(inputPackage, outputPackage, function () {
+    res.send(outputPackage)
+  });
+};
+
 module.exports = function () {
   // console.log("HELLO")
   // var inputPackage = req.body;
