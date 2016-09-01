@@ -3,7 +3,7 @@ angular.module('app.localResults', [])
 .controller('ResultsController', ['$scope','Location', '$state', 'LocalOfficials', 'SalesTax', function($scope, Location, $state, LocalOfficials, SalesTax) {
   $scope.submit = function() {
     $state.go('searchZip', {zipcode: $scope.location})
-  }
+  };
   $scope.loadZip = function() {
     if ($scope.location) {
       Location.getRepFromZip($scope.location)
@@ -39,7 +39,7 @@ angular.module('app.localResults', [])
           $scope.taxes = results;
         })
     }
-  }
+  };
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguide_id});
   }
