@@ -200,21 +200,19 @@ app.post('/getMap', function(req, res) {
         body += chunk;
       });
       res.on('end', function() {
-        map = body.replace(/^data:image\/png;base64,/, '');  // Capture raw png, subtract header
-        cb(map);
+        var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
+        fs.writeFile(__dirname + '/client/images/maps/' + mapPath, body.replace(/^data:image\/png;base64,/, ''), 'base64', function(err) {
+          if (err) throw err;
+            console.log(mapPath)
+            cb(mapPath)
+          })
       }).on('error', function(err) {
         console.log(err);
         res.sendStatus(500);
       });
     });
   };
-  cartography(function(map) {
-    var mapPath = 'map' + req.body[0] + req.body[1];
-    fs.writeFile(__dirname + '/client/images/maps/' + mapPath + '.png', map, 'base64', function(err) {
-      if (err) throw err;
-      res.send(mapPath)
-    }.bind(res));
-  });
+  cartography(res.send.bind(res));
 });
 
 app.post('/billSummary', function(req, res) {
