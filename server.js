@@ -30,8 +30,7 @@ var getSalesTax   = require('./server/modules/local-tax')
 
 var convert = require('x2js');
 var govTrack = require('govtrack-node');
-var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
-
+var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
 
 var app = express();
 
