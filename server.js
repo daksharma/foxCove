@@ -5,11 +5,12 @@ var path = require('path');
 var convert = require('x2js');
 var favicon = require('serve-favicon');
 var govTrack = require('govtrack-node');
+var models = require('./db/pg-models');
 var https = require('https');
 var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
-var models = require('./db/pg-models');
+var getRep = require('./server/modules/get-rep');
 var collections = require('./db/pg-collections');
 var bodyParser = require('body-parser');
 var sponsorship = require('./server/modules/sponsorship-history');
@@ -119,20 +120,10 @@ app.post('/getReps', function(req, res){
     });
 });
 
-app.post('/getRep', function(req, res){
-  var bioguide_id = req.body.bioguide_id; //front end request should be in the format {bioguide_id: bioguide_id}
-  new models.Legislator({bioguide_id: bioguide_id})
-    .fetch()
-    .then(function(data, err) {
-      if (err) {
-        console.log('There was a problem with the data provider.');
-        res.sendStatus(500);
-      } else {
-        var obj = {};
-        obj.rep = data;
-        res.send(obj);
-      }
-    });
+app.post('/getRep', function(req, res) {
+  getRep(req.body.bioguide_id, res, function(data) {
+    res.send(data);
+  });
 });
 
 app.post('/getBio', function(req, res) { //front end request should be in the format {searchString: searchString}
@@ -164,7 +155,6 @@ app.post('/getBio', function(req, res) { //front end request should be in the fo
 });
 
 app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
