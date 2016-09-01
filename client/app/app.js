@@ -2,6 +2,8 @@ angular.module('foxCove', [
   'app.home',
   'app.localResults',
   'app.personProfile',
+  'app.bill',
+  // 'app.repProfileController',
   'app.helperFactories',
   'ui.router',
   'app.directives'
@@ -31,6 +33,16 @@ angular.module('foxCove', [
       $scope.bioguide_id = $stateParams.bioguide_id;
     }
   })
+  .state('billsummary',{
+    templateUrl: 'app/billsummary/bill-summary.html',
+    url: '/billSummary',
+    controller: 'BillSummary'
+  });
+  // .state('profile',{
+  //   templateUrl: 'app/profile/rep-profile-view.html',
+  //   url: "/profile",
+  //   controller: 'ProfileController'
+  // });
 
   // DEFAULT route
   $urlRouterProvider.otherwise('/');
