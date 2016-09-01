@@ -1,5 +1,6 @@
 // NODE MODULES
 require('dotenv').config();
+
 var express       = require('express');
 var request       = require('request');
 var path          = require('path');
@@ -9,6 +10,9 @@ var https         = require('https');
 
 // DB MODULES
 var mongoDb       = require('./db/mdb-config');
+var collections = require('./db/pg-collections');
+var models = require('./db/pg-models');
+var bookshelf = require('./db/pg-db-config');
 
 // SERVER REQUEST HANDLER MODULES
 var sponsorship   = require('./server/modules/sponsorship-history');
@@ -23,6 +27,10 @@ var getProfile    = require('./server/modules/get-profile');
 var getVotes      = require('./server/modules/get-votes');
 var getLocalReps  = require('./server/modules/get-local-reps');
 var getSalesTax   = require('./server/modules/local-tax')
+
+var convert = require('x2js');
+var govTrack = require('govtrack-node');
+var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
 
 
 var app = express();
@@ -62,7 +70,6 @@ app.post('/sponsorship', function(req, res) {
 });
 
 app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
