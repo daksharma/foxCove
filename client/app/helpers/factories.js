@@ -2,10 +2,8 @@ angular.module('app.helperFactories', [])
 .factory('Location', function ($http) {
   var repsObject = {};
   function getRepFromZip(zipCode) {
-    console.log('sending:', {zipcode: zipCode});
     return $http.post('/getReps', {zipcode: zipCode})
       .then(function (response) {
-        console.log(response.data);
         repsObject.reps = response.data;
         return response.data;
       }, function (error) {
@@ -56,6 +54,42 @@ angular.module('app.helperFactories', [])
   return {
     bio: repBio,
     getBioFromRepName: getBioFromRepName
+  }
+})
+.factory('ZipCoords', function($http) {
+  var coordinates;
+
+  function getGeoFromZip(searchString) {
+    return $http.post('/getGeo', searchString)
+      .then(function (response) {
+        coordinates = response.data;
+        return coordinates;
+      }, function (error) {
+        console.log(error);
+      });
+  }
+
+  return {
+    coordinates: coordinates,
+    getGeoFromZip: getGeoFromZip
+  }
+})
+.factory('LocalMap', function($http) {
+  var map;
+
+  function getMapFromGeo(geo, cb) {
+    return $http.post('/getMap', geo)
+      .then(function (response) {
+        map = response.data;
+        cb(map);
+      }, function (error) {
+        console.log(error);
+      });
+  }
+
+  return {
+    map: map,
+    getMapFromGeo: getMapFromGeo
   }
 })
 .factory('LocalOfficials', function($http){

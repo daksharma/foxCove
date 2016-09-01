@@ -1,6 +1,10 @@
 // NODE MODULES
 require('dotenv').config();
+<<<<<<< 545a424fa384bc4b123482840225823cfa896ddf
 
+=======
+<<<<<<< 24af15503072acadb25a11e7eb44af254d1395a5
+>>>>>>> [bug in] Implement partial map solution
 var express       = require('express');
 var request       = require('request');
 var path          = require('path');
@@ -77,18 +81,69 @@ app.post('/sponsorship', function(req, res) {
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
-app.post('/sponsorship', function(req, res) {
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
+// This bad boy uses {zipcode: zipcode} from getReps as part of a cascading search,
+// but it can be repurposed for Address Specific calls. It takes any string,
+// in this case a ZIP code, and retrieves longitude and latitude. It can be used
+// with a street address or anything you're into.
+
+app.post('/getGeo', function(req, res) {
+  var geo;
+  var geocoding = function(cb) {
+    return https.get({
+      hostname: 'api.mapbox.com',
+      path: '/geocoding/v5/mapbox.places/' + req.body.zipcode + '.json?access_token=' + process.env.MAPBOX_API
+    }, function(res) {
+      var body = '';
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+      res.on('end', function() {
+        if (!body.includes('<')) {
+          var parsed = JSON.parse(body);
+          geo = parsed.features[0].geometry.coordinates;
+          cb(geo);
+        }
+      }).on('error', function(err) {
+        console.log(err);
+        res.sendStatus(500);
+      });
+    });
+  };
+  geocoding(res.send.bind(res));
 });
 
-app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
-});
+// But wait, there's more. Another call to the same API for the map itself. I'm going to bring
+// that first lookup in-house to save a few lines if the time outs, but the political zipcode
+// data lacks lat/lon, and the alternative lacks districts. Learn your junction tables, kids.
 
-app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
+app.post('/getMap', function(req, res) {
+  var map;
+  var cartography = function(cb) {
+    console.log(req.body)
+    return https.get({
+      hostname: 'api.mapbox.com',
+      path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',6/750x350.png?access_token=' + process.env.MAPBOX_API
+    }, function(res) {
+      var body = '';
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+      res.on('end', function() {
+        map = body.replace(/^data:image\/png;base64,/, '');  // Capture raw png, subtract header
+        cb(map);
+      }).on('error', function(err) {
+        console.log(err);
+        res.sendStatus(500);
+      });
+    });
+  };
+  cartography(function(map) {
+    var mapPath = 'map' + req.body[0] + req.body[1];
+    fs.writeFile(__dirname + '/client/images/maps/' + mapPath + '.png', map, 'base64', function(err) {
+      if (err) throw err;
+      res.send(mapPath)
+    }.bind(res));
+  });
 });
 
 app.post('/billSummary', function(req, res) {
