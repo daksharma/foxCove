@@ -24,6 +24,7 @@ var getVotes      = require('./server/modules/get-votes');
 var getLocalReps  = require('./server/modules/get-local-reps');
 
 
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -35,12 +36,25 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
+    var inputPackage = req.body.inputPackage;
+    var outputPackage = {};
+    localReps.getOfficials(inputPackage, outputPackage, function(){
+        res.send(outputPackage)
+    })
 
 });
 
 //IGNORE FOR NOW!!! It's a total failure :(
 app.post('/getVotes', function(req, res){
     getVotes(res, req);
+    // govTrack.findVoteVoter({id: 31425718}, function(err, data){
+    //     console.log("VOTE DATA:", data)
+    //     res.send(data)
+    // })
+    govTrack.findPerson("P000523", function(err, data) {
+        console.log(data);
+        res.send(data);
+    });
 });
 
 app.post('/getProfile', function(req, res){
