@@ -36,7 +36,7 @@ app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.post('/getLocalReps', function(req, res){
-    var inputPackage = req.body.inputPackage;
+    var inputPackage = {inputPackage: req.body};
     var outputPackage = {};
     localReps.getOfficials(inputPackage, outputPackage, function(){
         res.send(outputPackage)
