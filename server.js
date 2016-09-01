@@ -6,7 +6,6 @@ var convert = require('x2js');
 var favicon = require('serve-favicon');
 var govTrack = require('govtrack-node');
 var models = require('./db/pg-models');
-var https = require('https');
 var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
@@ -23,6 +22,7 @@ var localReps = require('./server/modules/local-officials');
 var https = require('https');
 var info = require('./server/modules/basic-info');
 var billSum = require('./server/modules/bill-summary');
+var pollWiki = require('./server/modules/get-wiki');
 
 var app = express();
 
@@ -126,32 +126,8 @@ app.post('/getRep', function(req, res) {
   });
 });
 
-app.post('/getBio', function(req, res) { //front end request should be in the format {searchString: searchString}
-  var bio;
-  var pollWiki = function(cb) {
-    return https.get({
-      hostname: 'en.wikipedia.org',
-      path: '/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=' + req.body.searchString
-    }, function(res) {
-      var body = '';
-      res.on('data', function(chunk) {
-        body += chunk;
-      }).on('error', function(err) {
-        console.log(err);
-        res.sendStatus(500);
-      });
-      res.on('end', function() {
-        if (!body.includes('<')) {
-          var parsed = JSON.parse(body);
-          bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
-          cb(bio);
-        } else {
-          console.log('There was a problem with Wikipedia.');
-        }
-      });
-    });
-  };
-  pollWiki(res.send.bind(res));
+app.post('/getBio', function(req, res) {
+  pollWiki(req.body.searchString, res, res.send.bind(res));
 });
 
 app.post('/sponsorship', function(req, res) {
