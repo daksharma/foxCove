@@ -24,6 +24,7 @@ var info = require('./server/modules/basic-info');
 var billSum = require('./server/modules/bill-summary');
 var pollWiki = require('./server/modules/get-wiki');
 var getReps = require('./server/modules/get-reps');
+var getProfile = require('./server/modules/get-profile');
 
 var app = express();
 
@@ -72,13 +73,7 @@ app.post('/getVotes', function(req, res){
 // dataset. -Casey
 
 app.post('/getProfile', function(req, res){
-    var inputPackage = req.body.inputPackage;
-    var outputPackage = {};
-    newsfeed.getNews(inputPackage, outputPackage, function(){
-        info.getGovTrack(inputPackage, outputPackage, function(){
-            res.send(outputPackage);
-        });
-    });
+    getProfile(req, res);
 });
 
 app.post('/getReps', function(req, res){
