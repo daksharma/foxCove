@@ -1,19 +1,27 @@
 var express = require('express');
 require('dotenv').config();
+var request = require('request');
+var path = require('path');
+var convert = require('x2js');
+var favicon = require('serve-favicon');
+var govTrack = require('govtrack-node');
+var https = require('https');
+var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'}); // <-- ¯\_(ツ)_/¯
 var mongoDb = require('./db/mdb-config');
 var bookshelf = require('./db/pg-db-config');
 var models = require('./db/pg-models');
 var collections = require('./db/pg-collections');
-var request = require('request');
-var path = require('path');
-var convert = require('x2js');
 var bodyParser = require('body-parser');
 var sponsorship = require('./server/modules/sponsorship-history');
 var newsfeed = require('./server/modules/news-feed');
+<<<<<<< 42d0dbde45ce4b072ef1d3fb846841a46ad9369f
 var info = require('./server/modules/basic-info');
 var favicon = require('serve-favicon');
 var govTrack = require('govtrack-node');
 var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
+=======
+var info = require('./server/modules/basic-info')
+>>>>>>> [bug-out] Restore lost https require
 var localReps = require('./server/modules/local-officials');
 var https = require('https');
 var info = require('./server/modules/basic-info');
