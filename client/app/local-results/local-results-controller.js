@@ -31,7 +31,7 @@ angular.module('app.localResults', [])
               var arr = results[key];
               for(var i = 0; i < arr.length;i++){
                 if(!arr[i].photoUrl){
-                  arr[i].photoUrl = 'https://s-media-cache-ak0.pinimg.com/564x/2c/9d/07/2c9d0704ae49dfde914e2b477bf9279c.jpg'
+                  arr[i].photoUrl = 'css/foundation-icons/svgs/fi-torso-business.svg'
                 }
                 if(arr[i].party === "Democratic"){
                   arr[i].party = "Democrat"
