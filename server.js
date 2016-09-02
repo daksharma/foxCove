@@ -81,24 +81,30 @@ app.post('/getSalesTax', function(req, res) {
 app.post('/getMap', function(req, res) {
   var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
   var cartography = function(cb) {
-    https.get({
-      hostname: 'api.mapbox.com',
-      path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',13/750x350.png32?access_token=' + process.env.MAPBOX_API
-    }, function(res) {
-      if (res) {
-        res.pipe(
-          fs.createWriteStream(
-            __dirname + '/client/images/maps/' + mapPath
-          )
-        );
-        cb(mapPath);
-        return mapPath;
-      } else {
-        console.log('Something went wrong.');
-        return false;
+  fs.stat(__dirname + '/client/images/maps/' + mapPath, function(err, stats) { // Check if map already exists
+    if (!err) { // If yes return path
+      cb(mapPath);
+    } else { // If no make http call
+        https.get({
+          hostname: 'api.mapbox.com',
+          path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',14/750x350.png32?access_token=' + process.env.MAPBOX_API
+        }, function(res) {
+          if (res) {
+            res.pipe(
+              fs.createWriteStream(
+                __dirname + '/client/images/maps/' + mapPath
+              )
+            );
+            cb(mapPath);
+            return mapPath;
+          } else {
+            console.log('Something went wrong.');
+            return false;
+          }
+        })
       }
     });
-  }
+  };
   cartography(res.send.bind(res));
 });
 

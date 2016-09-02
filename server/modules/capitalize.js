@@ -7,7 +7,7 @@ module.exports = function (str) {
     for(var j = 1; j < arr[i].length; j++){
       result += arr[i][j].toLowerCase();
     }
-    console.log(result)
+    // console.log(result)
     results.push(result)
   }
   return results.join(" ")

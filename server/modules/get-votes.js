@@ -4,7 +4,7 @@ module.exports = function(res, req){
   //     res.send(data)
   // })
   govTrack.findPerson("P000523", function(err, data) {
-      console.log(data);
+      // console.log(data);
       res.send(data);
   });
   // civicInfo.elections(function(error, data) {
