@@ -23,7 +23,7 @@ angular.module('app.localResults', [])
         });
       LocalOfficials.getOfficials($scope.location)
         .then(function(results){
-          console.log("RESULTS", $scope.officials)
+          // console.log("RESULTS", $scope.officials)
           $scope.officials = [];
           for(var key in results){
             if(key !== 'city'){
@@ -53,9 +53,9 @@ angular.module('app.localResults', [])
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
-            console.log('Local: ', results)
+            // console.log('Local: ', results)
             $scope.map = 'images/maps/' + results;
-          })
+          });
         });    
     }
   };

@@ -7,7 +7,7 @@ angular.module('app.personProfile',[])
         $scope.rep = results.rep;
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
         $scope.getBio($scope.rep);
-        console.log($scope.rep);
+        // console.log($scope.rep);
       })
   }
   $scope.getBio = function(rep) {
