@@ -40,11 +40,6 @@ angular.module('foxCove', [
       $scope.bill_id = $stateParams.bill_id;
     }
   });
-  // .state('profile',{
-  //   templateUrl: 'app/profile/rep-profile-view.html',
-  //   url: "/profile",
-  //   controller: 'ProfileController'
-  // });
 
   // DEFAULT route
   $urlRouterProvider.otherwise('/');

@@ -1,12 +1,12 @@
 // NODE MODULES
 require('dotenv').config();
-
 var express       = require('express');
 var request       = require('request');
 var path          = require('path');
 var favicon       = require('serve-favicon');
 var bodyParser    = require('body-parser');
 var https         = require('https');
+var fs            = require('fs');
 
 // DB MODULES
 var mongoDb     = require('./db/mdb-config');
@@ -17,26 +17,22 @@ var bookshelf   = require('./db/pg-db-config');
 
 
 // SERVER REQUEST HANDLER MODULES
-var sponsorship  = require('./server/modules/sponsorship-history');
-var newsfeed     = require('./server/modules/news-feed');
-var info         = require('./server/modules/basic-info');
-var localReps    = require('./server/modules/local-officials');
-var getRep       = require('./server/modules/get-rep');
-var billSum      = require('./server/modules/bill-summary');
-var pollWiki     = require('./server/modules/get-wiki');
-var getReps      = require('./server/modules/get-reps');
-var getProfile   = require('./server/modules/get-profile');
-var getVotes     = require('./server/modules/get-votes');
-var getLocalReps = require('./server/modules/get-local-reps');
-var getSalesTax  = require('./server/modules/local-tax')
+var sponsorship      = require('./server/modules/sponsorship-history');
+var newsfeed         = require('./server/modules/news-feed');
+var info             = require('./server/modules/basic-info');
+var localReps        = require('./server/modules/local-officials');
+var getRep           = require('./server/modules/get-rep');
+var billSum          = require('./server/modules/bill-summary');
+var pollWiki         = require('./server/modules/get-wiki');
+var getReps          = require('./server/modules/get-reps');
+var getProfile       = require('./server/modules/get-profile');
+var getVotes         = require('./server/modules/get-votes');
+var getLocalReps     = require('./server/modules/get-local-reps');
+var getSalesTax      = require('./server/modules/local-tax')
+var getLocalMap      = require('./server/modules/get-local-map');
+var getLocalGeoData  = require('./server/modules/get-local-geo');
 
-
-var convert = require('x2js');
-var govTrack = require('govtrack-node');
-var civicInfo = require('civic-info')({apiKey: 'AIzaSyC-vnNvHhV7SzFMEA2mXaP3Eo05RakGXqA'});
-
-
-var app = express();
+var app = module.exports = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -77,26 +73,49 @@ app.post('/sponsorship', function(req, res) {
   sponsorship(req.body.bioguide_id, res.send.bind(res));
 });
 
-app.post('/sponsorship', function(req, res) {
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
-});
-
-app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
-});
-
-app.post('/sponsorship', function(req, res) {
-  // send method on res object loses this binding to res
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
-});
-
 app.post('/billSummary', function(req, res) {
   billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
 });
 
+app.post('/getGeo', function(req, res) {
+  getLocalGeoData(req, res, res.send.bind(res));
+});
+
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
+})
+
+// This routine is going to require some TLC to move. For some reason it
+// loses write access to the filesystem when it goes to a module. TODO.
+
+app.post('/getMap', function(req, res) {
+  var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
+  var cartography = function(cb) {
+  fs.stat(__dirname + '/client/images/maps/' + mapPath, function(err, stats) { // Check if map already exists
+    if (!err) { // If yes return path
+      cb(mapPath);
+    } else { // If no make http call
+        https.get({
+          hostname: 'api.mapbox.com',
+          path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',14/750x350.png32?access_token=' + process.env.MAPBOX_API
+        }, function(res) {
+          if (res) {
+            res.pipe(
+              fs.createWriteStream(
+                __dirname + '/client/images/maps/' + mapPath
+              )
+            );
+            cb(mapPath);
+            return mapPath;
+          } else {
+            console.log('Something went wrong.');
+            return false;
+          }
+        })
+      }
+    });
+  };
+  cartography(res.send.bind(res));
 });
 
 var port = process.env.PORT || 3000;
