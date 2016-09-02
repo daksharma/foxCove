@@ -1,30 +1,31 @@
-var https         = require('https');
-var fs            = require('fs');
+var https   = require('https');
+var fs      = require('fs');
+var express = require('express');
+var path    = require('path');
+var app     = require('../../server');
+
+// This module is not presently active due to technical problems. See the same routine on server.js.
 
 module.exports = function(req, res, cb) {
-  var map;
+  var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
   var cartography = function() {
-    console.log(req.body)
-    return https.get({
+    https.get({
       hostname: 'api.mapbox.com',
-      path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',6/750x350.png?access_token=' + process.env.MAPBOX_API
+      path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',13/750x350.png32?access_token=' + process.env.MAPBOX_API
     }, function(res) {
-      var body = '';
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-      res.on('end', function() {
-        var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
-        // fs.writeFile(__dirname + '/client/images/maps/' + mapPath, body.replace(/^data:image\/png;base64,/, ''), 'base64', function(err) {
-        //   if (err) throw err;
-        //     console.log(mapPath)
-        //     cb(mapPath)
-        //   })
-      }).on('error', function(err) {
-        console.log(err);
-        res.sendStatus(500);
-      });
+      if (res) {
+        res.pipe(
+          fs.createWriteStream(
+            __dirname + '/client/images/maps/' + mapPath
+          )
+        );
+        cb(mapPath);
+        return mapPath;
+      } else {
+        console.log('Something went wrong.')
+        return false;
+      }
     });
-  };
+  }
   cartography();
 };

@@ -12,7 +12,9 @@
   <br>
     <div class="row" style="margin-top: 1rem">
       <div class="medium-6 columns medium-push-6">
+
         <img class="thumbnail" ng-src="{{map}}">
+        
       </div>
       <div class="medium-6 columns medium-pull-6">
         <h2 class="head">US Legislators for {{location}}</h2>
@@ -37,12 +39,11 @@
         <ul class="row small-up-5 rep-cols">
           <li class="column grid-list" ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>
            <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
-                <span class="resize circular {{official.party}}" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="">
-                  <span class="secondary badge"><img ng-src="images/{{official.party}}.svg" width="16px"></span>
-                </span>
-              </a>
+              <span class="resize circular {{official.party}}" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="">
+                <span class="secondary badge"><img ng-src="images/{{official.party}}.svg" width="16px"></span>
+              </span></a>
             </span>
-                  <p>{{official.title}}<br/>{{official.name}}</p>
+            <p>{{official.title}}<br/>{{official.name}}</p>
           </li>
         </ul>
       </div>

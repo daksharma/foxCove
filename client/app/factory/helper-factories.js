@@ -1,3 +1,5 @@
+// This file was deprecated. Please use helpers/factories.
+
 angular.module('app.helperFactories', [])
 .factory('Location', function ($http) {
   var repsObject = {};

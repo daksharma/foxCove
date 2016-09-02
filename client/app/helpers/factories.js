@@ -58,12 +58,13 @@ angular.module('app.helperFactories', [])
 })
 .factory('ZipCoords', function($http) {
   var coordinates;
-
+  var token;
   function getGeoFromZip(searchString) {
     return $http.post('/getGeo', searchString)
       .then(function (response) {
-        coordinates = response.data;
-        return coordinates;
+        coordinates = response.data.slice(0, 2);
+        token = response.data[2];
+        return response;
       }, function (error) {
         console.log(error);
       });
@@ -71,10 +72,11 @@ angular.module('app.helperFactories', [])
 
   return {
     coordinates: coordinates,
+    token: token,
     getGeoFromZip: getGeoFromZip
   }
 })
-.factory('LocalMap', function($http) {
+.factory('LocalMap', function($http) { // To be completed. Do not delete.
   var map;
 
   function getMapFromGeo(geo, cb) {
