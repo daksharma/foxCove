@@ -41,7 +41,7 @@ module.exports = function(zip, res, callback) {
               rep.affiliation = "Democrat";
             }
             else{
-              row.affiliation = "Independent";
+              row.affiliation = "Nonpartisan";
             };
 
             obj.reps.push(rep);
