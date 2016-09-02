@@ -9,60 +9,50 @@
     </div>
   </div>
   <!-- /Navigation -->
-  <br>
-    <div class="row" style="margin-top: 1rem">
-      <div class="medium-6 columns medium-push-6">
+  <div class="row" style="margin-top: 1rem">
+    <div class="medium-6 columns medium-push-6">
 
-        <img class="thumbnail" ng-src="{{map}}">
-        
-      </div>
-      <div class="medium-6 columns medium-pull-6">
-        <h2 class="head">US Legislators for {{location}}</h2>
-        <p>
-          <ul class="row small-up-5 rep-cols">
-            <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
-              <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
-                <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
-                  <span class="secondary badge"><img ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
-                  </span>
-              </span>
-            </li>
-          </ul>
-        </p>
-      </div>
+      <img class="thumbnail" ng-src="{{map}}">
+      
     </div>
-
-    <div class="row graff" style="margin-top: 1rem">
-      <div class="" ="medium-4 columns">
-        <h3 class="head">Local Results</h3>
-        
+    <div class="medium-6 columns medium-pull-6">
+      <h2 class="head">US Legislators for {{location}}</h2>
+      <p>
         <ul class="row small-up-5 rep-cols">
-          <li class="column grid-list" ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>
-           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
-              <span class="resize circular {{official.party}}" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="">
-                <span class="secondary badge"><img ng-src="images/{{official.party}}.svg" width="16px"></span>
-              </span></a>
+          <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
+            <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
+              <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
+                <span class="secondary badge"><img ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
+                </span>
             </span>
-            <p>{{official.title}}<br/>{{official.name}}</p>
           </li>
         </ul>
-      </div>
+      </p>
     </div>
+  </div>
 
+  <div class="row graff" style="margin-top: 1rem">
+    <div class="medium-4 columns">
+      <h3 class="head">State Reps!</h3>
 
-      <div class="medium-4 columns">
-        <h3 class="head">Figures</h3>
-        <p>All of this is flexible. If you make a thing, we can dress it up for the dance.</p>
-      </div>
-      <div class="medium-4 columns">
-        <h3 class="head">Sales Tax in {{location}}</h3>
-        <p>Total sales tax in {{location}}: {{taxes.total}}</p>
-        <ul>
-          <li ng-repeat="item in taxes.breakdowns">{{item}}</li>
-        </ul>
-        <!-- <p>Some of the native CSS is iffy. If things don't work, let me know. Also I'm gonna put a map up there in the box. Working on it as we speak.</p> -->
-      </div>
+      <ul>
+        <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a></li>
+      </ul>
+
+      <p>That list of results ^ ?</p>
     </div>
+    <div class="medium-4 columns">
+      <h3 class="head">Local Reps!</h3>
+      <p>I'm bringing the visual stuff back! Just have to break it to fix grid damage and build it out again. Don't worry.</p>
+    </div>
+    <div class="medium-4 columns">
+      <h3 class="head">Sales Tax in {{location}}</h3>
+      <p>Total sales tax in {{location}}: {{taxes.total}}</p>
+      <ul>
+      <li ng-repeat="item in taxes.breakdowns">{{item}}</li>
+      </ul>
+    </div>
+  </div>
 
     <div class="row column">
       <h3 class="head" style="margin-top: 1rem">More Stuff Below!!!</h3>
