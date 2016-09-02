@@ -83,7 +83,7 @@ app.post('/getGeo', function(req, res) {
 
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
-});
+})
 
 // This routine is going to require some TLC to move. For some reason it
 // loses write access to the filesystem when it goes to a module. TODO.

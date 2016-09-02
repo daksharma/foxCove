@@ -23,7 +23,7 @@ angular.module('app.localResults', [])
         });
       LocalOfficials.getOfficials($scope.location)
         .then(function(results){
-          console.log("RESULTS", $scope.officials)
+          // console.log("RESULTS", $scope.officials)
           $scope.officials = [];
           for(var key in results){
             if(key !== 'city'){
