@@ -23,11 +23,11 @@ angular.module('app.localResults', [])
         });
       LocalOfficials.getOfficials($scope.location)
         .then(function(results){
-          // console.log("RESULTS", $scope.officials)
+          console.log("RESULTS", $scope.officials)
           $scope.officials = [];
           for(var key in results){
             if(key !== 'city'){
-              // console.log("here", results[key][0].name)
+              console.log("here", results[key][0].name)
               var arr = results[key];
               for(var i = 0; i < arr.length;i++){
                 if(!arr[i].photoUrl){
