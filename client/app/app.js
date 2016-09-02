@@ -35,8 +35,10 @@ angular.module('foxCove', [
   })
   .state('billsummary',{
     templateUrl: 'app/billsummary/bill-summary.html',
-    url: '/billSummary',
-    controller: 'BillSummary'
+    url: 'bill/:bill_id',
+    controller: function ($scope, $stateParams) {
+      $scope.bill_id = $stateParams.bill_id;
+    }
   });
   // .state('profile',{
   //   templateUrl: 'app/profile/rep-profile-view.html',
