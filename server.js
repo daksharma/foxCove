@@ -6,6 +6,7 @@ var path          = require('path');
 var favicon       = require('serve-favicon');
 var bodyParser    = require('body-parser');
 var https         = require('https');
+var fs            = require('fs');
 
 // DB MODULES
 var mongoDb     = require('./db/mdb-config');
@@ -31,7 +32,7 @@ var getSalesTax      = require('./server/modules/local-tax')
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 
-var app = express();
+var app = module.exports = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -76,16 +77,39 @@ app.post('/billSummary', function(req, res) {
   billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
 });
 
-app.post('/getMap', function(req, res) {
-  getLocalMap(req, res, res.send.bind(res));
-});
-
 app.post('/getGeo', function(req, res) {
   getLocalGeoData(req, res, res.send.bind(res));
 });
 
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
+});
+
+// This routine is going to require some TLC to move. For some reason it
+// loses write access to the filesystem when it goes to a module. TODO.
+
+app.post('/getMap', function(req, res) {
+  var mapPath = 'map' + req.body[0] + req.body[1] + '.png';
+  var cartography = function(cb) {
+    https.get({
+      hostname: 'api.mapbox.com',
+      path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',13/750x350.png32?access_token=' + process.env.MAPBOX_API
+    }, function(res) {
+      if (res) {
+        res.pipe(
+          fs.createWriteStream(
+            __dirname + '/client/images/maps/' + mapPath
+          )
+        );
+        cb(mapPath);
+        return mapPath;
+      } else {
+        console.log('Something went wrong.');
+        return false;
+      }
+    });
+  }
+  cartography(res.send.bind(res));
 });
 
 var port = process.env.PORT || 3000;

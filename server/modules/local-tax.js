@@ -1,7 +1,7 @@
 var request = require('request')
 var capitalize = require('./capitalize')
 module.exports = function(req, res){
-    console.log(req.body)
+    // console.log(req.body)
     var input = req.body;
     var output = {};
     var destination = 'https://taxrates.api.avalara.com:443/postal?country=usa&postal='+ input.zip + '&apikey=' + process.env.TAX_API;
@@ -10,7 +10,7 @@ module.exports = function(req, res){
     var requestCallback = function(error, response, data){
         if(error) throw error;
         data = JSON.parse(data);
-        console.log(data, response)
+        // console.log(data, response)
         output.total = data.totalRate;
         output.breakdowns = [];
         var arr = data.rates;

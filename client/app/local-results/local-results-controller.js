@@ -1,9 +1,17 @@
 angular.module('app.localResults', [])
 
-.controller('ResultsController', ['$scope','Location', '$state', 'LocalOfficials', 'ZipCoords', 'LocalMap', function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap) {
-  $scope.submit = function() {
-    $state.go('searchZip', {zipcode: $scope.location})
-  };
+.controller('ResultsController', 
+  ['$scope',
+    'Location', 
+    '$state', 
+    'LocalOfficials', 
+    'ZipCoords', 
+    'LocalMap', 
+    'SalesTax', 
+    function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
+      $scope.submit = function() {
+      $state.go('searchZip', {zipcode: $scope.location})
+    }
   $scope.loadZip = function() {
     if ($scope.location) {
       Location.getRepFromZip($scope.location)
@@ -40,7 +48,8 @@ angular.module('app.localResults', [])
         })
       ZipCoords.getGeoFromZip({zipcode: $scope.location})
         .then(function(results) {
-          $scope.geo = results;
+          $scope.geo = results.data.slice(0, 2);
+          $scope.token = results.data[2];
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
