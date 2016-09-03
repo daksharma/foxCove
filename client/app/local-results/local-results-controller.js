@@ -1,5 +1,17 @@
 angular.module('app.localResults', [])
 
+
+      // Adding this function to retrieve local legislators on account of they aren't in the local officials. Need to consolidate
+      // the current local officials into a single module first to avoid confususion.
+      // 'openstates.org/api/v1/legislators/geo/?lat=' + geo[1] + '&' + long=geo[0]
+
+      //   .then(function() {
+      //     LocalReps.getRepsFromGeo($scope.geo, function(results) {
+      //       $scope.localReps = results;
+      //   })
+      // })
+
+
 .controller('ResultsController', 
   ['$scope',
     'Location', 

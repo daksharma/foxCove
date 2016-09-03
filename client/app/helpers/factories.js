@@ -1,4 +1,5 @@
 angular.module('app.helperFactories', [])
+
 .factory('Location', function ($http) {
   var repsObject = {};
   function getRepFromZip(zipCode) {
@@ -108,18 +109,18 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('GetBillSummary', function($http) {
-  var billSum = {};
+  var bill = {};
   function getBillSummary(bill_id) {
     return $http.post('/billSummary', {bill_id : bill_id})
-                .then(function(data){
-                  billSum.summary = data.data;
-                  return billSum.summary;
-                }, function(error) {
-                  console.log(error);
-                })
+      .then(function(data){
+        bill.complete = data.data;
+        return bill.complete;
+      }, function(error) {
+        console.log(error);
+      })
   }
   return {
-    billSummary : billSum,
+    bill : bill,
     getBillSummary : getBillSummary
   }
 })

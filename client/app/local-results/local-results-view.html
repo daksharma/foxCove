@@ -16,7 +16,7 @@
     <div class="medium-6 columns medium-pull-6" style="margin-top: 1rem">
       <h2 class="head">US Legislators</h2>
       <p>
-        <ul class="row small-up-5 local-cols">
+        <ul class="row small-up-5 rep-cols">
           <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
             <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
               <span class="resize circular {{rep.affiliation}} feature" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
@@ -29,13 +29,15 @@
     </div>
     <div class="medium-6 columns medium-pull-6" style="margin-top: 1rem">
       <h3 class="head">State &amp; Local Officials</h3>
-      <ul class="row small-up-6">
+      <ul class="row small-up-4 rep-cols">
         <li class="column grid-list" ng-repeat="official in officials">
           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
-            <span class="matrix-resize matrix-square {{official.party}} matrix" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="loadProfile(official)">
-              <span class="secondary badge"><img ng-src="images/{{official.party || Nonpartisan}}.svg" width="16px"></span>
+            <a href='{{official.urls[0]}}'>
+              <span class="matrix-resize matrix-square {{official.party}} matrix" style="background-image: url({{official.photoUrl || null}})" alt="{{official.name}}" ng-click="loadProfile(official)">
+                <span class="secondary badge down"><img ng-src="images/{{official.party}}.svg" width="16px"></span>
+              </span>
             </span>
-          </span>
+          </a>
         </li>
       </ul>
     </div>
@@ -51,7 +53,7 @@
       <p>This space for rent.</p>
     </div>
     <div class="medium-4 columns">
-      <h3 class="head">I HAVE A COOL IDEA FOR HOW TO MAKE THIS TAX PART LOOK GREAT</h3>
+      <h3 class="head">I HAVE AN IDEA</h3>
       <p>Total sales tax in {{location}}: {{taxes.total}}</p>
       <ul>
       <li ng-repeat="item in taxes.breakdowns">{{item}}</li>
