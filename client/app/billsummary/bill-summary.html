@@ -8,17 +8,24 @@
         <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
     </div>
   </div>
-
-  <div class="row medium-8 large-7 columns">
+  <div class="row medium-8 large-7 columns graff" style="margin-top: 1rem;">
     <div class="blog-post">
-      <h3><h3>{{billTitle}}</h3> <small>Introduced: {{introDate | date}}</small></h3>
-      <img class="thumbnail" src="http://placehold.it/850x350">
-      <p>{{officialIntro}}</p>
+      <h4 class="head">{{billTitle}}</h4> <small>Introduced: {{introDate | date}}</small>
       <div class="callout">
-        <ul class="menu">
-          <li ng-click="loadProfile()">Sponsored by {{billDetail.sponsor.firstname}} {{billDetail.sponsor.lastname}}</li>
-          <li><a href="#">Something Else</a></li>
-        </ul>
+        <p><span class="head">Described as:</span> {{officialIntro}} <span class="link">Read more</a>.</p>
+				<p>TODO: Maybe merge this initial API call with a subsequent Sunlight API call to build out a more robust description. There's a lot that can be done here if anyone feels like it. Tons of interactions and transactions to filter and display.</p>
+			</div>
+      <div>
+        <p>
+				  <span ng-click="loadProfile(sponsor)">
+					  Sponsored by <span class="link" style="font-weight: 600">{{sponsor.firstname}} {{sponsor.lastname}} ({{billDetail.sponsor_role.description}})</span>
+				  </span>
+				<br />
+				Cosponsors: 
+					<span class="link" ng-repeat="cosponsor in cosponsors" ng-click="loadProfile(cosponsor)" ng-class="{active : isSelected(cosponsor)}">
+						{{cosponsor.firstname}} {{cosponsor.lastname}}&nbsp;&middot;&nbsp;
+					</span>
+				</p>
       </div>
     </div>
 	</div>

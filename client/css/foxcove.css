@@ -10,6 +10,11 @@ body {
 	color : #FF6526;
 }
 
+.link:hover {
+  color : #FF6526;
+	cursor: pointer;
+}
+
 /* Federal rep thumb style */
 
 .circular {
