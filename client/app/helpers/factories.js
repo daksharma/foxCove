@@ -136,4 +136,18 @@ angular.module('app.helperFactories', [])
   return {
     getSalesTax: getSalesTax
   }
+})
+.factory('Affiliations', function($http){
+  function getAffiliations(input) {
+    return $http.post('/getRepAffiliation', input)
+      .then(function(res){
+        console.log("RES", res)
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    getAffiliations: getAffiliations
+  }
 });

@@ -31,6 +31,7 @@ var getLocalReps     = require('./server/modules/get-local-reps');
 var getSalesTax      = require('./server/modules/local-tax')
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
+var getAffiliation   = require('./server/modules/get-affiliations');
 
 var app = module.exports = express();
 
@@ -84,6 +85,11 @@ app.post('/getGeo', function(req, res) {
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
 })
+
+app.post('/getRepAffiliation', function(req, res) {
+  getAffiliation(req, res)
+})
+
 
 // This routine is going to require some TLC to move. For some reason it
 // loses write access to the filesystem when it goes to a module. TODO.

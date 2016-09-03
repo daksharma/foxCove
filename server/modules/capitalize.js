@@ -3,11 +3,8 @@ module.exports = function (str) {
   var arr = str.split(" ")
   var results = [];
   for(var i = 0; i < arr.length;i++){
-    var result = arr[i][0].toUpperCase();
-    for(var j = 1; j < arr[i].length; j++){
-      result += arr[i][j].toLowerCase();
-    }
-    // console.log(result)
+    var lower = arr[i].toLowerCase().slice(1);
+    var result = arr[i][0].toUpperCase() + lower
     results.push(result)
   }
   return results.join(" ")
