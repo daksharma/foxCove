@@ -5,11 +5,43 @@ module.exports = function(req, res){
     var input = req.body;
     var output = {};
 
-    var destination = 'http://www.opensecrets.org/api/?method=memPFDprofile&year=2013&cid=' + input.crp_id + '&output=json&apikey=' + process.env.OPENSECRETS_API;
+    var positions = 'http://www.opensecrets.org/api/?method=memPFDprofile&year=2016&cid=' + input.crp_id + '&output=json&apikey=' + process.env.OPENSECRETS_API;
+
+    var topCompanies = 'http://www.opensecrets.org/api/?method=candContrib&year=2016&cid=' + input.crp_id + '&output=json&apikey=' + process.env.OPENSECRETS_API;
+
+    var topIndustries = 'http://www.opensecrets.org/api/?method=candIndustry&year=2016&cid=' + input.crp_id + '&output=json&apikey=' + process.env.OPENSECRETS_API;
+
 
     // console.log(destination)
 
-    var requestCallback = function(error, response, data){
+    var collectIndustries = function(error, response, data){
+        if (error) throw error;
+        data = JSON.parse(data);
+        output.industryLink = data.response.industries['@attributes'].source; //link to opensecret page
+        output.industries = [];
+        var arr = data.response.industries.industry;
+        var rounds = Math.min(arr.length, 5)
+        for(var i = 0; i < rounds; i++){
+            output.industries.push(arr[i]["@attributes"])
+        }
+        res.send(output)
+    }
+
+    var collectCompanies = function(error, response, data){
+        if (error) throw error;
+        data = JSON.parse(data);
+        output.companyLink = data.response.contributors['@attributes'].source; //link to opensecret page
+        output.companies = [];
+        var arr = data.response.contributors.contributor;
+        var rounds = Math.min(arr.length, 5)
+        for(var i = 0; i < rounds; i++){
+            output.companies.push(arr[i]["@attributes"])
+        }
+        request(topIndustries, collectIndustries)
+    }
+
+
+    var collectPositions = function(error, response, data){
         if (error) throw error;
         data = JSON.parse(data);
         output.positions = [];
@@ -21,8 +53,8 @@ module.exports = function(req, res){
                 output.positions.push(tmp)
            }   
         }
-        res.send(output)
+        request(topCompanies, collectCompanies)
     }
 
-    request(destination, requestCallback)
+    request(positions, collectPositions)
 }
