@@ -56,28 +56,36 @@
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
     <div class="column">
       <div class="callout">
-        <h3>Other Positions {{rep.firstname}} holds:</h3>
+        <h3>{{rep.firstname}}'s top industry contributors:</h3>
+        <ul>
+          <li ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: ${{industry.total}}
+        </ul>
         <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
         <!-- <p class="lead">People have things to say!</p>
         <p class="subheader">We can do a thing with that.</p> -->
+        
+      </div>
+    </div>
+    <div class="column">
+      <div class="callout">
+        <h3>{{res.firstname}}'s top donors'</h3>
         <ul>
-          <li ng-repeat="position in rep.affiliations">{{position.title}} of {{position.organization}}
+          <li ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: ${{donor.total}}
         </ul>
-      </div>
-    </div>
-    <div class="column">
-      <div class="callout">
-        <p>Born {{rep.birthdate | date}}</p>
+        <!-- <p>Born {{rep.birthdate | date}}</p>
         <p class="lead">No pic, here, but space is maintained.</p>
-        <p class="subheader">Oh, btw. I installed a moment.js dependency on bower but haven't brought it in yet. Could probably do some cool stuff easily with that.</p>
+        <p class="subheader">Oh, btw. I installed a moment.js dependency on bower but haven't brought it in yet. Could probably do some cool stuff easily with that.</p> -->
       </div>
     </div>
     <div class="column">
       <div class="callout">
-        <p>{{rep.state_name}} is a big state</p>
-        <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+        <h3>{{rep.firstname}}'s other positions</h3>
+        <ul ng-show="rep.affiliations.positions[0]">
+          <li ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}
+        </ul>
+        <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
         <p class="lead">What about a map to {{rep.lastname}}'s office?</p>
-        <p class="subheader">Not sure I'm happy with the stability of this rep object. That should say the name of the state up there. Call it a bug, but I have reservations. Might be inherent to the method as it presently is.</p>
+        <p class="subheader">Not sure I'm happy with the stability of this rep object. That should say the name of the state up there. Call it a bug, but I have reservations. Might be inherent to the method as it presently is.</p> -->
       </div>
     </div>
     <div class="column">

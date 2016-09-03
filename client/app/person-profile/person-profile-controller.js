@@ -20,8 +20,7 @@ angular.module('app.personProfile',[])
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
-        console.log("****", results)
-        $scope.rep.affiliations = results.positions
+        $scope.rep.affiliations = results
       })
     
   }
