@@ -136,4 +136,7 @@ angular.module('app.helperFactories', [])
   return {
     getSalesTax: getSalesTax
   }
+})
+.factory('Affiliations', function($http){
+  
 });

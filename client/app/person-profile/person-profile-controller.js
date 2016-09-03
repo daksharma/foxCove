@@ -15,4 +15,8 @@ angular.module('app.personProfile',[])
         rep.bio = results.split('\n')[0] || 'No biographical information available at this time for ' + rep.firstname + ' ' + rep.lastname;
       })
   }
+  $scope.getAffiliation = function(ID) {
+
+    
+  }
 }]);
