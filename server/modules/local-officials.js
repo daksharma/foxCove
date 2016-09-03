@@ -14,14 +14,14 @@ module.exports.getOfficials = function(inputPackage, outputPackage, nextCB){
       var offices = data.offices;
       for(var i = 0; i < offices.length; i++){
         var title = offices[i].name;
-          if (!title.includes('United States')) {
-            for(var j = 0; j < offices[i].officialIndices.length;j++){
-              var index = offices[i].officialIndices[j];
-              if(!outputPackage[title]){
+        if (!title.includes('United States')) {
+          for(var j = 0; j < offices[i].officialIndices.length;j++){
+            var index = offices[i].officialIndices[j];
+            if(!outputPackage[title]){
               outputPackage[title] = [];
-              }
-              outputPackage[title].push(data.officials[index])
             }
+            outputPackage[title].push(data.officials[index])
+          }
          }
       }
       nextCB();

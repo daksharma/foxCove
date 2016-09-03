@@ -10,7 +10,6 @@ module.exports = function(req, res){
     var requestCallback = function(error, response, data){
         if(error) throw error;
         data = JSON.parse(data);
-        // console.log(data, response)
         output.total = data.totalRate;
         output.breakdowns = [];
         var arr = data.rates;
