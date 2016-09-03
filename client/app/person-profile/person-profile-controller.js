@@ -1,14 +1,14 @@
 angular.module('app.personProfile',[])
 
-.controller('ProfileController', ['$scope','RepProfile', 'RepBio','$state', 'Affiliations', function($scope, RepProfile, RepBio, $state, Affiliations) {
+.controller('ProfileController', ['$scope','RepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', function($scope, RepProfile, RepBio, $state, Affiliations, RepBills) {
   $scope.build = function() {
     RepProfile.getRepFromBioId($state.params)
       .then(function(results){
         $scope.rep = results.rep;
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
         $scope.getBio($scope.rep);
-        console.log($scope.rep)
         $scope.getAffiliation($scope.rep)
+        $scope.getBills($scope.rep);
       })
   }
   $scope.getBio = function(rep) {
@@ -28,5 +28,13 @@ angular.module('app.personProfile',[])
 >>>>>>> [refactor] Rework loadZip controller
       })
     
+  }
+  $scope.getBills = function(rep) {
+    RepBills.getBillsFromRepId({bioguideId: rep.bioguide_id})
+      .then(function(results) {
+        $scope.bills = results.results;
+        $scope.selectedBill = $scope.bills[0];
+        console.log($scope.bills);
+      });
   }
 }]);
