@@ -7,7 +7,7 @@ angular.module('app.personProfile',[])
         $scope.rep = results.rep;
         $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
         $scope.getBio($scope.rep);
-        console.log("CRP", $scope.rep.crp_id)
+        console.log($scope.rep)
         $scope.getAffiliation($scope.rep)
       })
   }
@@ -20,7 +20,12 @@ angular.module('app.personProfile',[])
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
+<<<<<<< 0ab9f830ef7230902e238d2e12b8da07e6326505
         $scope.rep.affiliations = results
+=======
+        // console.log("****", results)
+        $scope.rep.affiliations = results.positions
+>>>>>>> [refactor] Rework loadZip controller
       })
     
   }

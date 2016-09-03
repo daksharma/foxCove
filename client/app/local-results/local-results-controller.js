@@ -28,7 +28,7 @@ angular.module('app.localResults', [])
     if ($scope.location) {
       Location.getRepFromZip($scope.location)
         .then(function(results){
-          $scope.reps = results.reps;
+          $scope.reps = Location.repsObject.reps.reps;
           $scope.reps.forEach(function(rep) {
             rep.thumb = 'http://theunitedstates.io/images/congress/225x275/' + rep.bioguide_id + '.jpg';
           });
@@ -65,7 +65,6 @@ angular.module('app.localResults', [])
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
-            // console.log('Local: ', results)
             $scope.map = 'images/maps/' + results;
           });
         });    

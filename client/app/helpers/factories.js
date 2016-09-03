@@ -13,7 +13,7 @@ angular.module('app.helperFactories', [])
   }
 
   return {
-    repsObjects: repsObject,
+    repsObject: repsObject,
     getRepFromZip: getRepFromZip
   }
 })
