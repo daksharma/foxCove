@@ -99,31 +99,24 @@ body {
 
 .matrix {
 	border-style: solid;
+	border-width: 2px;
+}
+
+.badge {
+	border-style: solid;
 	border-width: 1px;
 }
 
 .right {
-	float : right;
+	display: block;
+	position: relative;
+	float: right;
 }
 
-.rep-cols {
-	display      : block;
-	width        : 300;
-	position     : relative;
-	left         : 20px;
-	margin-left  : auto;
-	margin-right : auto;
+.down {
+	position: absolute;
+	bottom: 0;
 }
-
-.rep-cols {
-	display      : block;
-	width        : 300;
-	position     : relative;
-	left         : 10px;
-	margin-left  : auto;
-	margin-right : auto;
-}
-
 .grid-list {
 	list-style-type : none;
 	list-style      : none;
