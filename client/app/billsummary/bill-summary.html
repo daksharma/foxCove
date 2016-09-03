@@ -1,7 +1,24 @@
-<!-- Needs to be designed properly!! -->
-<div class=" row centered" ng-controller="BillSummary">
-	<p>{{billTitle}}</p>
-	<p>{{curBillStatus}}</p>
-	<p>{{officialIntro}}</p>
-	<p>{{introDate | date}}</p>
-</div>
+<div ng-controller="BillSummary" ng-init="getBillSum()">
+
+  <div class="title-bar" style="height: 35px">
+    <div class="left">
+      <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
+    </div>
+    <div class="right">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+    </div>
+  </div>
+
+  <div class="row medium-8 large-7 columns">
+    <div class="blog-post">
+      <h3><h3>{{billTitle}}</h3> <small>Introduced: {{introDate | date}}</small></h3>
+      <img class="thumbnail" src="http://placehold.it/850x350">
+      <p>{{officialIntro}}</p>
+      <div class="callout">
+        <ul class="menu">
+          <li ng-click="loadProfile()">Sponsored by {{billDetail.sponsor.firstname}} {{billDetail.sponsor.lastname}}</li>
+          <li><a href="#">Something Else</a></li>
+        </ul>
+      </div>
+    </div>
+	</div>

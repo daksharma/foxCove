@@ -33,9 +33,9 @@ angular.module('foxCove', [
       $scope.bioguide_id = $stateParams.bioguide_id;
     }
   })
-  .state('billsummary',{
+  .state('billSummary',{
     templateUrl: 'app/billsummary/bill-summary.html',
-    url: 'bill/:bill_id',
+    url: '/bill/:bill_id',
     controller: function ($scope, $stateParams) {
       $scope.bill_id = $stateParams.bill_id;
     }
