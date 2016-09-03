@@ -2,7 +2,6 @@ var https = require('https');
 
 module.exports = function(req, res, cb) {
   var bioguideId = req.body.bioguideId; //front end request should be in the format {bioguideId: bioguideId}
-  console.log(bioguideId)
   https.get({
     hostname: 'congress.api.sunlightfoundation.com',
     path: '/bills?sponsor_id=' + bioguideId + '&order=last_action_at&apikey=' + process.env.SUNLIGHT_API

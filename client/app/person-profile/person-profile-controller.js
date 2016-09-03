@@ -34,7 +34,9 @@ angular.module('app.personProfile',[])
       .then(function(results) {
         $scope.bills = results.results;
         $scope.selectedBill = $scope.bills[0];
-        console.log($scope.bills);
       });
+  }
+  $scope.loadBill = function (bill) {
+    $state.go('billSummary', bill);
   }
 }]);

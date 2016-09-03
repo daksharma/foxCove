@@ -26,13 +26,14 @@
           <div class="row graff">
             <div class="small-12 columns">
               <label>Sponsored Bills
-                <select>
+                <select name="billSelect" ng-model="model.bill_id">
                   <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill.number}}">{{bill.popular_title || bill.short_title || bill.bill_id}}</option>
                 </select>
               </label>
             </div>
+            {{model}}
             <div class="small-12 columns">
-              <button type="submit" class="button">Get Details</button>
+              <button type="submit" class="success small hollow button" ng-click="loadBill(model)">Get Details</button>
             </div>
           </div>
         </form>
@@ -40,7 +41,7 @@
     </div>
 
     <div class="show-for-large large-3 columns" id="space-holder">
-      
+
     </div>
 
   </div>
