@@ -14,9 +14,11 @@ module.exports = function(req, res, cb) {
       res.on('end', function() {
         if (!body.includes('<')) {
           var parsed = JSON.parse(body);
-          geo = parsed.features[0].geometry.coordinates;
-          geo.push(process.env.MAPBOX_PUBLIC);
-          cb(geo);
+          if (parsed.features) {
+            geo = parsed.features[0].geometry.coordinates;
+            geo.push(process.env.MAPBOX_PUBLIC);
+            cb(geo);
+          }
         }
       }).on('error', function(err) {
         console.log(err);
