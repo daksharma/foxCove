@@ -138,5 +138,16 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('Affiliations', function($http){
-  
+  function getAffiliations(input) {
+    return $http.post('/getRepAffiliation', input)
+      .then(function(res){
+        console.log("RES", res)
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    getAffiliations: getAffiliations
+  }
 });

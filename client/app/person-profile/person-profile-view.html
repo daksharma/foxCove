@@ -56,10 +56,13 @@
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
     <div class="column">
       <div class="callout">
-        <p>Check out @{{rep.twitter_id}}</p>
-        <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">People have things to say!</p>
-        <p class="subheader">We can do a thing with that.</p>
+        <h3>Other Positions {{rep.firstname}} holds:</h3>
+        <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
+        <!-- <p class="lead">People have things to say!</p>
+        <p class="subheader">We can do a thing with that.</p> -->
+        <ul>
+          <li ng-repeat="position in rep.affiliations">{{position.title}} of {{position.organization}}
+        </ul>
       </div>
     </div>
     <div class="column">
