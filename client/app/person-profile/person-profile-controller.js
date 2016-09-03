@@ -20,12 +20,7 @@ angular.module('app.personProfile',[])
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
-<<<<<<< 0ab9f830ef7230902e238d2e12b8da07e6326505
         $scope.rep.affiliations = results
-=======
-        // console.log("****", results)
-        $scope.rep.affiliations = results.positions
->>>>>>> [refactor] Rework loadZip controller
       })
     
   }
