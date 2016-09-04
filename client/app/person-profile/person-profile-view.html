@@ -56,7 +56,7 @@
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
     <div class="column">
       <div class="callout">
-        <h3>{{rep.firstname}}'s top industry contributors:</h3>
+        <p class="head">{{rep.firstname}}'s top industry contributors:</p>
         <ul>
           <li ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: ${{industry.total}}
         </ul>
@@ -69,7 +69,7 @@
     </div>
     <div class="column">
       <div class="callout">
-        <h3>{{rep.firstname}}'s top donors'</h3>
+        <p class="head">{{rep.firstname}}'s top donors'</p>
         <ul>
           <li ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: ${{donor.total}}
         </ul>
@@ -82,7 +82,7 @@
     </div>
     <div class="column">
       <div class="callout">
-        <h3>{{rep.firstname}}'s other positions</h3>
+        <p class="head">{{rep.firstname}}'s other positions</p>
         <ul ng-show="rep.affiliations.positions[0]">
           <li ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}
         </ul>
@@ -93,7 +93,7 @@
     </div>
     <div class="column">
       <div class="callout">
-        <p>One caveat:</p>
+        <p class="head">One caveat:</p>
         <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
         <p class="lead">All records are not created equally</p>
         <p class="subheader">Use the profile-object-keys.txt for a reference, but also I'm logging the rep object for debugging purposes in the browser.</p>
@@ -101,7 +101,7 @@
     </div>
     <div class="column">
       <div class="callout">
-        <p>Etc.</p>
+        <p class="head">Etc.</p>
         <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
         <p class="lead">Words words words</p>
         <p class="subheader">Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -109,7 +109,7 @@
     </div>
     <div class="column">
       <div class="callout">
-        <p>That's my time.</p>
+        <p class="head">That's my time.</p>
         <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
         <p class="lead">Etiam Elit Dapibus Vestibulum Fermentum</p>
         <p class="subheader">Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum.
