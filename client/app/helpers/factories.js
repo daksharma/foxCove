@@ -28,15 +28,28 @@ angular.module('app.helperFactories', [])
     return $http.post('/getRep', bioguide_id)
       .then(function (response) {
         repObject = response.data;
+        console.log(repObject);
         return response.data;
       }, function (error) {
         console.log(error);
       });
-  }
+  };
+
+  function getRepSponsorshipHistory(bioguide_id) {
+    return $http.post('/sponsorship', bioguide_id)
+      .then(function(response) {
+        repObject.sponsorships = response.data.results;
+        console.log('repObject:', repObject);
+        return response.results;
+      }, function(error) {
+          console.error(error);
+      });
+  };
 
   return {
-    rep: repObject,
-    getRepFromBioId: getRepFromBioId
+    repObject: repObject,
+    getRepFromBioId: getRepFromBioId,
+    getRepSponsorshipHistory: getRepSponsorshipHistory
   }
 })
 .factory('RepBio', function($http) {

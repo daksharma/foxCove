@@ -33,6 +33,7 @@ var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getRepBills      = require('./server/modules/get-bills');
+var getSummary    = require('./server/modules/get-summary');
 
 var app = module.exports = express();
 
@@ -72,7 +73,17 @@ app.post('/getBio', function(req, res) {
 });
 
 app.post('/sponsorship', function(req, res) {
-  sponsorship(req.body.bioguide_id, res.send.bind(res));
+  sponsorship(req.body.bioguide_id, function(sponsorshipHist) {
+    var bills = JSON.parse(sponsorshipHist).results;
+    bills.forEach(function(bill, i){
+      getSummary(bill.congress, bill.bill_type, bill.number, function(data){
+        bill.summary = data;
+        if( i === 4 ){
+          res.send(bills);
+        }
+      });
+    })
+  });
 });
 
 app.post('/billSummary', function(req, res) {

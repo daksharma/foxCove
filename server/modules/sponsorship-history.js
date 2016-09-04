@@ -16,6 +16,7 @@ module.exports = function(bioguide_id, callback){
     fields: [
       'congress',
       'number',
+      'bill_type',
       'official_title',
     ]
     .join()
