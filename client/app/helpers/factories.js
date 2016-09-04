@@ -160,8 +160,28 @@ angular.module('app.helperFactories', [])
         console.log(error)
       });
   }
+
+  function formatCurrency (string, cur) {
+  var arr = string.split("");
+  var result = [];
+  for(var i = arr.length -1 ; i >= 0; i-=3){
+    result.unshift(arr[i]);
+    if(arr[i-1]){
+      result.unshift(arr[i-1]);
+      if(arr[i-2]){
+        result.unshift(arr[i-2]);
+        if(arr[i-3]){
+          result.unshift(",")
+        }
+      }
+    }
+  }
+  return cur + result.join("");
+}
+
   return {
-    getAffiliations: getAffiliations
+    getAffiliations: getAffiliations,
+    formatCurrency: formatCurrency
   }
 })
 .factory('RepBills', function($http){

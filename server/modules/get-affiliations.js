@@ -58,3 +58,5 @@ module.exports = function(req, res){
 
     request(positions, collectPositions)
 }
+
+
