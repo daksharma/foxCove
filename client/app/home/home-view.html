@@ -2,13 +2,16 @@
   <h1 class="head" style="text-align: center"><img src="images/fox-orange.svg" width="50px"> Foxcove</h1>
   <div>
     <div class="input-group" name="location-form" ng-submit="submit()" ng-init="loadZip()">
-      <input type="text" name="zipField" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-pattern="/\d{5}/" ng-enter="submit()">
+      <input type="text" name="zipField" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-enter="submit()">
       <div class="input-group-button">
         <button class="button-clear postfix search-button" style="background-image: url('/images/searchLoc.png')" name="submit" type="submit" ng-click="submit()"></button>
       </div>
     </div>
   </div>
-  <div class="err" style="text-align: center" ng-show="error">
-    <h4 ng-message="pattern" class="head">{{errorResponse}}</h4>
+  <div class="err" style="text-align: center" ng-hide="errorResponse">
+    <h5 ng-message="errorResponse" class="head">Map your political landscape.</h5>
+  </div>
+  <div class="err" style="text-align: center" ng-show="errorResponse">
+    <h5 ng-message="errorResponse" class="head">{{errorResponse}}</h5>
   </div>
 </div>

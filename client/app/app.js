@@ -18,11 +18,15 @@ angular.module('foxCove', [
     url: '/',
   })
 
-  .state('errorResponce', {
+  .state('errorResponse', {
     templateUrl: 'app/home/home-view.html',
-    url: '/nope/:',
+    url: '/nope/:str',
     controller: function($scope, $stateParams) {
-      $scope.errorResponse = 'Sorry, "' + $stateParams.errorResponse + '" isn\'t a thing here.'; 
+      if ($stateParams.str) {
+        $scope.errorResponse = 'Sorry, "' + $stateParams.str + '" isn\'t a thing here.';
+      } else {
+        $scope.errorResponse = 'Hm. Something went wrong.';
+      }
     }
   })
 
