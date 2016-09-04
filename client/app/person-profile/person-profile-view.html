@@ -58,7 +58,7 @@
       <div class="callout">
         <p class="head">{{rep.firstname}}'s top industry contributors:</p>
         <ul>
-          <li ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: ${{industry.total}}
+          <li ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
         <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
@@ -71,7 +71,7 @@
       <div class="callout">
         <p class="head">{{rep.firstname}}'s top donors'</p>
         <ul>
-          <li ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: ${{donor.total}}
+          <li ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: {{format(donor.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.companyLink}}">more...</a></p>
 

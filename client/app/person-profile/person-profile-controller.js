@@ -23,7 +23,7 @@ angular.module('app.personProfile',[])
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
-        $scope.rep.affiliations = results
+        $scope.rep.affiliations = results;
       })
 
   }
@@ -37,4 +37,6 @@ angular.module('app.personProfile',[])
   $scope.loadBill = function (bill) {
     $state.go('billSummary', bill);
   }
+
+  $scope.format = Affiliations.formatCurrency
 }]);
