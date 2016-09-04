@@ -1,8 +1,8 @@
 var request = require('request');
 var querystring = require('querystring');
 
-// Retrieve and invoke callback on legislator's legislative sponsorship history
-// from Sunlight Foundation Congressional API
+// Retrieve legislator's legislative sponsorship history from Sunlight Foundation
+// Congressional API and invoke callback on that history
 
 module.exports = function(bioguide_id, callback){
 
@@ -12,10 +12,12 @@ module.exports = function(bioguide_id, callback){
   var queryFieldFilters = querystring.stringify({
     sponsor_id__in: bioguide_id,
     // ADD or REMOVE query fields here:
+    per_page: '5',
     fields: [
       'congress',
       'number',
-      'official_title'
+      'bill_type',
+      'official_title',
     ]
     .join()
   });
@@ -32,6 +34,7 @@ module.exports = function(bioguide_id, callback){
       callback(data);
     } else {
       console.error(err);
+      callback(err);
     }
   });
 };
