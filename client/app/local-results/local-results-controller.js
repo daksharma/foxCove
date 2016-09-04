@@ -1,17 +1,5 @@
 angular.module('app.localResults', [])
 
-
-      // Adding this function to retrieve local legislators on account of they aren't in the local officials. Need to consolidate
-      // the current local officials into a single module first to avoid confususion.
-      // 'openstates.org/api/v1/legislators/geo/?lat=' + geo[1] + '&' + long=geo[0]
-
-      //   .then(function() {
-      //     LocalReps.getRepsFromGeo($scope.geo, function(results) {
-      //       $scope.localReps = results;
-      //   })
-      // })
-
-
 .controller('ResultsController', 
   ['$scope',
     'Location', 
@@ -20,7 +8,8 @@ angular.module('app.localResults', [])
     'ZipCoords', 
     'LocalMap', 
     'SalesTax',
-    function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
+    'StateLeg',
+    function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax, StateLeg) {
   
   $scope.submit = function() {
     $state.go('searchZip', {zipcode: $scope.location})
@@ -64,6 +53,12 @@ angular.module('app.localResults', [])
         .then(function(results) {
           $scope.geo = results.data.slice(0, 2);
           $scope.token = results.data[2];
+          StateLeg.getStateLegsFromGeo($scope.geo)
+            .then(function(results) {
+              console.log('Controller results: ', results)
+              console.log('Factory results: ', StateLeg.reps)
+              $scope.stateLegs = StateLeg.reps;
+            });
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
