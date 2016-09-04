@@ -2,37 +2,13 @@
   <h1 class="head" style="text-align: center"><img src="images/fox-orange.svg" width="50px"> Foxcove</h1>
   <div>
     <div class="input-group" name="location-form" ng-submit="submit()" ng-init="loadZip()">
-      <input type="text" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-pattern="/^\d{5}$/" ng-enter="submit()">
+      <input type="text" name="zipField" placeholder="enter your ZIP code" class="input-group-field search-bar" ng-model="location" ng-pattern="/\d{5}/" ng-enter="submit()">
       <div class="input-group-button">
         <button class="button-clear postfix search-button" style="background-image: url('/images/searchLoc.png')" name="submit" type="submit" ng-click="submit()"></button>
       </div>
     </div>
-    <ul class="row small-up-3 rep-cols">
-      <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
-        <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
-          <span class="resize circular {{rep.affiliation}}" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
-            <span class="secondary badge"><img ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
-            </span>
-        </span>
-      </li>
-    </ul>
-
-
-
-    <ul>
-      <li ng-repeat="official in officials"> <a href='{{official.urls[0]}}'>{{official.title}}: {{official.name}}</a>
-      </li>
-    </ul>
-
   </div>
-  <script>
-  </script>
-  <div class="row">
-    <div class="small-3 large-centered columns">
-      <div ng-repeat="rep in reps | orderBy : '-title'" style="padding: 10px" class="text-center">
-        <a ng-href="{{rep.website}}"><span class="resize circular" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}"></span></a>
-          <span class="graff">{{rep.title}} {{rep.first_name + " " + rep.last_name}} ({{rep.party}})</span>
-      </div>
-    </div>
+  <div class="err" style="text-align: center" ng-messages="location-form.zipField.$error" role="alert">
+    <h4 ng-message="pattern" class="head">Aw, man. Something ain't right.</h4>
   </div>
 </div>
