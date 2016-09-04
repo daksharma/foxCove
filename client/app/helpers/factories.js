@@ -18,7 +18,7 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('SearchResult',function() {
-
+// Is this a thing? Can we get rid of it?
 
 })
 .factory('RepProfile', function($http) {
@@ -119,6 +119,22 @@ angular.module('app.helperFactories', [])
   }
   return {
     getOfficials: getOfficials
+  }
+})
+.factory('StateLeg', function($http){
+  var legislators = {};
+  function getStateLegsFromGeo(legs) {
+    return $http.post('/getStateLegs', ref)
+      .then(function(res){
+        legislators.data = res.data;
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    legislators: legislators.data,
+    getStateLegsFromGeo: getStateLegsFromGeo
   }
 })
 .factory('GetBillSummary', function($http) {
