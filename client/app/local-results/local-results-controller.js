@@ -19,13 +19,13 @@ angular.module('app.localResults', [])
     'LocalOfficials', 
     'ZipCoords', 
     'LocalMap', 
-    'SalesTax', 
+    'SalesTax',
     function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
       $scope.submit = function() {
-      $state.go('searchZip', {zipcode: $scope.location})
+        $state.go('searchZip', {zipcode: $scope.location})
     }
   $scope.loadZip = function() {
-    if ($scope.location) {
+    if ($scope.location.match(/^\d{5}$/)) {
       Location.getRepFromZip($scope.location)
         .then(function(results){
           $scope.reps = Location.repsObject.reps.reps;

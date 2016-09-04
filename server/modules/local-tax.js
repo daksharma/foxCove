@@ -13,9 +13,11 @@ module.exports = function(req, res){
         output.total = data.totalRate;
         output.breakdowns = [];
         var arr = data.rates;
-        for(var i = 0; i < arr.length; i++){
-            var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%"
-            output.breakdowns.push(str)
+        if (arr) {
+            for(var i = 0; i < arr.length; i++){
+                var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%"
+                output.breakdowns.push(str)
+            }
         }
         res.send(output)
     }

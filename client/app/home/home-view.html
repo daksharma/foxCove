@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div class="err" style="text-align: center" ng-messages="location-form.zipField.$error" role="alert">
-    <h4 ng-message="pattern" class="head">Aw, man. Something ain't right.</h4>
+  <div class="err" style="text-align: center" ng-show="error">
+    <h4 ng-message="pattern" class="head">{{errorResponse}}</h4>
   </div>
 </div>
