@@ -27,8 +27,8 @@ angular.module('app.personProfile',[])
   $scope.getBills = function(rep) {
     RepBills.getBillsFromRepId({bioguideId: rep.bioguide_id})
       .then(function(results) {
-        $scope.bills = results.results;
         $scope.billSelect = $scope.bills[0];
+        $scope.bills = results.results;
       });
   }
   $scope.loadBill = function (bill) {

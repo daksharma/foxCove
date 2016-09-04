@@ -21,11 +21,13 @@ angular.module('app.localResults', [])
     'LocalMap', 
     'SalesTax',
     function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
-      $scope.submit = function() {
-        $state.go('searchZip', {zipcode: $scope.location})
-    }
+  
+  $scope.submit = function() {
+    $state.go('searchZip', {zipcode: $scope.location})
+  }
+
   $scope.loadZip = function() {
-    if ($scope.location.match(/^\d{5}$/)) {
+    if ($scope.location.match(/^\d{5}$/)) { // Validate 5-digit input
       Location.getRepFromZip($scope.location)
         .then(function(results){
           $scope.reps = Location.repsObject.reps.reps;
@@ -68,9 +70,17 @@ angular.module('app.localResults', [])
             $scope.map = 'images/maps/' + results;
           });
         });    
+    } else {
+      $scope.nope(); // Redirect to error message state
     }
-  };
+  }
+
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguide_id});
   }
+
+  $scope.nope = function() {
+    $state.go('errorResponse', {str: $scope.location});
+  }
+
 }]);
