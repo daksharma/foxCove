@@ -27,7 +27,7 @@ angular.module('app.localResults', [])
   }
 
   $scope.loadZip = function() {
-    if ($scope.location.match(/^\d{5}$/)) {
+    if ($scope.location.match(/^\d{5}$/)) { // Validate 5-digit input
       Location.getRepFromZip($scope.location)
         .then(function(results){
           $scope.reps = Location.repsObject.reps.reps;
@@ -71,7 +71,7 @@ angular.module('app.localResults', [])
           });
         });    
     } else {
-      $scope.nope();
+      $scope.nope(); // Redirect to error message state
     }
   }
 
