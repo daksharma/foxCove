@@ -13,7 +13,7 @@ angular.module('app.helperFactories', [])
   }
 
   return {
-    repsObjects: repsObject,
+    repsObject: repsObject,
     getRepFromZip: getRepFromZip
   }
 })
@@ -141,7 +141,7 @@ angular.module('app.helperFactories', [])
   function getAffiliations(input) {
     return $http.post('/getRepAffiliation', input)
       .then(function(res){
-        console.log("RES", res)
+        // console.log("RES", res)
         return res.data;
       }, function(error) {
         console.log(error)
@@ -149,5 +149,21 @@ angular.module('app.helperFactories', [])
   }
   return {
     getAffiliations: getAffiliations
+  }
+})
+.factory('RepBills', function($http){
+  var bills;
+  function getBillsFromRepId(ref) {
+    return $http.post('/getBills', ref)
+      .then(function(res){
+        bills = res.data;
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    bills: bills,
+    getBillsFromRepId: getBillsFromRepId
   }
 });

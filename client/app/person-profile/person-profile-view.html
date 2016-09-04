@@ -21,26 +21,26 @@
     <div class="medium-7 large-6 columns">
       <h1 class="head">{{rep.title}}. {{rep.firstname}} {{rep.lastname}}</h1>
       <p class="subheader graff">{{rep.bio}}</p>
-    </div>
-
-    <div class="show-for-large large-3 columns">
-      <div class="space-holder">
+      <div class="">
         <form>
           <div class="row graff">
             <div class="small-12 columns">
-              <label>This is a good place for
-                <input type="text" placeholder="deeper interaction">
+              <label>Sponsored Bills
+                <select name="billSelect" ng-model="model.bill_id">
+                  <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill.number}}">{{bill.popular_title || bill.short_title || bill.bill_id}}</option>
+                </select>
               </label>
             </div>
             <div class="small-12 columns">
-              <label>ETC.
-                <input type="number" placeholder="Or we can always">
-              </label>
-              <button type="submit" class="button">hide it!</button>
+              <button type="submit" class="success small hollow button" ng-click="loadBill(model)">Get Details</button>
             </div>
           </div>
         </form>
       </div>
+    </div>
+
+    <div class="show-for-large large-3 columns" id="space-holder">
+
     </div>
 
   </div>

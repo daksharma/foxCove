@@ -12,15 +12,23 @@ angular.module('foxCove', [
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
+
   .state('home', {
     templateUrl: 'app/home/home-view.html',
     url: '/',
-    controller: 'HomeController'
+  })
+
+  .state('errorResponce', {
+    templateUrl: 'app/home/home-view.html',
+    url: '/nope/:',
+    controller: function($scope, $stateParams) {
+      $scope.errorResponse = 'Sorry, "' + $stateParams.errorResponse + '" isn\'t a thing here.'; 
+    }
   })
 
   .state('searchZip', {
     templateUrl: 'app/local-results/local-results-view.html',
-    url: '/:zipcode',
+    url: '/zip/:zipcode',
     controller: function($scope, $stateParams) {
       $scope.location = $stateParams.zipcode;
     }
@@ -33,6 +41,7 @@ angular.module('foxCove', [
       $scope.bioguide_id = $stateParams.bioguide_id;
     }
   })
+
   .state('billSummary',{
     templateUrl: 'app/billsummary/bill-summary.html',
     url: '/bill/:bill_id',

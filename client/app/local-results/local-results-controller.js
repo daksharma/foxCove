@@ -19,16 +19,16 @@ angular.module('app.localResults', [])
     'LocalOfficials', 
     'ZipCoords', 
     'LocalMap', 
-    'SalesTax', 
+    'SalesTax',
     function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
       $scope.submit = function() {
-      $state.go('searchZip', {zipcode: $scope.location})
+        $state.go('searchZip', {zipcode: $scope.location})
     }
   $scope.loadZip = function() {
-    if ($scope.location) {
+    if ($scope.location.match(/^\d{5}$/)) {
       Location.getRepFromZip($scope.location)
         .then(function(results){
-          $scope.reps = results.reps;
+          $scope.reps = Location.repsObject.reps.reps;
           $scope.reps.forEach(function(rep) {
             rep.thumb = 'http://theunitedstates.io/images/congress/225x275/' + rep.bioguide_id + '.jpg';
           });
@@ -65,7 +65,6 @@ angular.module('app.localResults', [])
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
-            // console.log('Local: ', results)
             $scope.map = 'images/maps/' + results;
           });
         });    
