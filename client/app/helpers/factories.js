@@ -141,20 +141,29 @@ angular.module('app.helperFactories', [])
     getStateLegsFromGeo: getStateLegsFromGeo
   }
 })
-.factory('GetBillSummary', function($http) {
-  var bill = {};
-  function getBillSummary(bill_id) {
-    return $http.post('/billSummary', {bill_id : bill_id})
-      .then(function(data){
-        bill.complete = data.data;
-        return bill.complete;
+.factory('Bill', function($http) {
+
+  function getSummary(bill) {
+    return $http.post('/billSummary', bill)
+      .then(function(res){
+        return res.data;
       }, function(error) {
         console.log(error);
       })
-  }
+  };
+
+  function getInfo(bill) {
+    return $http.post('/billInfo', bill)
+      .then(function(res){
+        return res.data;
+      }, function(err) {
+        console.error(err);
+      })
+  };
+
   return {
-    bill : bill,
-    getBillSummary : getBillSummary
+    getSummary : getSummary,
+    getInfo: getInfo
   }
 })
 .factory('SalesTax', function($http){
@@ -205,18 +214,28 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('RepBills', function($http){
-  var bills;
+  // STORE user selection
+  var storage = { selectedBill: null };
+
   function getBillsFromRepId(ref) {
     return $http.post('/getBills', ref)
       .then(function(res){
-        bills = res.data;
+        console.log(res.data);
         return res.data;
       }, function(error) {
         console.log(error)
       });
-  }
+  };
+
   return {
-    bills: bills,
-    getBillsFromRepId: getBillsFromRepId
+    // RETRIEVE selected bill
+    getSelectedBill: function() {
+      return storage.selectedBill;
+    },
+    // CACHE selected bill
+    setSelectedBill: function(value) {
+      storage.selectedBill = value;
+    },
+    getBillsFromRepId: getBillsFromRepId,
   }
 });
