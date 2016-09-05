@@ -1,17 +1,29 @@
 angular.module('app.bill', [])
-.controller('BillSummary', ['$scope', 'GetBillSummary', '$state', function ($scope, GetBillSummary, $state) {
+.controller('BillSummary', ['$scope', 'Bill', '$state', 'RepBills', '$sce', function ($scope, Bill, $state, RepBills, $sce) {
+
+  var bill = RepBills.getSelectedBill();
+
   $scope.getBillSum = function () {
-    GetBillSummary.getBillSummary($scope.bill_id)
-      .then(function(data){
-        $scope.billTitle = GetBillSummary.bill.complete.title;
-        $scope.introDate = GetBillSummary.bill.complete.introduced_date;
-        $scope.curBillStatus = GetBillSummary.bill.complete.current_status_description;
-        $scope.officialIntro = GetBillSummary.bill.complete.titles[1][2];
-        $scope.sponsor = GetBillSummary.bill.complete.sponsor;
-        $scope.cosponsors = GetBillSummary.bill.complete.cosponsors;
-        $scope.billDetail = GetBillSummary.bill.complete;
+
+    Bill.getSummary($scope.bill)
+      .then(function(summaryFragments){
+          $scope.summaryFragments = summaryFragments.map(function(summaryFragment){
+            return $sce.trustAsHtml(summaryFragment);
+          });
       });
-  }
+
+    Bill.getInfo($scope.bill)
+      .then(function(billInfo){
+        $scope.introDate = billInfo.introduced_date;
+        $scope.officialIntro = billInfo.titles[0][2];
+        $scope.billTitle = (billInfo.titles[2] ? billInfo.titles[2][2] : undefined);
+        $scope.curBillStatus = billInfo.current_status_description;
+        $scope.sponsor = billInfo.sponsor;
+        $scope.cosponsors = billInfo.cosponsors;
+        $scope.sponsor_role = billInfo.sponsor_role;
+      });
+
+  };
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguideid});
   }
