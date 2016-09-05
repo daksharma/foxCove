@@ -19,7 +19,6 @@ var newsfeed         = require('./server/modules/news-feed');
 var info             = require('./server/modules/basic-info');
 var localReps        = require('./server/modules/local-officials');
 var getRep           = require('./server/modules/get-rep');
-var billInfo         = require('./server/modules/bill-info');
 var pollWiki         = require('./server/modules/get-wiki');
 var getReps          = require('./server/modules/get-reps');
 var getProfile       = require('./server/modules/get-profile');
