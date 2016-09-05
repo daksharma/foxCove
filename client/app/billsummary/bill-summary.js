@@ -27,6 +27,11 @@ angular.module('app.bill', [])
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguideid});
   };
+
+  $scope.goHome = function() {
+    $state.go('home');
+  };
+
 }]);
 
 // in the html you can use this instead of dot operation

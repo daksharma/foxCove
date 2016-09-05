@@ -6,4 +6,8 @@ angular.module('app.home', [])
     $state.go('searchZip', {zipcode: $scope.location});
   };
 
+  $scope.goHome = function() {
+    $state.go('home');
+  };
+
 }]);

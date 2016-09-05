@@ -17,10 +17,6 @@ angular.module('app.helperFactories', [])
     getRepFromZip: getRepFromZip
   };
 })
-.factory('SearchResult',function() {
-// Is this a thing? Can we get rid of it?
-
-})
 .factory('RepProfile', function($http) {
   var repObject = {};
 
@@ -236,6 +232,6 @@ angular.module('app.helperFactories', [])
     setSelectedBill: function(value) {
       storage.selectedBill = value;
     },
-    getBillsFromRepId: getBillsFromRepId,
+    getBillsFromRepId: getBillsFromRepId
   };
 });

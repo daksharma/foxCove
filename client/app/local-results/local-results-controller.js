@@ -15,6 +15,10 @@ angular.module('app.localResults', [])
     $state.go('searchZip', {zipcode: $scope.location});
   };
 
+  $scope.goHome = function() {
+    $state.go('home');
+  };
+
   $scope.loadZip = function() {
     if ($scope.location.match(/^\d{5}$/)) { // Validate 5-digit input
       Location.getRepFromZip($scope.location)
