@@ -50,7 +50,7 @@
   </div>
 
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
-    <div class="column">
+    <div class="column" data-ng-if="rep.affiliations.industries">
       <div class="callout">
         <p class="head">{{rep.firstname}}'s top industry contributors:</p>
         <ul>
@@ -59,7 +59,7 @@
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
       </div>
     </div>
-    <div class="column">
+    <div class="column" data-ng-if="rep.affiliations.companies">
       <div class="callout">
         <p class="head">{{rep.title}}. {{rep.lastname}}'s top donors:</p>
         <ul>

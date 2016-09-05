@@ -40,7 +40,11 @@ angular.module('app.personProfile',[])
   $scope.getBills = function(rep) {
     RepBills.getBillsFromRepId({bioguideId: rep.bioguide_id})
       .then(function(results) {
-        $scope.bills = results.results;
+        if (results) {
+          $scope.bills = results.results;
+        } else {
+          $scope.bills = ['Sorry, no records of sponsored bills available.']
+        }
       });
   }
 
