@@ -56,4 +56,8 @@ angular.module('app.personProfile',[])
     $state.go('errorResponse', {str: str});
   };
 
+  $scope.goHome = function() {
+    $state.go('home');
+  };
+
 }]);

@@ -1,5 +1,5 @@
 <div class="row centered" data-ng-controller="HomeController">
-  <h1 class="head" style="text-align: center"><img src="images/fox-orange.svg" width="50px"> Foxcove</h1>
+  <h1 class="head" style="text-align: center" data-ng-click="goHome()"><img src="images/fox-orange.svg" width="50px"> Foxcove</h1>
   <div>
     <div class="input-group" name="location-form" data-ng-submit="submit()" data-ng-init="loadZip()">
       <input type="text" name="zipField" placeholder="enter your ZIP code" class="input-group-field search-bar" data-ng-model="location" data-ng-enter="submit()">
