@@ -126,8 +126,8 @@ angular.module('app.helperFactories', [])
   function getStateLegsFromGeo(coordinates) {
     return $http.post('/getStateLegs', coordinates)
       .then(function(res){
-        legislators.data = res.data
-        legislators.data.forEach((v) => {
+        legislators.data = res.data;
+        legislators.data.forEach(function(v) {
           v.party = v.party.replace('Democratic', 'Democrat');
           legislators.state = v.state; // This is a cheap move that should be done in the first Zipcode lookup above
         });
