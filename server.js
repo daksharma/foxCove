@@ -32,7 +32,6 @@ var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getRepBills      = require('./server/modules/get-bills');
-var getSummary       = require('./server/modules/get-summary');
 var getStateLegs     = require('./server/modules/get-state-legs');
 var bills            = require('./server/modules/bills');
 
