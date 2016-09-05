@@ -5,22 +5,22 @@
       <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
-        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" data-ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" data-ng-model="location" data-ng-pattern="/^\d{5}$/" data-ng-controller="HomeController" data-ng-enter="submit()">
     </div>
   </div>
   <!-- /Navigation -->
   <div class="row" style="margin-top: 1rem" data-ng-if="map">
     <div class="medium-6 columns medium-push-6" style="margin-top: .5rem">
-      <img class="thumbnail" ng-src="{{map}}">
+      <img class="thumbnail" data-ng-src="{{map}}">
     </div>
     <div class="medium-6 columns medium-pull-6" style="margin-top: .5rem" data-ng-if="reps">
       <h3 class="head">Your US Legislators</h3>
       <p>
         <ul class="row small-up-3 rep-cols">
-          <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
+          <li class="column grid-list" data-ng-repeat="rep in reps | orderBy : '-title'" data-ng-class="{active : isSelected(rep)}">
             <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
-              <span class="resize circular {{rep.affiliation}} feature" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
-                <span class="secondary badge"><img ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
+              <span class="resize circular {{rep.affiliation}} feature" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" data-ng-click="loadProfile(rep)">
+                <span class="secondary badge"><img data-ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
                 </span>
             </span>
           </li>
@@ -30,11 +30,11 @@
     <div class="medium-6 columns medium-pull-6" data-ng-if="stateLegs">
       <h3 class="head">Your {{state}} Legislators</h3>
       <ul class="row small-up-3 rep-cols">
-        <li class="column grid-list" ng-repeat="leg in stateLegs">
+        <li class="column grid-list" data-ng-repeat="leg in stateLegs">
           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{leg.title}} {{leg.full_name}} ({{leg.party}})">
-            <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url || null}})" alt="{{leg.full_name}}" ng-click="loadProfile(leg)">
+            <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url || null}})" alt="{{leg.full_name}}" data-ng-click="loadProfile(leg)">
               <!--This State Legislator profile adaptation isn't in place yet, but when it is it will work the exact same as the federal-->
-              <span class="secondary badge down"><img ng-src="images/{{leg.party}}.svg" width="16px"></span>
+              <span class="secondary badge down"><img data-ng-src="images/{{leg.party}}.svg" width="16px"></span>
             </span>
           </span>
         </li>
@@ -43,10 +43,10 @@
     <div class="medium-6 columns medium-pull-6" data-ng-if="officials">
       <h3 class="head">Your State & Local Officials</h3>
       <p>
-        <span ng-repeat="official in officials" data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
+        <span data-ng-repeat="official in officials" data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
           <a href='{{official.urls[0]}}'>
             <span class="link graff" alt="{{official.name}}">
-              <span class="{{official.party}}  badge"><img ng-src="images/{{official.party}}.svg" width="14px"></span>
+              <span class="{{official.party}}  badge"><img data-ng-src="images/{{official.party}}.svg" width="14px"></span>
               {{official.title}}: {{official.name}}
             </span>
           </a>
@@ -61,7 +61,7 @@
       <h3 class="head">Local Taxes (in design)</h3>
       <p>Total sales tax in {{location}}: {{taxes.total}}</p>
       <ul>
-      <li ng-repeat="item in taxes.breakdowns">{{item}}</li>
+      <li data-ng-repeat="item in taxes.breakdowns">{{item}}</li>
       </ul>
     </div>
     <div class="medium-4 columns">

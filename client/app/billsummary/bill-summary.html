@@ -1,28 +1,31 @@
-<div ng-controller="BillSummary" ng-init="getBillSum()">
+<div data-ng-controller="BillSummary" data-ng-init="getBillSum()">
 
   <div class="title-bar" style="height: 35px">
     <div class="left">
       <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
-        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" data-ng-model="location" data-ng-pattern="/^\d{5}$/" data-ng-controller="HomeController" data-ng-enter="submit()">
     </div>
   </div>
   <div class="row medium-8 large-7 columns graff" style="margin-top: 1rem;">
     <div class="blog-post">
       <h4 class="head">{{billTitle}}</h4> <small>Introduced: {{introDate | date}}</small>
       <div class="callout">
-        <p><span class="head">Described as:</span> {{officialIntro}}</p>
+        <p>
+          <span class="head" data-ng-if="officialIntro">Described as:</span> {{officialIntro}}
+          <span class="head" data-ng-if="!officialIntro">Sorry, we have no details for this bill.</span>
+        </p>
         <p data-ng-if="billDetail.link"><a class="link" data-ng-href="{{billDetail.link}}">More detail at Govtrack.us</a>.</p>
 			</div>
       <div>
         <p>
-				  <span ng-click="loadProfile(sponsor)">
-					  Sponsored by <span class="link" style="font-weight: 600">{{sponsor.firstname}} {{sponsor.lastname}} ({{billDetail.sponsor_role.description}})</span>
+				  <span data-ng-click="loadProfile(sponsor)" data-ng-if="sponsor">
+					  Sponsored by <span class="link" style="font-weight: 600" >{{sponsor.firstname}} {{sponsor.lastname}} ({{billDetail.sponsor_role.description}})</span>
 				  </span>
 				<br />
-				Cosponsors: 
-					<span class="link" ng-repeat="cosponsor in cosponsors" ng-click="loadProfile(cosponsor)" ng-class="{active : isSelected(cosponsor)}">
+				<span data-ng-if="cosponsors">Cosponsors: </span>
+					<span class="link" data-ng-repeat="cosponsor in cosponsors" data-ng-click="loadProfile(cosponsor)" data-ng-class="{active : isSelected(cosponsor)}">
 						{{cosponsor.firstname}} {{cosponsor.lastname}}&nbsp;&middot;&nbsp;
 					</span>
 				</p>
