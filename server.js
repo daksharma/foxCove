@@ -33,7 +33,8 @@ var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getRepBills      = require('./server/modules/get-bills');
-var getSummary    = require('./server/modules/get-summary');
+var getSummary       = require('./server/modules/get-summary');
+var getStateLegs     = require('./server/modules/get-state-legs');
 
 var app = module.exports = express();
 
@@ -96,14 +97,18 @@ app.post('/getGeo', function(req, res) {
 
 app.post('/getSalesTax', function(req, res) {
   getSalesTax(req, res)
-})
+});
 
 app.post('/getRepAffiliation', function(req, res) {
   getAffiliation(req, res)
-})
+});
 
 app.post('/getBills', function(req, res) {
   getRepBills(req, res, res.send.bind(res));
+});
+
+app.post('/getStateLegs', function(req, res) {
+  getStateLegs(req, res, res.send.bind(res));
 });
 
 // This routine is going to require some TLC to move. For some reason it

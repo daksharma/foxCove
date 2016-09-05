@@ -30,7 +30,6 @@ angular.module('app.personProfile',[])
   $scope.getBills = function(rep) {
     RepBills.getBillsFromRepId({bioguideId: rep.bioguide_id})
       .then(function(results) {
-        $scope.billSelect = $scope.bills[0];
         $scope.bills = results.results;
       });
   }
@@ -38,5 +37,5 @@ angular.module('app.personProfile',[])
     $state.go('billSummary', bill);
   }
 
-  $scope.format = Affiliations.formatCurrency
+  // $scope.format = Affiliations.formatCurrency
 }]);

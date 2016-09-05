@@ -1,17 +1,5 @@
 angular.module('app.localResults', [])
 
-
-      // Adding this function to retrieve local legislators on account of they aren't in the local officials. Need to consolidate
-      // the current local officials into a single module first to avoid confususion.
-      // 'openstates.org/api/v1/legislators/geo/?lat=' + geo[1] + '&' + long=geo[0]
-
-      //   .then(function() {
-      //     LocalReps.getRepsFromGeo($scope.geo, function(results) {
-      //       $scope.localReps = results;
-      //   })
-      // })
-
-
 .controller('ResultsController', 
   ['$scope',
     'Location', 
@@ -20,7 +8,8 @@ angular.module('app.localResults', [])
     'ZipCoords', 
     'LocalMap', 
     'SalesTax',
-    function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax) {
+    'StateLeg',
+    function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax, StateLeg) {
   
   $scope.submit = function() {
     $state.go('searchZip', {zipcode: $scope.location})
@@ -69,14 +58,25 @@ angular.module('app.localResults', [])
           LocalMap.getMapFromGeo($scope.geo, function(results) {
             $scope.map = 'images/maps/' + results;
           });
-        });    
+        })
+        .then(function() {
+          StateLeg.getStateLegsFromGeo($scope.geo)
+            .then(function(results) {
+              $scope.stateLegs = results.data; // Todo — Sort out what gives with the factory objects for all of these.
+              $scope.state = results.state.toUpperCase();
+            });
+        });   
     } else {
       $scope.nope(); // Redirect to error message state
     }
   }
 
   $scope.loadProfile = function (rep) {
-    $state.go('repProfile', {bioguide_id: rep.bioguide_id});
+    if (rep.bioguide_id) {
+      $state.go('repProfile', {bioguide_id: rep.bioguide_id});
+    } else if (rep.leg_id) {
+      $state.go('repProfile', {leg_id: rep.leg_id}); // Gonna build out the profile to work for both state and federal legislators
+    }
   }
 
   $scope.nope = function() {

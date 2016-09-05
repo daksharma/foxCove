@@ -18,7 +18,7 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('SearchResult',function() {
-
+// Is this a thing? Can we get rid of it?
 
 })
 .factory('RepProfile', function($http) {
@@ -119,6 +119,26 @@ angular.module('app.helperFactories', [])
   }
   return {
     getOfficials: getOfficials
+  }
+})
+.factory('StateLeg', function($http){
+  var legislators = {};
+  function getStateLegsFromGeo(coordinates) {
+    return $http.post('/getStateLegs', coordinates)
+      .then(function(res){
+        legislators.data = res.data
+        legislators.data.forEach((v) => {
+          v.party = v.party.replace('Democratic', 'Democrat');
+          legislators.state = v.state; // This is a cheap move that should be done in the first Zipcode lookup above
+        });
+        return legislators;
+      }, function(error) {
+        console.log(error)
+      });
+  }
+  return {
+    legislators: legislators,
+    getStateLegsFromGeo: getStateLegsFromGeo
   }
 })
 .factory('GetBillSummary', function($http) {
