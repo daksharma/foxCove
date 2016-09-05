@@ -82,4 +82,6 @@ angular.module('app.personProfile',[])
     $state.go('home');
   };
 
+  $scope.format = Affiliations.formatCurrency
+
 }]);
