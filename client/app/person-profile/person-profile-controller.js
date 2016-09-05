@@ -4,10 +4,9 @@ angular.module('app.personProfile',[])
 
   $scope.build = function() {
     var person = $state.params;
-    console.log(person)
-    if (person.leg_id) {
+    if (person.leg_id && person.leg_id.match(/\w{1,3}\d{6}/) !== null) {
       console.log('STATE REP: ', person);
-    } else if (person.bioguide_id) {
+    } else if (person.bioguide_id && person.bioguide_id.match(/\w{1}\d{6}/) !== null) {
     RepProfile.getRepFromBioId(person)
       .then(function(results){
         RepProfile.repObject = results;
@@ -18,7 +17,7 @@ angular.module('app.personProfile',[])
         $scope.getBills($scope.rep);
       })
     } else {
-      $scope.nope(personId);
+      $scope.nope(person.bioguide_id);
     }
   };
 
