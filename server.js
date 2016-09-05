@@ -33,11 +33,8 @@ var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getRepBills      = require('./server/modules/get-bills');
-<<<<<<< c9a9696743c7a140dc6c6a9414f282da12e53ed2
-var getSummary    = require('./server/modules/get-summary');
-=======
+var getSummary       = require('./server/modules/get-summary');
 var getStateLegs     = require('./server/modules/get-state-legs');
->>>>>>> [feature] Build out state legislator node module
 
 var app = module.exports = express();
 
