@@ -20,12 +20,12 @@ module.exports = function(req, res){
         output.industryLink = data.response.industries['@attributes'].source; //link to opensecret page
         output.industries = [];
         var arr = data.response.industries.industry;
-        var rounds = Math.min(arr.length, 5)
+        var rounds = Math.min(arr.length, 5);
         for(var i = 0; i < rounds; i++){
-            output.industries.push(arr[i]["@attributes"])
+            output.industries.push(arr[i]["@attributes"]);
         }
-        res.send(output)
-    }
+        res.send(output);
+    };
 
     var collectCompanies = function(error, response, data){
         if (error) throw error;
@@ -33,30 +33,27 @@ module.exports = function(req, res){
         output.companyLink = data.response.contributors['@attributes'].source; //link to opensecret page
         output.companies = [];
         var arr = data.response.contributors.contributor;
-        var rounds = Math.min(arr.length, 5)
+        var rounds = Math.min(arr.length, 5);
         for(var i = 0; i < rounds; i++){
-            output.companies.push(arr[i]["@attributes"])
+            output.companies.push(arr[i]["@attributes"]);
         }
-        request(topIndustries, collectIndustries)
-    }
-
+        request(topIndustries, collectIndustries);
+    };
 
     var collectPositions = function(error, response, data){
         if (error) throw error;
         data = JSON.parse(data);
         output.positions = [];
         if(data.response.member_profile.positions){
-            console.log("here****")
+            console.log("here****");
             var arr = data.response.member_profile.positions.position;
             for(var i = 0; i < arr.length; i++){
-                var tmp = arr[i]["@attributes"]
-                output.positions.push(tmp)
-           }   
+                var tmp = arr[i]["@attributes"];
+                output.positions.push(tmp);
+           }
         }
-        request(topCompanies, collectCompanies)
-    }
+        request(topCompanies, collectCompanies);
+    };
 
-    request(positions, collectPositions)
-}
-
-
+    request(positions, collectPositions);
+};

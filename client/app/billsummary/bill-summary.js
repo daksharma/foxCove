@@ -26,7 +26,7 @@ angular.module('app.bill', [])
   };
   $scope.loadProfile = function (rep) {
     $state.go('repProfile', {bioguide_id: rep.bioguideid});
-  }
+  };
 }]);
 
 // in the html you can use this instead of dot operation

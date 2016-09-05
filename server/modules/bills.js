@@ -98,7 +98,7 @@ module.exports.info = function (congress, type, number, callback) {
     sres: "senate_resolution",
     sjres: "senate_joint_resolution",
     sconres: "senate_concurrent_resolution"
-  }
+  };
 
   var url = 'https://www.govtrack.us/api/v2/bill/';
 
@@ -121,7 +121,7 @@ module.exports.info = function (congress, type, number, callback) {
           callback(data);
         } else {
           console.error(error);
-        };
+        }
       });
     } else {
       console.error(error);
@@ -143,7 +143,7 @@ module.exports.summPromiseMap = function(bills, callback){
         bill.summary = data;
         // RESOLVE promise
         resolve(bill);
-      })
+      });
     });
   });
 
@@ -154,5 +154,5 @@ module.exports.summPromiseMap = function(bills, callback){
   })
   .catch(function(err){
     console.error(err);
-  })
-}
+  });
+};

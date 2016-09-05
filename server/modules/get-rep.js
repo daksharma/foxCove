@@ -13,4 +13,4 @@ module.exports = function(bioguide_id, res, callback){
       callback(obj);
     }
   });
-}
+};

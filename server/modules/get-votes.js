@@ -14,4 +14,4 @@ module.exports = function(res, req){
 //   civicInfo.voterInfo({electionID: '4000', address: '1500 Market Street, Philadelphia, PA'}, function(data) {
 // console.log(data);
 // });
-}
+};

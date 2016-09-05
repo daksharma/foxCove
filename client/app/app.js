@@ -54,7 +54,7 @@ angular.module('foxCove', [
         congress: $stateParams.congress,
         number: $stateParams.number,
         type: $stateParams.type
-      }
+      };
     }
   });
 

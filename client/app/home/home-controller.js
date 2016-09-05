@@ -4,6 +4,6 @@ angular.module('app.home', [])
 
   $scope.submit = function() {
     $state.go('searchZip', {zipcode: $scope.location});
-  }
+  };
 
 }]);

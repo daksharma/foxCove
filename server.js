@@ -24,7 +24,7 @@ var getReps          = require('./server/modules/get-reps');
 var getProfile       = require('./server/modules/get-profile');
 var getVotes         = require('./server/modules/get-votes');
 var getLocalReps     = require('./server/modules/get-local-reps');
-var getSalesTax      = require('./server/modules/local-tax')
+var getSalesTax      = require('./server/modules/local-tax');
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
@@ -74,11 +74,11 @@ app.post('/getGeo', function(req, res) {
 });
 
 app.post('/getSalesTax', function(req, res) {
-  getSalesTax(req, res)
+  getSalesTax(req, res);
 });
 
 app.post('/getRepAffiliation', function(req, res) {
-  getAffiliation(req, res)
+  getAffiliation(req, res);
 });
 
 app.post('/billSummary', function(req, res) {
@@ -124,7 +124,7 @@ app.post('/getMap', function(req, res) {
             console.log('Something went wrong.');
             return false;
           }
-        })
+        });
       }
     });
   };

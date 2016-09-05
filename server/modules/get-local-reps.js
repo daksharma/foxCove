@@ -4,6 +4,6 @@ module.exports = function (req, res) {
   var inputPackage  = req.body;
   var outputPackage = {};
   localReps.getOfficials(inputPackage, outputPackage, function () {
-    res.send(outputPackage)
-  })
+    res.send(outputPackage);
+  });
 };

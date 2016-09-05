@@ -8,7 +8,7 @@ module.exports.getOfficials = function(inputPackage, outputPackage, nextCB){
   var requestCallback = function(error, response, data){
     if( error ){
       console.error(error);
-    } else {  
+    } else {
       data = JSON.parse(data);
       outputPackage.city = data.normalizedInput.city;
       var offices = data.offices;
@@ -20,19 +20,18 @@ module.exports.getOfficials = function(inputPackage, outputPackage, nextCB){
             if(!outputPackage[title]){
               outputPackage[title] = [];
             }
-            outputPackage[title].push(data.officials[index])
+            outputPackage[title].push(data.officials[index]);
           }
          }
       }
       nextCB();
     }
-  }
+  };
 
   var httpRequestOptions = {
     url: 'https://www.googleapis.com/civicinfo/v2/representatives?address='+inputPackage.zip+'&key=' + process.env.GOOGLE_API,
-  }
+  };
 
   request(httpRequestOptions, requestCallback);
 
 };
-

@@ -1,5 +1,5 @@
-var request = require('request')
-var capitalize = require('./capitalize')
+var request = require('request');
+var capitalize = require('./capitalize');
 module.exports = function(req, res){
     // console.log(req.body)
     var input = req.body;
@@ -15,13 +15,13 @@ module.exports = function(req, res){
         var arr = data.rates;
         if (arr) {
             for(var i = 0; i < arr.length; i++){
-                var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%"
-                output.breakdowns.push(str)
+                var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%";
+                output.breakdowns.push(str);
             }
         }
-        res.send(output)
-    }
+        res.send(output);
+    };
 
-    request(destination, requestCallback)
+    request(destination, requestCallback);
 
-}
+};

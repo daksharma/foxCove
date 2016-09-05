@@ -1,19 +1,19 @@
 angular.module('app.localResults', [])
 
-.controller('ResultsController', 
+.controller('ResultsController',
   ['$scope',
-    'Location', 
-    '$state', 
-    'LocalOfficials', 
-    'ZipCoords', 
-    'LocalMap', 
+    'Location',
+    '$state',
+    'LocalOfficials',
+    'ZipCoords',
+    'LocalMap',
     'SalesTax',
     'StateLeg',
     function($scope, Location, $state, LocalOfficials, ZipCoords, LocalMap, SalesTax, StateLeg) {
-  
+
   $scope.submit = function() {
-    $state.go('searchZip', {zipcode: $scope.location})
-  }
+    $state.go('searchZip', {zipcode: $scope.location});
+  };
 
   $scope.loadZip = function() {
     if ($scope.location.match(/^\d{5}$/)) { // Validate 5-digit input
@@ -34,13 +34,13 @@ angular.module('app.localResults', [])
               var arr = results[key];
               for(var i = 0; i < arr.length;i++){
                 if(!arr[i].photoUrl){
-                  arr[i].photoUrl = 'css/foundation-icons/svgs/fi-torso-business.svg'
+                  arr[i].photoUrl = 'css/foundation-icons/svgs/fi-torso-business.svg';
                 }
                 if(arr[i].party === "Democratic"){
-                  arr[i].party = "Democrat"
+                  arr[i].party = "Democrat";
                 }
                 arr[i].title = key;
-                $scope.officials.push(arr[i])
+                $scope.officials.push(arr[i]);
               }
             }
           }
@@ -48,7 +48,7 @@ angular.module('app.localResults', [])
       SalesTax.getSalesTax($scope.location)
         .then(function(results){
           $scope.taxes = results;
-        })
+        });
       ZipCoords.getGeoFromZip({zipcode: $scope.location})
         .then(function(results) {
           $scope.geo = results.data.slice(0, 2);
@@ -65,11 +65,11 @@ angular.module('app.localResults', [])
               $scope.stateLegs = results.data; // Todo — Sort out what gives with the factory objects for all of these.
               $scope.state = results.state.toUpperCase();
             });
-        });   
+        });
     } else {
       $scope.nope(); // Redirect to error message state
     }
-  }
+  };
 
   $scope.loadProfile = function (rep) {
     if (rep.bioguide_id) {
@@ -77,10 +77,10 @@ angular.module('app.localResults', [])
     } else if (rep.leg_id) {
       $state.go('repProfile', {leg_id: rep.leg_id}); // Gonna build out the profile to work for both state and federal legislators
     }
-  }
+  };
 
   $scope.nope = function() {
     $state.go('errorResponse', {str: $scope.location});
-  }
+  };
 
 }]);

@@ -13,14 +13,14 @@ module.exports.getNews = function(inputPackage, outputPackage, nextCB){
         outputPackage.news = data.response.results;
         nextCB();
     }
-  }
+  };
 
   var httpRequestOptions = {
     url: 'http://content.guardianapis.com/search?q=' + inputPackage.firstName + "," + inputPackage.lastName + "," + inputPackage.role + ',politics/sectionId=politics',
     headers: {
       'api-key': key.guardian,
     }
-  }
+  };
 
   request(httpRequestOptions, requestCallback);
 
