@@ -90,8 +90,8 @@ module.exports.summary = function(congress, type, number, callback){
 module.exports.info = function (congress, type, number, callback) {
 
   var conversionObj = {
-    hr: "house_resolution",
-    hres: "house_bill",
+    hr: "house_bill",
+    hres: "house_resolution",
     hjres: "house_joint_resolution",
     hconres: "house_concurrent_resolution",
     s: "senate_bill",
@@ -118,7 +118,6 @@ module.exports.info = function (congress, type, number, callback) {
       // GET bill from id
       request(url + JSON.parse(data).objects[0].id, function(error, response, data) {
         if( !error && response.statusCode === 200 ){
-          console.log('data:', data);
           callback(data);
         } else {
           console.error(error);
