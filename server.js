@@ -17,7 +17,6 @@ var bookshelf   = require('./db/pg-db-config');
 
 
 // SERVER REQUEST HANDLER MODULES
-var sponsorship      = require('./server/modules/sponsorship-history');
 var newsfeed         = require('./server/modules/news-feed');
 var info             = require('./server/modules/basic-info');
 var localReps        = require('./server/modules/local-officials');
@@ -33,8 +32,8 @@ var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getRepBills      = require('./server/modules/get-bills');
-var getSummary       = require('./server/modules/get-summary');
 var getStateLegs     = require('./server/modules/get-state-legs');
+var bills            = require('./server/modules/bills');
 
 var app = module.exports = express();
 
@@ -74,16 +73,8 @@ app.post('/getBio', function(req, res) {
 });
 
 app.post('/sponsorship', function(req, res) {
-  sponsorship(req.body.bioguide_id, function(sponsorshipHist) {
-    var bills = JSON.parse(sponsorshipHist).results;
-    bills.forEach(function(bill, i){
-      getSummary(bill.congress, bill.bill_type, bill.number, function(data){
-        bill.summary = data;
-        if( i === 4 ){
-          res.send(bills);
-        }
-      });
-    })
+  bills.history(req.body.bioguide_id, function(history) {
+    bills.summPromiseMap(JSON.parse(history).results, res.send.bind(res));
   });
 });
 
