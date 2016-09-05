@@ -13,7 +13,7 @@ module.exports.history = function(bioguide_id, callback){
   var queryFieldFilters = querystring.stringify({
     sponsor_id__in: bioguide_id,
     // ADD or REMOVE query fields here:
-    per_page: '5',
+    per_page: '20',
     fields: [
       'congress',
       'number',
