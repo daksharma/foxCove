@@ -1,11 +1,11 @@
-<div ng-controller="ProfileController" ng-init="build()">
+<div data-ng-controller="ProfileController" data-ng-init="build()">
   <!-- Navigation -->
   <div class="title-bar" style="height: 35px">
     <div class="left">
       <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
-        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 75%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 75%" data-ng-model="location" data-ng-pattern="/^\d{5}$/" data-ng-controller="HomeController" data-ng-enter="submit()">
     </div>
   </div>
   <!-- /Navigation -->
@@ -15,7 +15,7 @@
   <div class="row">
 
     <div class="large-3 medium-3 columns">
-      <img ng-src="{{rep.img}}" alt="{{rep.firstname}} {{rep.lastname}}">
+      <img data-ng-src="{{rep.img}}" alt="{{rep.firstname}} {{rep.lastname}}">
     </div>
 
     <div class="medium-7 large-6 columns">
@@ -26,13 +26,13 @@
           <div class="row graff">
             <div class="small-12 columns">
               <label>Sponsored Bills
-                <select name="billSelect" ng-model="model.bill_id">
-                  <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill.number}}">{{bill.popular_title || bill.short_title || bill.bill_id}}</option>
+                <select name="billSelect" data-ng-model="model.bill_id">
+                  <option data-ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill.number}}">{{bill.popular_title || bill.short_title || bill.bill_id}}</option>
                 </select>
               </label>
             </div>
             <div class="small-12 columns">
-              <button type="submit" class="success small hollow button" ng-click="loadBill(model)">Get Details</button>
+              <button type="submit" class="success small hollow button" data-ng-click="loadBill(model)">Get Details</button>
             </div>
           </div>
         </form>
@@ -50,20 +50,20 @@
   </div>
 
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
-    <div class="column">
+    <div class="column" data-ng-if="rep.affiliations.industries">
       <div class="callout">
         <p class="head">{{rep.firstname}}'s top industry contributors:</p>
         <ul>
-          <li ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
+          <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
       </div>
     </div>
-    <div class="column">
+    <div class="column" data-ng-if="rep.affiliations.companies">
       <div class="callout">
         <p class="head">{{rep.title}}. {{rep.lastname}}'s top donors:</p>
         <ul>
-          <li ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: {{format(donor.total, "$")}}
+          <li data-ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: {{format(donor.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.companyLink}}">more...</a></p>
       </div>
@@ -72,8 +72,8 @@
     <div class="column" data-ng-if="rep.affiliations.positions[0]">
       <div class="callout">
         <p class="head">Other positions held by {{rep.firstname}}:</p>
-        <ul ng-show="rep.affiliations.positions[0]">
-          <li ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}
+        <ul data-ng-show="rep.affiliations.positions[0]">
+          <li data-ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}
         </ul>
       </div>
     </div>
