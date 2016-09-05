@@ -120,10 +120,11 @@ app.post('/getMap', function(req, res) {
             res.pipe(
               fs.createWriteStream(
                 __dirname + '/client/images/maps/' + mapPath
-              )
+              ).on('finish', function() {
+                cb(mapPath);
+                return mapPath;
+              }.bind(res))
             );
-            cb(mapPath);
-            return mapPath;
           } else {
             console.log('Something went wrong.');
             return false;
