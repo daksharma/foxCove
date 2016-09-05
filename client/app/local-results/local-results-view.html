@@ -1,19 +1,19 @@
-<div ng-controller="ResultsController" ng-init="loadZip()">
+<div data-ng-controller="ResultsController" data-ng-init="loadZip()">
 
   <div class="title-bar" style="height: 35px">
     <div class="left">
       <div class="head"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
-        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
+        <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" data-ng-model="location" ng-pattern="/^\d{5}$/" ng-controller="HomeController" ng-enter="submit()">
     </div>
   </div>
   <!-- /Navigation -->
-  <div class="row" style="margin-top: 1rem">
+  <div class="row" style="margin-top: 1rem" data-ng-if="map">
     <div class="medium-6 columns medium-push-6" style="margin-top: .5rem">
       <img class="thumbnail" ng-src="{{map}}">
     </div>
-    <div class="medium-6 columns medium-pull-6" style="margin-top: .5rem">
+    <div class="medium-6 columns medium-pull-6" style="margin-top: .5rem" data-ng-if="reps">
       <h3 class="head">Your US Legislators</h3>
       <p>
         <ul class="row small-up-3 rep-cols">
@@ -27,7 +27,7 @@
         </ul>
       </p>
     </div>
-    <div class="medium-6 columns medium-pull-6">
+    <div class="medium-6 columns medium-pull-6" data-ng-if="stateLegs">
       <h3 class="head">Your {{state}} Legislators</h3>
       <ul class="row small-up-3 rep-cols">
         <li class="column grid-list" ng-repeat="leg in stateLegs">
@@ -40,7 +40,7 @@
         </li>
       </ul>
     </div>
-    <div class="medium-6 columns medium-pull-6">
+    <div class="medium-6 columns medium-pull-6" data-ng-if="officials">
       <h3 class="head">Your State & Local Officials</h3>
       <p>
         <span ng-repeat="official in officials" data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="row graff" style="margin-top: 1rem">
+  <div class="row graff" style="margin-top: 1rem" data-ng-if="map">
     <div class="medium-4 columns">
       <!--MOVED THIS ONE TO THE FRONT, BUT IT CAN BE MOVED ELSEWHERE-->
       <h3 class="head">Local Taxes (in design)</h3>
