@@ -56,4 +56,6 @@ angular.module('app.personProfile',[])
     $state.go('errorResponse', {str: str});
   }
 
+  $scope.format = Affiliations.formatCurrency
+
 }]);
