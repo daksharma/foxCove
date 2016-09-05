@@ -13,22 +13,27 @@
       <h4 class="head">{{billTitle}}</h4> <small>Introduced: {{introDate | date}}</small>
       <div class="callout">
         <p>
-          <span class="head" data-ng-if="officialIntro">Described as:</span> {{officialIntro}}
-          <span class="head" data-ng-if="!officialIntro">Sorry, we have no details for this bill.</span>
+          <span class="head" data-ng-if="officialIntro">Official desciption:</span> {{officialIntro}}
+          <!--<span class="head" data-ng-if="!officialIntro">Sorry, we have no official description for this bill.</span>-->
         </p>
-        <span class="head">Bill Summary:</span><div ng-repeat="summaryFragment in summaryFragments"><p ng-bind-html="summaryFragment"> {{ summaryFragment }} </p></div>
-				<p>TODO: Maybe merge this initial API call with a subsequent Sunlight API call to build out a more robust description. There's a lot that can be done here if anyone feels like it. Tons of interactions and transactions to filter and display.</p>
+        <p>
+          <span class="head" data-ng-if="summaryFragments">Bill Summary:</span>
+          <!--<span class="head" data-ng-if="!summaryFragments">Sorry, we have no official description for this bill.</span>-->
+        </p>
+        <div data-ng-repeat="summaryFragment in summaryFragments">
+          <p data-ng-bind-html="summaryFragment"> {{ summaryFragment }} </p>
+        </div>
 			</div>
       <div>
         <p>
-				  <span ng-click="loadProfile(sponsor)">
+				  <span data-ng-click="loadProfile(sponsor)" data-ng-if="sponsor">
 					  Sponsored by <span class="link" style="font-weight: 600">{{sponsor.firstname}} {{sponsor.lastname}} ({{sponsor_role.description}})</span>
 				  </span>
-				<br />
-				Cosponsors:
-					<span class="link" ng-repeat="cosponsor in cosponsors" ng-click="loadProfile(cosponsor)" ng-class="{active : isSelected(cosponsor)}">
-						{{cosponsor.firstname}} {{cosponsor.lastname}}&nbsp;&middot;&nbsp;
-					</span>
+				  <p data-ng-if="cosponsors.length > 0">Cosponsors:
+            <span class="link" ng-repeat="cosponsor in cosponsors" data-ng-click="loadProfile(cosponsor)" data-ng-class="{active : isSelected(cosponsor)}">
+              {{cosponsor.firstname}} {{cosponsor.lastname}}&nbsp;&nbsp;
+            </span>
+          </p>
 				</p>
       </div>
     </div>

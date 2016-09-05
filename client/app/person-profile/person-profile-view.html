@@ -26,13 +26,13 @@
           <div class="row graff">
             <div class="small-12 columns">
               <label>Sponsored Bills
-                <select name="billSelect" ng-model="bill">
+                <select name="billSelect" ng-model="model.bill">
                   <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title }}</option>
                 </select>
               </label>
             </div>
             <div class="small-12 columns">
-              <button type="submit" class="success small hollow button" ng-click="loadBill(bill)">Get Details</button>
+              <button type="submit" class="success small hollow button" ng-click="loadBill(model.bill)" data-ng-if="model">Learn More About This Bill</button>
             </div>
           </div>
         </form>
