@@ -53,25 +53,30 @@ angular.module('app.localResults', [])
         .then(function(results) {
           $scope.geo = results.data.slice(0, 2);
           $scope.token = results.data[2];
-          StateLeg.getStateLegsFromGeo($scope.geo)
-            .then(function(results) {
-              console.log('Controller results: ', results)
-              console.log('Factory results: ', StateLeg.reps)
-              $scope.stateLegs = StateLeg.reps;
-            });
         })
         .then(function() {
           LocalMap.getMapFromGeo($scope.geo, function(results) {
             $scope.map = 'images/maps/' + results;
           });
-        });    
+        })
+        .then(function() {
+          StateLeg.getStateLegsFromGeo($scope.geo)
+            .then(function(results) {
+              $scope.stateLegs = results.data; // Todo — Sort out what gives with the factory objects for all of these.
+              $scope.state = results.state.toUpperCase();
+            });
+        });   
     } else {
       $scope.nope(); // Redirect to error message state
     }
   }
 
   $scope.loadProfile = function (rep) {
-    $state.go('repProfile', {bioguide_id: rep.bioguide_id});
+    if (rep.bioguide_id) {
+      $state.go('repProfile', {bioguide_id: rep.bioguide_id});
+    } else if (rep.leg_id) {
+      $state.go('repProfile', {leg_id: rep.leg_id}); // Gonna build out the profile to work for both state and federal legislators
+    }
   }
 
   $scope.nope = function() {

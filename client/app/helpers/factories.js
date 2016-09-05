@@ -123,17 +123,21 @@ angular.module('app.helperFactories', [])
 })
 .factory('StateLeg', function($http){
   var legislators = {};
-  function getStateLegsFromGeo(legs) {
-    return $http.post('/getStateLegs', ref)
+  function getStateLegsFromGeo(coordinates) {
+    return $http.post('/getStateLegs', coordinates)
       .then(function(res){
-        legislators.data = res.data;
-        return res.data;
+        legislators.data = res.data
+        legislators.data.forEach((v) => {
+          v.party = v.party.replace('Democratic', 'Democrat');
+          legislators.state = v.state; // This is a cheap move that should be done in the first Zipcode lookup above
+        });
+        return legislators;
       }, function(error) {
         console.log(error)
       });
   }
   return {
-    legislators: legislators.data,
+    legislators: legislators,
     getStateLegsFromGeo: getStateLegsFromGeo
   }
 })
