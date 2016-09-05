@@ -49,8 +49,10 @@ angular.module('app.personProfile',[])
   }
 
   $scope.loadBill = function (bill) {
-    console.log('bill:', bill);
-    $state.go('billSummary', bill);
+    bill = JSON.parse(bill);
+    // CACHE selected bill
+    RepBills.setSelectedBill(bill);
+    $state.go('billSummary', { congress: bill.congress, type: bill.bill_type, number: bill.number });
   }
 
   $scope.nope = function(str) {

@@ -26,13 +26,13 @@
           <div class="row graff">
             <div class="small-12 columns">
               <label>Sponsored Bills
-                <select name="billSelect" data-ng-model="model.bill_id">
-                  <option data-ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill.number}}">{{bill.popular_title || bill.short_title || bill.bill_id}}</option>
+                <select name="billSelect" ng-model="bill">
+                  <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title }}</option>
                 </select>
               </label>
             </div>
             <div class="small-12 columns">
-              <button type="submit" class="success small hollow button" data-ng-click="loadBill(model)">Get Details</button>
+              <button type="submit" class="success small hollow button" ng-click="loadBill(bill)">Get Details</button>
             </div>
           </div>
         </form>
@@ -57,6 +57,11 @@
           <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
+
+        <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
+        <!-- <p class="lead">People have things to say!</p>
+        <p class="subheader">We can do a thing with that.</p> -->
+
       </div>
     </div>
     <div class="column" data-ng-if="rep.affiliations.companies">
