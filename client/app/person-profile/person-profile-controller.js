@@ -49,6 +49,7 @@ angular.module('app.personProfile',[])
   }
 
   $scope.loadBill = function (bill) {
+    console.log('bill:', bill);
     $state.go('billSummary', bill);
   }
 
