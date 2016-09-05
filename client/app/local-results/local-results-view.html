@@ -9,14 +9,14 @@
     </div>
   </div>
   <!-- /Navigation -->
-  <div class="row" style="margin-top: 1rem">
+  <div class="row" style="margin-top: .5rem">
     <div class="medium-6 columns medium-push-6">
       <img class="thumbnail" ng-src="{{map}}">
     </div>
-    <div class="medium-6 columns medium-pull-6" style="margin-top: 1rem">
+    <div class="medium-6 columns medium-pull-6" style="margin-top: .5rem">
       <h3 class="head">Your US Legislators</h3>
       <p>
-        <ul class="row small-up-6 rep-cols">
+        <ul class="row small-up-4 rep-cols">
           <li class="column grid-list" ng-repeat="rep in reps | orderBy : '-title'" ng-class="{active : isSelected(rep)}">
             <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
               <span class="resize circular {{rep.affiliation}} feature" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" ng-click="loadProfile(rep)">
@@ -27,9 +27,9 @@
         </ul>
       </p>
     </div>
-    <div class="medium-6 columns medium-pull-6" style="margin-top: 1rem">
+    <div class="medium-6 columns medium-pull-6">
       <h3 class="head">Your {{state}} Legislators</h3>
-      <ul class="row small-up-3 rep-cols">
+      <ul class="row small-up-4 rep-cols">
         <li class="column grid-list" ng-repeat="leg in stateLegs">
           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{leg.title}} {{leg.full_name}} ({{leg.party}})">
             <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url || null}})" alt="{{leg.full_name}}" ng-click="loadProfile(leg)">
@@ -40,7 +40,7 @@
         </li>
       </ul>
     </div>
-    <div class="medium-6 columns medium-pull-6" style="margin-top: 1rem">
+    <div class="medium-6 columns medium-pull-6">
       <h3 class="head">Your State & Local Officials</h3>
       <p>
         <span ng-repeat="official in officials" data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{official.title}} {{official.name}} ({{official.party}})">
