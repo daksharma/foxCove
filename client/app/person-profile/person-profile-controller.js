@@ -15,7 +15,7 @@ angular.module('app.personProfile',[])
         $scope.getBio($scope.rep);
         $scope.getAffiliation($scope.rep);
         $scope.getBills($scope.rep);
-      })
+      });
     } else {
       $scope.nope(person.bioguide_id);
     }
@@ -25,35 +25,35 @@ angular.module('app.personProfile',[])
     RepBio.getBioFromRepName({searchString: rep.firstname + '%20' + rep.lastname})
       .then(function(results) {
         rep.bio = results.split('\n')[0] || 'No biographical information available at this time for ' + rep.firstname + ' ' + rep.lastname;
-      })
-  }
-
+      });
+  };
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
         $scope.rep.affiliations = results;
-        $scope.format = Affiliations.formatCurrency
-      })
+        $scope.format = Affiliations.formatCurrency;
+      });
 
-  }
-
+  };
   $scope.getBills = function(rep) {
     RepBills.getBillsFromRepId({bioguideId: rep.bioguide_id})
       .then(function(results) {
         if (results) {
           $scope.bills = results.results;
         } else {
-          $scope.bills = ['Sorry, no records of sponsored bills available.']
+          $scope.bills = ['Sorry, no records of sponsored bills available.'];
         }
       });
-  }
-
+  };
   $scope.loadBill = function (bill) {
-    $state.go('billSummary', bill);
-  }
+    bill = JSON.parse(bill);
+    // CACHE selected bill
+    RepBills.setSelectedBill(bill);
+    $state.go('billSummary', { congress: bill.congress, type: bill.bill_type, number: bill.number });
+  };
 
   $scope.nope = function(str) {
     $state.go('errorResponse', {str: str});
-  }
+  };
 
 }]);

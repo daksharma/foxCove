@@ -16,6 +16,6 @@ module.exports = function(req, res, cb) {
         console.log('Something went wrong.', err);
         return false;
       }
-    })
+    });
   });
 };

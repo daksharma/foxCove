@@ -22,10 +22,10 @@ module.exports = function(req, res, cb) {
         cb(mapPath);
         return mapPath;
       } else {
-        console.log('Something went wrong.')
+        console.log('Something went wrong.');
         return false;
       }
     });
-  }
+  };
   cartography();
 };

@@ -1,33 +1,30 @@
 // NODE MODULES
 require('dotenv').config();
-var express       = require('express');
-var request       = require('request');
-var path          = require('path');
-var favicon       = require('serve-favicon');
-var bodyParser    = require('body-parser');
-var https         = require('https');
-var fs            = require('fs');
+var express          = require('express');
+var request          = require('request');
+var path             = require('path');
+var favicon          = require('serve-favicon');
+var bodyParser       = require('body-parser');
+var https            = require('https');
+var fs               = require('fs');
 
 // DB MODULES
-var mongoDb     = require('./db/mdb-config');
-var collections = require('./db/pg-collections');
-var models      = require('./db/pg-models');
-var bookshelf   = require('./db/pg-db-config');
-
-
+var mongoDb          = require('./db/mdb-config');
+var collections      = require('./db/pg-collections');
+var models           = require('./db/pg-models');
+var bookshelf        = require('./db/pg-db-config');
 
 // SERVER REQUEST HANDLER MODULES
 var newsfeed         = require('./server/modules/news-feed');
 var info             = require('./server/modules/basic-info');
 var localReps        = require('./server/modules/local-officials');
 var getRep           = require('./server/modules/get-rep');
-var billSum          = require('./server/modules/bill-summary');
 var pollWiki         = require('./server/modules/get-wiki');
 var getReps          = require('./server/modules/get-reps');
 var getProfile       = require('./server/modules/get-profile');
 var getVotes         = require('./server/modules/get-votes');
 var getLocalReps     = require('./server/modules/get-local-reps');
-var getSalesTax      = require('./server/modules/local-tax')
+var getSalesTax      = require('./server/modules/local-tax');
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
@@ -72,30 +69,28 @@ app.post('/getBio', function(req, res) {
   pollWiki(req.body.searchString, res, res.send.bind(res));
 });
 
-app.post('/sponsorship', function(req, res) {
-  bills.history(req.body.bioguide_id, function(history) {
-    bills.summPromiseMap(JSON.parse(history).results, res.send.bind(res));
-  });
-});
-
-app.post('/billSummary', function(req, res) {
-  billSum.govTrackBillSummary(req.body.bill_id, res.send.bind(res));
-});
-
 app.post('/getGeo', function(req, res) {
   getLocalGeoData(req, res, res.send.bind(res));
 });
 
 app.post('/getSalesTax', function(req, res) {
-  getSalesTax(req, res)
+  getSalesTax(req, res);
 });
 
 app.post('/getRepAffiliation', function(req, res) {
-  getAffiliation(req, res)
+  getAffiliation(req, res);
+});
+
+app.post('/billSummary', function(req, res) {
+  bills.summary(req.body.congress, req.body.type, req.body.number, res.send.bind(res));
 });
 
 app.post('/getBills', function(req, res) {
-  getRepBills(req, res, res.send.bind(res));
+  bills.history(req.body.bioguideId, res.send.bind(res));
+});
+
+app.post('/billInfo', function(req, res) {
+  bills.info(req.body.congress, req.body.type, req.body.number, res.send.bind(res));
 });
 
 app.post('/getStateLegs', function(req, res) {
@@ -129,7 +124,7 @@ app.post('/getMap', function(req, res) {
             console.log('Something went wrong.');
             return false;
           }
-        })
+        });
       }
     });
   };

@@ -15,7 +15,7 @@ angular.module('app.helperFactories', [])
   return {
     repsObject: repsObject,
     getRepFromZip: getRepFromZip
-  }
+  };
 })
 .factory('SearchResult',function() {
 // Is this a thing? Can we get rid of it?
@@ -33,7 +33,7 @@ angular.module('app.helperFactories', [])
       }, function (error) {
         console.log(error);
       });
-  };
+  }
 
   function getRepSponsorshipHistory(bioguide_id) {
     return $http.post('/sponsorship', bioguide_id)
@@ -44,13 +44,13 @@ angular.module('app.helperFactories', [])
       }, function(error) {
           console.error(error);
       });
-  };
+  }
 
   return {
     repObject: repObject,
     getRepFromBioId: getRepFromBioId,
     getRepSponsorshipHistory: getRepSponsorshipHistory
-  }
+  };
 })
 .factory('RepBio', function($http) {
   var repBio = {};
@@ -59,7 +59,7 @@ angular.module('app.helperFactories', [])
     return $http.post('/getBio', searchString)
       .then(function (response) {
         repBio = response.data;
-        return repBio
+        return repBio;
       }, function (error) {
         console.log(error);
       });
@@ -68,7 +68,7 @@ angular.module('app.helperFactories', [])
   return {
     bio: repBio,
     getBioFromRepName: getBioFromRepName
-  }
+  };
 })
 .factory('ZipCoords', function($http) {
   var coordinates;
@@ -88,7 +88,7 @@ angular.module('app.helperFactories', [])
     coordinates: coordinates,
     token: token,
     getGeoFromZip: getGeoFromZip
-  }
+  };
 })
 .factory('LocalMap', function($http) { // To be completed. Do not delete.
   var map;
@@ -106,20 +106,20 @@ angular.module('app.helperFactories', [])
   return {
     map: map,
     getMapFromGeo: getMapFromGeo
-  }
+  };
 })
 .factory('LocalOfficials', function($http){
   function getOfficials(zipcode){
     return $http.post('/getLocalReps', {zip: zipcode})
       .then(function(res){
-        return res.data
+        return res.data;
       }, function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
   return {
     getOfficials: getOfficials
-  }
+  };
 })
 .factory('StateLeg', function($http){
   var legislators = {};
@@ -133,42 +133,51 @@ angular.module('app.helperFactories', [])
         });
         return legislators;
       }, function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
   return {
     legislators: legislators,
     getStateLegsFromGeo: getStateLegsFromGeo
-  }
+  };
 })
-.factory('GetBillSummary', function($http) {
-  var bill = {};
-  function getBillSummary(bill_id) {
-    return $http.post('/billSummary', {bill_id : bill_id})
-      .then(function(data){
-        bill.complete = data.data;
-        return bill.complete;
+.factory('Bill', function($http) {
+
+  function getSummary(bill) {
+    return $http.post('/billSummary', bill)
+      .then(function(res){
+        return res.data;
       }, function(error) {
         console.log(error);
-      })
+      });
   }
+
+  function getInfo(bill) {
+    return $http.post('/billInfo', bill)
+      .then(function(res){
+        return res.data;
+      }, function(err) {
+        console.error(err);
+      });
+  }
+
   return {
-    bill : bill,
-    getBillSummary : getBillSummary
-  }
+    getSummary : getSummary,
+    getInfo: getInfo
+  };
 })
 .factory('SalesTax', function($http){
   function getSalesTax(zipcode){
     return $http.post('/getSalesTax', {zip: zipcode})
       .then(function(res){
-        return res.data
+        return res.data;
       }, function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
   return {
     getSalesTax: getSalesTax
-  }
+  };
 })
 .factory('Affiliations', function($http){
   function getAffiliations(input) {
@@ -177,7 +186,7 @@ angular.module('app.helperFactories', [])
         // console.log("RES", res)
         return res.data;
       }, function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -191,7 +200,7 @@ angular.module('app.helperFactories', [])
       if(arr[i-2]){
         result.unshift(arr[i-2]);
         if(arr[i-3]){
-          result.unshift(",")
+          result.unshift(",");
         }
       }
     }
@@ -202,21 +211,31 @@ angular.module('app.helperFactories', [])
   return {
     getAffiliations: getAffiliations,
     formatCurrency: formatCurrency
-  }
+  };
 })
 .factory('RepBills', function($http){
-  var bills;
+  // STORE user selection
+  var storage = { selectedBill: null };
+
   function getBillsFromRepId(ref) {
     return $http.post('/getBills', ref)
       .then(function(res){
-        bills = res.data;
+        console.log(res.data);
         return res.data;
       }, function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
+
   return {
-    bills: bills,
-    getBillsFromRepId: getBillsFromRepId
-  }
+    // RETRIEVE selected bill
+    getSelectedBill: function() {
+      return storage.selectedBill;
+    },
+    // CACHE selected bill
+    setSelectedBill: function(value) {
+      storage.selectedBill = value;
+    },
+    getBillsFromRepId: getBillsFromRepId,
+  };
 });

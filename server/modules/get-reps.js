@@ -42,13 +42,13 @@ module.exports = function(zip, res, callback) {
             }
             else{
               row.affiliation = "Nonpartisan";
-            };
+            }
 
             obj.reps.push(rep);
           }
-        };
+        }
 
         callback(obj);
-      };
+      }
     });
 };
