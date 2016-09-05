@@ -19,6 +19,9 @@ module.exports.history = function(bioguide_id, callback){
       'number',
       'bill_type',
       'official_title',
+      'popular_title',
+      'short_title',
+      'introduced_on'
     ]
     .join()
   });
@@ -57,25 +60,72 @@ module.exports.summary = function(congress, type, number, callback){
 
       var govTrackSummary = $("#oursummary").children("p").map(function(){
         return $(this).text();
-      }).toArray().join('\n');
+      }).toArray();
 
       var locSummary = $("#libraryofcongress").children("p").map(function(){
         return $(this).text();
       }).toArray();
 
-      if( govTrackSummary !== "We don’t have a summary available yet." ){
+      if( govTrackSummary[0] !== "We don’t have a summary available yet." ){
         callback(govTrackSummary);
 
       } else if( locSummary[1] !== "No summary available." ){
-        callback(locSummary.join('\n'));
+        callback(locSummary);
 
       } else {
-        callback('Summary for this bill not yet written. Please try again later.');
+        callback(['Summary for this bill not yet written. Please try again later.']);
       }
 
     } else {
       console.error(err);
       callback(err);
+    }
+  });
+};
+
+
+// Retrieve information about a specified bill's history from GovTrack
+// Congressional API
+
+module.exports.info = function (congress, type, number, callback) {
+
+  var conversionObj = {
+    hr: "house_resolution",
+    hres: "house_bill",
+    hjres: "house_joint_resolution",
+    hconres: "house_concurrent_resolution",
+    s: "senate_bill",
+    sres: "senate_resolution",
+    sjres: "senate_joint_resolution",
+    sconres: "senate_concurrent_resolution"
+  }
+
+  var url = 'https://www.govtrack.us/api/v2/bill/';
+
+  var queryFieldFilters = querystring.stringify({
+    congress: congress,
+    bill_type: conversionObj[type],
+    number: number,
+  });
+
+  var httpRequestOptions = {
+    url: url + '?' + querystring.unescape(queryFieldFilters),
+  };
+
+  request(httpRequestOptions, function (error, response, data) {
+    // GET bill id
+    if( !error && response.statusCode === 200 ){
+      // GET bill from id
+      request(url + JSON.parse(data).objects[0].id, function(error, response, data) {
+        if( !error && response.statusCode === 200 ){
+          console.log('data:', data);
+          callback(data);
+        } else {
+          console.error(error);
+        };
+      });
+    } else {
+      console.error(error);
     }
   });
 };
@@ -104,6 +154,6 @@ module.exports.summPromiseMap = function(bills, callback){
     callback(bills);
   })
   .catch(function(err){
-    console.log(err);
+    console.error(err);
   })
 }
