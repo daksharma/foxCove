@@ -15,12 +15,11 @@ angular.module('app.personProfile',[])
         $scope.getBio($scope.rep);
         $scope.getAffiliation($scope.rep);
         $scope.getBills($scope.rep);
-      })
+      });
     } else {
       $scope.nope(person.bioguide_id);
     }
   };
-});
 
   $scope.getBio = function(rep) {
     RepBio.getBioFromRepName({searchString: rep.firstname + '%20' + rep.lastname})
@@ -32,7 +31,7 @@ angular.module('app.personProfile',[])
     Affiliations.getAffiliations(rep)
       .then(function(results) {
         $scope.rep.affiliations = results;
-        $scope.format = Affiliations.formatCurrency
+        $scope.format = Affiliations.formatCurrency;
       });
 
   };
@@ -42,7 +41,7 @@ angular.module('app.personProfile',[])
         if (results) {
           $scope.bills = results.results;
         } else {
-          $scope.bills = ['Sorry, no records of sponsored bills available.']
+          $scope.bills = ['Sorry, no records of sponsored bills available.'];
         }
       });
   };
@@ -55,6 +54,6 @@ angular.module('app.personProfile',[])
 
   $scope.nope = function(str) {
     $state.go('errorResponse', {str: str});
-  }
+  };
 
 }]);
