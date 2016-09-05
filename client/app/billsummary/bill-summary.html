@@ -12,8 +12,8 @@
     <div class="blog-post">
       <h4 class="head">{{billTitle}}</h4> <small>Introduced: {{introDate | date}}</small>
       <div class="callout">
-        <p><span class="head">Described as:</span> {{officialIntro}} <span class="link">Read more</a>.</p>
-				<p>TODO: Maybe merge this initial API call with a subsequent Sunlight API call to build out a more robust description. There's a lot that can be done here if anyone feels like it. Tons of interactions and transactions to filter and display.</p>
+        <p><span class="head">Described as:</span> {{officialIntro}}</p>
+        <p data-ng-if="billDetail.link"><a class="link" data-ng-href="{{billDetail.link}}">More detail at Govtrack.us</a>.</p>
 			</div>
       <div>
         <p>

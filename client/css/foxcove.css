@@ -11,6 +11,11 @@ body {
 }
 
 .link:hover {
+  color : #000000;
+	cursor: pointer;
+}
+
+.link:hover {
   color : #FF6526;
 	cursor: pointer;
 }
