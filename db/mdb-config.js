@@ -44,6 +44,8 @@ var userSchema = mongoose.Schema({
 
 var User = mongoose.model('User', userSchema);
 
+//for comment db
+
 var commentSchema = mongoose.Schema({
     page: String,
     username: String,
@@ -53,9 +55,36 @@ var commentSchema = mongoose.Schema({
 
 var Comment = mongoose.model('Comment', commentSchema)
 
+db.saveComment = function(req, res) {
+  console.log('comment!!!', req.body);
+  var current = req.body.comment;
+  var newComment = new Comment({
+    page: current.page,
+    username: current.username,
+    timestamp: current.time,
+    content: current.content
+  });
 
+  newComment.save(function(err, comment) {
+    if(err) {
+      res.status(500).send(err);
+    }
+    else{
+      res.status(200).send(comment)
+    }
+  })
+}
 
-
+db.getComments = function(req, res)  {
+  Comment.find({page: req.body.page}).exec(function(err, comment){
+    if (err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(comment);
+    }
+  })
+}
 
 
 // State Reps Below
