@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+
 mongoose.connect(process.env.MONGO_DB_URI);
 
 var db = mongoose.connection;
@@ -27,5 +29,28 @@ var sampleSchema = mongoose.Schema({
 // This is where we produce models from schemas:
 
 var Sample = mongoose.model('Sample', sampleSchema);
+
+
+var userSchema = mongoose.Schema({
+    firstname: String,
+    lastname: String,
+    username: String,
+    password: String,
+    email: String,
+    following: {
+        type: []
+    }
+})
+
+var User = mongoose.model('User', userSchema);
+
+var commentSchema = mongoose.Schema({
+    page: String,
+    username: String,
+    timestamp: String,
+    content: String
+})
+
+var Comment = mongoose.model('Comment', commentSchema)
 
 module.exports = db;

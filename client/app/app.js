@@ -6,18 +6,15 @@ angular.module('foxCove', [
   // 'app.repProfileController',
   'app.helperFactories',
   'ui.router',
-  'app.directives'
+  'app.directives',
+  'app.comments'
 ])
-
 .config(function($stateProvider, $urlRouterProvider) {
-
   $stateProvider
-
   .state('home', {
     templateUrl: 'app/home/home-view.html',
     url: '/',
   })
-
   .state('errorResponse', {
     templateUrl: 'app/home/home-view.html',
     url: '/nope/:str',
@@ -29,7 +26,6 @@ angular.module('foxCove', [
       }
     }
   })
-
   .state('searchZip', {
     templateUrl: 'app/local-results/local-results-view.html',
     url: '/zip/:zipcode',
@@ -37,7 +33,6 @@ angular.module('foxCove', [
       $scope.location = $stateParams.zipcode;
     }
   })
-
   .state('repProfile', {
     templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/rep/:bioguide_id',
@@ -45,7 +40,6 @@ angular.module('foxCove', [
       $scope.leg_id = $stateParams.leg_id;
     }
   })
-
   .state('stateRepProfile', {
     templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/srep/:leg_id',
@@ -53,7 +47,6 @@ angular.module('foxCove', [
       $scope.leg_id = $stateParams.leg_id;
     }
   })
-
   .state('billSummary',{
     templateUrl: 'app/billsummary/bill-summary.html',
     url: '/bill/:congress/:type/:number',
@@ -64,9 +57,12 @@ angular.module('foxCove', [
         type: $stateParams.type
       };
     }
+  })
+  
+  .state('dev', {
+    templateUrl: 'app/comments/comments-view.html',
+    url: '/dev/',
   });
-
   // DEFAULT route
   $urlRouterProvider.otherwise('/');
-
 });

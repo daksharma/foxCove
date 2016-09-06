@@ -31,6 +31,8 @@ var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getStateLegs     = require('./server/modules/get-state-legs');
 var bills            = require('./server/modules/bills');
+var getComments      = require('./server/modules/get-comments');
+var postComment      = require('./server/modules/post-comment');
 
 var app = module.exports = express();
 
@@ -102,6 +104,14 @@ app.post('/billInfo', function(req, res) {
 app.post('/getStateLegs', function(req, res) {
   getStateLegs(req, res, res.send.bind(res));
 });
+
+app.post('/getComments', function(req, res) {
+  getComments(req, res);
+})
+
+app.post('/postComment', function(req, res) {
+  postComment(req, res);
+})
 
 // This routine is going to require some TLC to move. For some reason it
 // loses write access to the filesystem when it goes to a module. TODO.
