@@ -19,6 +19,7 @@ var newsfeed         = require('./server/modules/news-feed');
 var info             = require('./server/modules/basic-info');
 var localReps        = require('./server/modules/local-officials');
 var getRep           = require('./server/modules/get-rep');
+var getStateRep      = require('./server/modules/get-state-rep');
 var pollWiki         = require('./server/modules/get-wiki');
 var getReps          = require('./server/modules/get-reps');
 var getProfile       = require('./server/modules/get-profile');
@@ -28,7 +29,6 @@ var getSalesTax      = require('./server/modules/local-tax');
 var getLocalMap      = require('./server/modules/get-local-map');
 var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
-var getRepBills      = require('./server/modules/get-bills');
 var getStateLegs     = require('./server/modules/get-state-legs');
 var bills            = require('./server/modules/bills');
 
@@ -61,6 +61,12 @@ app.post('/getReps', function(req, res){
 
 app.post('/getRep', function(req, res) {
   getRep(req.body.bioguide_id, res, function(data) {
+    res.send(data);
+  });
+});
+
+app.post('/getStateRep', function(req, res) {
+  getStateRep(req.body.leg_id, res, function(data) {
     res.send(data);
   });
 });

@@ -13,11 +13,11 @@
       <h4 class="head">{{billTitle}}</h4> <small>Introduced: {{introDate | date}}</small>
       <div class="callout">
         <p>
-          <span class="head" data-ng-if="officialIntro">Official desciption:</span> {{officialIntro}}
+          <span class="head" data-ng-if="officialIntro">Official Desciption:</span> {{officialIntro}}
           <!--<span class="head" data-ng-if="!officialIntro">Sorry, we have no official description for this bill.</span>-->
         </p>
         <p>
-          <span class="head" data-ng-if="summaryFragments">Bill Summary:</span>
+          <span class="head" data-ng-if="summaryFragments">Bill Summary</span>
           <!--<span class="head" data-ng-if="!summaryFragments">Sorry, we have no official description for this bill.</span>-->
         </p>
         <div data-ng-repeat="summaryFragment in summaryFragments">

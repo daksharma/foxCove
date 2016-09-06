@@ -52,6 +52,24 @@ angular.module('app.helperFactories', [])
     getRepSponsorshipHistory: getRepSponsorshipHistory
   };
 })
+.factory('StateRepProfile', function($http) {
+  var repObject = {};
+
+  function getRepFromLegId(leg_id) {
+    return $http.post('/getStateRep', leg_id)
+      .then(function (response) {
+        repObject.data = response.data;
+        return response.data;
+      }, function (error) {
+        console.log(error);
+      });
+  }
+
+  return {
+    repObject: repObject.data,
+    getRepFromLegId: getRepFromLegId
+  };
+})
 .factory('RepBio', function($http) {
   var repBio = {};
 
@@ -90,7 +108,7 @@ angular.module('app.helperFactories', [])
     getGeoFromZip: getGeoFromZip
   };
 })
-.factory('LocalMap', function($http) { // To be completed. Do not delete.
+.factory('LocalMap', function($http) {
   var map;
 
   function getMapFromGeo(geo, cb) {

@@ -1,21 +1,29 @@
 angular.module('app.personProfile',[])
 
-.controller('ProfileController', ['$scope','RepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', function($scope, RepProfile, RepBio, $state, Affiliations, RepBills) {
+.controller('ProfileController', ['$scope','RepProfile', 'StateRepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', function($scope, RepProfile, StateRepProfile, RepBio, $state, Affiliations, RepBills) {
 
   $scope.build = function() {
     var person = $state.params;
-    if (person.leg_id && person.leg_id.match(/\w{1,3}\d{6}/) !== null) {
-      console.log('STATE REP: ', person);
+    if (person.leg_id) {
+      StateRepProfile.getRepFromLegId(person)
+        .then(function(results) {
+          $scope.rep = results;
+          $scope.rep.img = results.photo_url;
+          $scope.rep.firstname = results.first_name;
+          $scope.rep.lastname = results.last_name;
+          $scope.getBio($scope.rep);
+          // $scope.getBills($scope.rep); << Retool for state
+        });
     } else if (person.bioguide_id && person.bioguide_id.match(/\w{1}\d{6}/) !== null) {
-    RepProfile.getRepFromBioId(person)
-      .then(function(results){
-        RepProfile.repObject = results;
-        $scope.rep = results.rep;
-        $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
-        $scope.getBio($scope.rep);
-        $scope.getAffiliation($scope.rep);
-        $scope.getBills($scope.rep);
-      });
+      RepProfile.getRepFromBioId(person)
+        .then(function(results){
+          RepProfile.repObject = results;
+          $scope.rep = results.rep;
+          $scope.rep.img = 'http://theunitedstates.io/images/congress/450x550/' + $scope.rep.bioguide_id + '.jpg';
+          $scope.getBio($scope.rep);
+          $scope.getAffiliation($scope.rep);
+          $scope.getBills($scope.rep);
+        });
     } else {
       $scope.nope(person.bioguide_id);
     }
