@@ -111,7 +111,7 @@ db.saveStateRep = function(req,res) {
     oc_email: current.email
   });
 
-    newStateRep.save(function(err, rep) {
+  newStateRep.save(function(err, rep) {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -121,7 +121,7 @@ db.saveStateRep = function(req,res) {
 };
 
 db.getStateRep = function(req, res) {
-  StateRep.findOne({leg_id: req.body.leg_id}).exec(function(err, rep) {
+  StateRep.findOne({leg_id: req.query.leg_id}).exec(function(err, rep) {
     if (err) {
       res.status(500).send(err);
     } else {
