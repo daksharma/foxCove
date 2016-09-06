@@ -24,8 +24,7 @@ angular.module('app.personProfile',[])
           $scope.getAffiliation($scope.rep);
           $scope.getBills($scope.rep);
 
-          // TODO: possible find better API for news,
-          // until then use this but uncomment for the presentation time.
+          // Uncomment code presentation. use this until better api is found with less limitations
           $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
