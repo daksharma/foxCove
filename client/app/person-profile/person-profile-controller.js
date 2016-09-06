@@ -84,4 +84,6 @@ angular.module('app.personProfile',[])
 
   $scope.format = Affiliations.formatCurrency
 
+  $scope.format = Affiliations.formatCurrency
+
 }]);
