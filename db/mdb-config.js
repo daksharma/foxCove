@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+
 mongoose.connect(process.env.MONGO_DB_URI);
 
 var db = mongoose.connection;
@@ -40,11 +42,15 @@ var userSchema = mongoose.Schema({
     }
 })
 
+var User = mongoose.model('User', userSchema);
+
 var commentSchema = mongoose.Schema({
     page: String,
     username: String,
     timestamp: String,
     content: String
 })
+
+var Comment = mongoose.model('Comment', commentSchema)
 
 module.exports = db;
