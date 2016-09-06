@@ -1,3 +1,4 @@
+<<<<<<< fd463a9608359f402670016834ca97b0d9ef5779
   State rep matching to US rep data: key: us rep, val state:rep
   
   leg_id; id,
@@ -22,6 +23,8 @@
   oc_email: email
 
 
+=======
+>>>>>>> [feature] Improve rep bio search
 {
 	"last_name": "Ting",
 	"updated_at": "2016-09-05 07:17:00",
