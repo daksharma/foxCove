@@ -179,3 +179,20 @@ body {
 .graff {
 	font-family : 'Scope One', serif;
 }
+
+#commentBlock {
+	background-color: white;
+	line-height: 20px;
+}
+
+#nothin {
+	background-color: none;
+}
+
+#commentUser {
+	font-weight: bold;
+}
+
+#commentTime {
+	color: grey;
+}

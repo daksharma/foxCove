@@ -1,10 +1,23 @@
-<div class="row" data-ng-controller="Comments" ng-init="testFunction()">
+<div class="row" data-ng-controller="Comments" ng-init="getComments('/rep/B000711')">
 
   <h1 class="head">Comments</h1>
   <div>
     <div class="graff">
-    <input type="text">
-    <input type="submit">
+
+    <input type="text" placeholder="enter your name" ng-model="user">
+    <input type="text" placeholder="enter your comment" ng-model="text">
+    <button ng-click="postComment(text, user); user = ''; text = ''; getComments('/rep/B000711');">post</button>
+
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <div id="historicComments">
+    <div class="graff" id="commentBlock" ng-repeat="comment in comments">
+      <span id="commentUser">{{comment.username}}</span><br/>
+      <span id="commentContent">{{comment.content}}</span><br/>
+      <span id="commentTime">{{comment.time}}</span>
+    <span id="nothin"><br/><br/><br/><br/></span>
     </div>
   </div>
 </div>
