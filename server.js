@@ -60,15 +60,15 @@ app.post('/getReps', function(req, res){
 });
 
 app.post('/getRep', function(req, res) {
-  getRep(req.body.bioguide_id, res, function(data) {
-    res.send(data);
-  });
+  getRep(req.body.bioguide_id, res, res.send.bind(res));
 });
 
 app.post('/getStateRep', function(req, res) {
-  getStateRep(req.body.leg_id, res, function(data) {
-    res.send(data);
-  });
+  getStateRep.rep(req.body.leg_id, res, res.send.bind(res));
+});
+
+app.post('/getStateRepBills', function(req, res) {
+  getStateRep.bills(req.body.leg_id, res, res.send.bind(res));
 });
 
 app.post('/getBio', function(req, res) {

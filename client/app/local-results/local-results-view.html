@@ -2,7 +2,7 @@
 
   <div class="title-bar" style="height: 35px">
     <div class="left">
-      <div class="head" data-ng-click="goHome()"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
+      <div class="head link" data-ng-click="goHome()"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
         <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 85%" data-ng-model="location" data-ng-pattern="/^\d{5}$/" data-ng-controller="HomeController" data-ng-enter="submit()">
@@ -27,12 +27,12 @@
         </ul>
       </p>
     </div>
-    <div class="medium-6 columns medium-pull-6" data-ng-if="stateLegs">
+    <div class="medium-6 columns medium-pull-6" data-ng-if="stateLegs.length > 0">
       <h3 class="head">Your {{state}} Legislators</h3>
       <ul class="row small-up-3 rep-cols">
         <li class="column grid-list" data-ng-repeat="leg in stateLegs">
           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{leg.title}} {{leg.full_name}} ({{leg.party}})">
-            <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url || null}})" alt="{{leg.full_name}}" data-ng-click="loadProfile(leg)">
+            <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url}})" alt="{{leg.full_name}}" data-ng-click="loadProfile(leg)">
               <!--This State Legislator profile adaptation isn't in place yet, but when it is it will work the exact same as the federal-->
               <span class="secondary badge down"><img data-ng-src="images/{{leg.party}}.svg" width="16px"></span>
             </span>

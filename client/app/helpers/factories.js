@@ -55,15 +55,28 @@ angular.module('app.helperFactories', [])
     return $http.post('/getStateRep', leg_id)
       .then(function (response) {
         repObject.data = response.data;
+        repObject.data.party = repObject.data.party.replace('Democratic', 'Democrat');
         return response.data;
       }, function (error) {
         console.log(error);
       });
   }
 
+  function getStateRepBills(leg_id) {
+    return $http.post('/getStateRepBills', leg_id)
+      .then(function(response) {
+        repObject.bills = response.data;
+        // TODO: Slice bill title into subject and description.
+        return response.data;
+      }, function(error) {
+        console.log(error);
+      });
+  }
+
   return {
-    repObject: repObject.data,
-    getRepFromLegId: getRepFromLegId
+    repObject: repObject,
+    getRepFromLegId: getRepFromLegId,
+    getStateRepBills: getStateRepBills
   };
 })
 .factory('RepBio', function($http) {

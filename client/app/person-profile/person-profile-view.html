@@ -2,7 +2,7 @@
   <!-- Navigation -->
   <div class="title-bar" style="height: 35px">
     <div class="left">
-      <div class="head" data-ng-click="goHome()"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
+      <div class="head link" data-ng-click="goHome()"><img src="images/fox-orange.svg" width="18px"> Foxcove</div>
     </div>
     <div class="right">
         <input type="text" placeholder="try another ZIP" class="large-4 medium-5 small-6 columns graff" style="float: right; margin-top: 15px; height: 24px; font-size: 75%" data-ng-model="location" data-ng-pattern="/^\d{5}$/" data-ng-controller="HomeController" data-ng-enter="submit()">
@@ -15,7 +15,7 @@
   <div class="row">
 
     <div class="large-3 medium-3 columns">
-      <img data-ng-src="{{rep.img}}" alt="{{rep.firstname}} {{rep.lastname}}">
+      <img data-ng-src="{{rep.img}}" data-ng-img-err="images/{{rep.party}}.svg" alt="{{rep.firstname}} {{rep.lastname}}">
     </div>
 
     <div class="medium-7 large-6 columns">
@@ -27,12 +27,12 @@
             <div class="small-12 columns">
               <label>Sponsored Bills
                 <select name="billSelect" ng-model="model.bill">
-                  <option ng-repeat="bill in bills | orderBy: '-last_action_at'" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title }}</option>
+                  <option ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at'" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</option>
                 </select>
               </label>
             </div>
             <div class="small-12 columns">
-              <button type="submit" class="success small hollow button" ng-click="loadBill(model.bill)" data-ng-if="model">Learn More About This Bill</button>
+              <button type="submit" class="success small hollow button" ng-click="loadBill(model.bill)" data-ng-if="model && rep.title">Learn More About This Bill</button>
             </div>
           </div>
         </form>

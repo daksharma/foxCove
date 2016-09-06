@@ -4,7 +4,7 @@ angular.module('app.personProfile',[])
 
   $scope.build = function() {
     var person = $state.params;
-    if (person.leg_id) {
+    if (person.leg_id && person.leg_id.match(/\w{1,3}\d{6}/) !== null) {
       StateRepProfile.getRepFromLegId(person)
         .then(function(results) {
           $scope.rep = results;
@@ -12,7 +12,7 @@ angular.module('app.personProfile',[])
           $scope.rep.firstname = results.first_name;
           $scope.rep.lastname = results.last_name;
           $scope.getBio($scope.rep);
-          // $scope.getBills($scope.rep); << Retool for state
+          $scope.getStateRepBills(person);
         });
     } else if (person.bioguide_id && person.bioguide_id.match(/\w{1}\d{6}/) !== null) {
       RepProfile.getRepFromBioId(person)
@@ -53,6 +53,16 @@ angular.module('app.personProfile',[])
         }
       });
   };
+  $scope.getStateRepBills = function(rep) {
+    StateRepProfile.getStateRepBills(rep)
+      .then(function(results) {
+        if (results) {
+          $scope.bills = results;
+        } else {
+          $scope.bills = ['Sorry, no records of sponsored bills available.'];
+        }
+    });
+  }
   $scope.loadBill = function (bill) {
     bill = JSON.parse(bill);
     // CACHE selected bill
