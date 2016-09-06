@@ -1,6 +1,6 @@
 angular.module('app.personProfile',[])
 
-.controller('ProfileController', ['$scope','RepProfile', 'StateRepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', function($scope, RepProfile, StateRepProfile, RepBio, $state, Affiliations, RepBills) {
+.controller('ProfileController', ['$scope','RepProfile', 'StateRepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', 'RepNews',function($scope, RepProfile, StateRepProfile, RepBio, $state, Affiliations, RepBills, RepNews) {
 
   $scope.build = function() {
     var person = $state.params;
@@ -23,6 +23,10 @@ angular.module('app.personProfile',[])
           $scope.getBio($scope.rep);
           $scope.getAffiliation($scope.rep);
           $scope.getBills($scope.rep);
+
+          // TODO: possible find better API for news,
+          // until then use this but uncomment for the presentation time.
+          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
       $scope.nope(person.bioguide_id);
@@ -81,5 +85,13 @@ angular.module('app.personProfile',[])
   $scope.goHome = function() {
     $state.go('home');
   };
+
+  $scope.getNews = function(title, firstName, lastName) {
+    var titleName = title + "%20" + firstName + "%20" + lastName;
+    RepNews.getRepNews(titleName)
+           .then(function(data) {
+             $scope.newsData = data;
+           });
+  }
 
 }]);
