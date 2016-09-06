@@ -266,7 +266,7 @@ angular.module('app.helperFactories', [])
     getBillsFromRepId: getBillsFromRepId
   };
 })
-.factory('RetrieveComments', function($http){
+.factory('UserComments', function($http){
   function getComments(page) {
     return $http.post('/getComments', {page: page})
       .then(function(res){
@@ -274,8 +274,19 @@ angular.module('app.helperFactories', [])
       }, function(error) {
         console.log(error)
       })
+  };
+
+  function postComment(comment) {
+    return $http.post('/postComment', {comment: comment})
+      .then(function(res){
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      })
   }
+
   return {
-    getComments: getComments
+    getComments: getComments,
+    postComment: postComment
   }
 });
