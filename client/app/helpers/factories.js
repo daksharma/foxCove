@@ -62,9 +62,21 @@ angular.module('app.helperFactories', [])
       });
   }
 
+  function getStateRepBills(leg_id) {
+    return $http.post('/getStateRepBills', leg_id)
+      .then(function(response) {
+        repObject.bills = response.data;
+        console.log(repObject.bills);
+        return response.data;
+      }, function(error) {
+        console.log(error);
+      });
+  }
+
   return {
-    repObject: repObject.data,
-    getRepFromLegId: getRepFromLegId
+    repObject: repObject,
+    getRepFromLegId: getRepFromLegId,
+    getStateRepBills: getStateRepBills
   };
 })
 .factory('RepBio', function($http) {
