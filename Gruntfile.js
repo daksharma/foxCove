@@ -131,7 +131,7 @@ module.exports = function(grunt) {
       shell: {
         develop: {
           command: [
-            'heroku create',
+            'heroku create foxcove',
             'heroku local',
             'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
             'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
         },
         stable: {
           command: [
-            'heroku create',
+            'heroku create foxcove',
             'heroku local',
             'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
             'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
