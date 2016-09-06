@@ -4,7 +4,7 @@ angular.module('app.personProfile',[])
 
   $scope.build = function() {
     var person = $state.params;
-    if (person.leg_id) {
+    if (person.leg_id && person.leg_id.match(/\w{1,3}\d{6}/) !== null) {
       StateRepProfile.getRepFromLegId(person)
         .then(function(results) {
           $scope.rep = results;
