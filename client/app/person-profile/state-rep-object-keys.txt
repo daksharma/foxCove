@@ -1,3 +1,27 @@
+  State rep matching to US rep data: key: us rep, val state:rep
+  
+  leg_id; id,
+  photo_url: photo_url,
+  name: full_name,
+  title: String,
+  firstname: first_name,
+  nickname: nickname,
+  middlename: middle_name,
+  lastname: last_name,
+  name_suffix: suffixes,
+  party: party,
+  state: state,
+  district: district,
+  chamber: chamber,
+  in_office: active,
+  phone: phone,
+  fax: fax,
+  website: url,
+  congress_office: offices,
+  transparencydata_id: transparencydata_id,
+  oc_email: email
+
+
 {
 	"last_name": "Ting",
 	"updated_at": "2016-09-05 07:17:00",
