@@ -28,7 +28,7 @@ module.exports = function(zip, res, callback) {
             // CREATE new rep object
             var rep = {
               bioguide_id: row.bioguide_id,
-              name: row.firstname + " " + row.lastname,
+              name: (row.nickname || row.firstname)  + " " + row.lastname,
               title: (row.title === "Sen" ?  "Senator" : "Representative"),
               district: row.district,
             };
