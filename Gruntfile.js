@@ -123,6 +123,9 @@ module.exports = function(grunt) {
     grunt.config('OPENSECRETS_API', process.env.OPENSECRETS_API);
     grunt.config('PROPUBLICA_API', process.env.PROPUBLICA_API);
     grunt.config('GOOGLE_API', process.env.GOOGLE_API);
+    grunt.config('TAX_API', process.env.TAX_API);
+    grunt.config('MAPBOX_API', process.env.MAPBOX_API);
+    grunt.config('MAPBOX_PUBLIC', process.env.MAPBOX_PUBLIC);
     grunt.config.merge({
       shell: {
         develop: {
@@ -136,6 +139,9 @@ module.exports = function(grunt) {
             'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
             'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
             'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
+            'heroku config:set TAX_API=' + grunt.config.get(['TAX_API']),
+            'heroku config:set MAPBOX_API=' + grunt.config.get(['MAPBOX_API']),
+            'heroku config:set MAPBOX_PUBLIC=' + grunt.config.get(['MAPBOX_PUBLIC']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku develop:master',
@@ -154,6 +160,9 @@ module.exports = function(grunt) {
             'heroku config:set OPENSECRETS_API=' + grunt.config.get(['OPENSECRETS_API']),
             'heroku config:set PROPUBLICA_API=' + grunt.config.get(['PROPUBLICA_API']),
             'heroku config:set GOOGLE_API=' + grunt.config.get(['GOOGLE_API']),
+            'heroku config:set TAX_API=' + grunt.config.get(['TAX_API']),
+            'heroku config:set MAPBOX_API=' + grunt.config.get(['MAPBOX_API']),
+            'heroku config:set MAPBOX_PUBLIC=' + grunt.config.get(['MAPBOX_PUBLIC']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku master',

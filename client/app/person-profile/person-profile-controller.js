@@ -64,10 +64,14 @@ angular.module('app.personProfile',[])
     });
   }
   $scope.loadBill = function (bill) {
-    bill = JSON.parse(bill);
-    // CACHE selected bill
-    RepBills.setSelectedBill(bill);
-    $state.go('billSummary', { congress: bill.congress, type: bill.bill_type, number: bill.number });
+    try {
+      bill = JSON.parse(bill);
+      // CACHE selected bill
+      RepBills.setSelectedBill(bill);
+      $state.go('billSummary', { congress: bill.congress, type: bill.bill_type, number: bill.number });
+    } catch(err) {
+      console.error(err);
+    }
   };
 
   $scope.nope = function(str) {

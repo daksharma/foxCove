@@ -5,15 +5,19 @@ var request = require('request');
 module.exports.getGovTrack = function(inputPackage, outputPackage, nextCB){
 
 var requestCallback = function(error, response, data){
-  data=JSON.parse(data);
-  var result = data.objects.filter(function(currentValue){
+  try {
+    data=JSON.parse(data);
+    var result = data.objects.filter(function(currentValue){
       if(currentValue.person.bioguideid === inputPackage.rep){
-          return true;
+        return true;
       }
       return false;
-  });
-  outputPackage.repInfo = result;
-  nextCB();
+    });
+    outputPackage.repInfo = result;
+    nextCB();
+  } catch( err ) {
+    console.error(err);
+  }
 };
   request('https://www.govtrack.us/api/v2/role?current=true', requestCallback);
 

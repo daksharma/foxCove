@@ -12,17 +12,17 @@ module.exports = function(req, res, cb) {
         body += chunk;
       });
       res.on('end', function() {
-        if (!body.includes('<')) {
+        try {
           var parsed = JSON.parse(body);
           if (parsed.features) {
             geo = parsed.features[0].geometry.coordinates;
             geo.push(process.env.MAPBOX_PUBLIC);
             cb(geo);
           }
+        } catch( err ) {
+          console.error(err);
+          res.sendStatus(500);
         }
-      }).on('error', function(err) {
-        console.log(err);
-        res.sendStatus(500);
       });
     });
   };

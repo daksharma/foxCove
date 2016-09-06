@@ -2,6 +2,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var querystring = require('querystring');
 
+
 // Retrieve legislator's legislative sponsorship history from Sunlight Foundation
 // Congressional API and invoke callback on that history
 
@@ -112,19 +113,26 @@ module.exports.info = function (congress, type, number, callback) {
     url: url + '?' + querystring.unescape(queryFieldFilters),
   };
 
-  request(httpRequestOptions, function (error, response, data) {
-    // GET bill id
-    if( !error && response.statusCode === 200 ){
-      // GET bill from id
-      request(url + JSON.parse(data).objects[0].id, function(error, response, data) {
-        if( !error && response.statusCode === 200 ){
-          callback(data);
-        } else {
-          console.error(error);
-        }
-      });
+  request(httpRequestOptions, function (err, res, data) {
+    if( !err && res.statusCode === 200 ){
+      // TRY to parse data
+      try {
+        // GET bill id
+        var id = JSON.parse(data).objects[0].id;
+        // GET bill from id
+        request(url + id, function(err, res, data) {
+          if( !err && res.statusCode === 200 ){
+            callback(data);
+          } else {
+            throw new Error(err);
+          }
+        });
+      } catch(error) {
+        callback(error);
+      }
     } else {
-      console.error(error);
+      console.error(err);
+      callback(err);
     }
   });
 };
