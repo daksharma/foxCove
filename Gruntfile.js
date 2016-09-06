@@ -123,6 +123,9 @@ module.exports = function(grunt) {
     grunt.config('OPENSECRETS_API', process.env.OPENSECRETS_API);
     grunt.config('PROPUBLICA_API', process.env.PROPUBLICA_API);
     grunt.config('GOOGLE_API', process.env.GOOGLE_API);
+    grunt.config('TAX_API', process.env.TAX_API);
+    grunt.config('MAPBOX_API', process.env.MAPBOX_API);
+    grunt.config('MAPBOX_PUBLIC', process.env.MAPBOX_PUBLIC);
     grunt.config.merge({
       shell: {
         develop: {
