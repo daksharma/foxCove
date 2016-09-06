@@ -34,8 +34,10 @@ var userSchema = mongoose.Schema({
     lastname: String,
     username: String,
     password: String,
-    email: String
-
+    email: String,
+    following: {
+        type: []
+    }
 })
 
 module.exports = db;
