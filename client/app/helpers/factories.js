@@ -270,7 +270,7 @@ angular.module('app.helperFactories', [])
   function getComments(page) {
     return $http.post('/getComments', {page: page})
       .then(function(res){
-        return res.data;
+        return res.data.comments;
       }, function(error) {
         console.log(error)
       })
