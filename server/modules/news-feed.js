@@ -9,9 +9,13 @@ module.exports.getNews = function(inputPackage, outputPackage, nextCB){
     if( error ){
         console.error(error);
     } else {
+      try {
         data = JSON.parse(data);
         outputPackage.news = data.response.results;
         nextCB();
+      } catch( err ) {
+        console.error(err);
+      }
     }
   };
 

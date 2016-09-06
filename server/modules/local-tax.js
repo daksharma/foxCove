@@ -9,17 +9,21 @@ module.exports = function(req, res){
 
     var requestCallback = function(error, response, data){
         if(error) throw error;
-        data = JSON.parse(data);
-        output.total = data.totalRate;
-        output.breakdowns = [];
-        var arr = data.rates;
-        if (arr) {
+        try {
+          data = JSON.parse(data);
+          output.total = data.totalRate;
+          output.breakdowns = [];
+          var arr = data.rates;
+          if (arr) {
             for(var i = 0; i < arr.length; i++){
-                var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%";
-                output.breakdowns.push(str);
+              var str = capitalize(arr[i].name) + " " + arr[i].type + " tax: " + arr[i].rate + "%";
+              output.breakdowns.push(str);
             }
+          }
+          res.send(output);
+        } catch( err ) {
+          console.error(err);
         }
-        res.send(output);
     };
 
     request(destination, requestCallback);

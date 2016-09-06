@@ -15,11 +15,11 @@ module.exports = function(searchString, res, callback) {
       res.sendStatus(500);
     });
     res.on('end', function() {
-      if (!body.includes('<')) {
+      try {
         var parsed = JSON.parse(body);
         bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
         callback(bio);
-      } else {
+      } catch( err ) {
         console.log('There was a problem with Wikipedia.');
         callback('There was a problem with Wikipedia.');
       }
