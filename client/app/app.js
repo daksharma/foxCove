@@ -59,9 +59,9 @@ angular.module('foxCove', [
     }
   })
   
-  .state('dev', {
+  .state('board', {
     templateUrl: 'app/comments/comments-view.html',
-    url: '/dev/',
+    url: '/board/',
   });
   // DEFAULT route
   $urlRouterProvider.otherwise('/');
