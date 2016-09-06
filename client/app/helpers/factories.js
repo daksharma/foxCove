@@ -273,7 +273,7 @@ angular.module('app.helperFactories', [])
                   return res.data;
                 }, function (error) {
                   console.log(error)
-                })
+                });
   }
 
   function postComment(comment) {
@@ -282,7 +282,7 @@ angular.module('app.helperFactories', [])
                   return res.data;
                 }, function (error) {
                   console.log(error)
-                })
+                });
   }
 
   return {
