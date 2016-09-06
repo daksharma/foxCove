@@ -11,7 +11,7 @@ angular.module('app.comments', [])
 
   $scope.postComment = function(comment, username){
     console.log(comment)
-    var timeNow = Date.now();
+    var timeNow = new Date();
     UserComments.postComment({content: comment, username: username, time: timeNow})
       .then(function(data){
         console.log(data)
