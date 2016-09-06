@@ -28,4 +28,14 @@ var sampleSchema = mongoose.Schema({
 
 var Sample = mongoose.model('Sample', sampleSchema);
 
+
+var userSchema = mongoose.Schema({
+    firstname: String,
+    lastname: String,
+    username: String,
+    password: String,
+    
+
+})
+
 module.exports = db;
