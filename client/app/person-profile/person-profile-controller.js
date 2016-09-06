@@ -25,7 +25,7 @@ angular.module('app.personProfile',[])
           $scope.getBills($scope.rep);
 
           // Uncomment code presentation. use this until better api is found with less limitations
-          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
+          // $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
       $scope.nope(person.bioguide_id);
