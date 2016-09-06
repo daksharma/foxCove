@@ -265,4 +265,17 @@ angular.module('app.helperFactories', [])
     },
     getBillsFromRepId: getBillsFromRepId
   };
+})
+.factory('RetrieveComments', function($http){
+  function getComments(page) {
+    return $http.post('/getComments', {page: page})
+      .then(function(res){
+        return res.data;
+      }, function(error) {
+        console.log(error)
+      })
+  }
+  return {
+    getComments: getComments
+  }
 });

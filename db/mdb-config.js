@@ -34,7 +34,7 @@ var userSchema = mongoose.Schema({
     lastname: String,
     username: String,
     password: String,
-    
+    email: String
 
 })
 
