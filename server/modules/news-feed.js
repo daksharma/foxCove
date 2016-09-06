@@ -29,3 +29,20 @@ module.exports.getNews = function(inputPackage, outputPackage, nextCB){
   request(httpRequestOptions, requestCallback);
 
 };
+
+
+module.exports.bingNews = function(queryParam, callback) {
+  var bingHttpRequestOptions = {
+    url : 'https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=' + queryParam + '&count=5&offset=0&mkt=en-us&safeSearch=Moderate&Category=politics',
+    headers : { 'Ocp-Apim-Subscription-Key' : process.env.BING_NEWS_API }
+  };
+
+  var bingRequestCallBack = function(error, response, data) {
+    if( error ) {
+      console.error(error);
+    } else {
+      callback(data);
+    }
+  };
+  request(bingHttpRequestOptions, bingRequestCallBack);
+};
