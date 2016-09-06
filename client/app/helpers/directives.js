@@ -11,4 +11,16 @@ angular.module('app.directives', [])
       }
     });
   };
+})
+
+.directive('ngImgErr', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src !== attrs.ngImgSrc) {
+          attrs.$set('src', attrs.ngImgErr);
+        }
+      });
+    }
+  }
 });

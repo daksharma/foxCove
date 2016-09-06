@@ -55,6 +55,7 @@ angular.module('app.helperFactories', [])
     return $http.post('/getStateRep', leg_id)
       .then(function (response) {
         repObject.data = response.data;
+        repObject.data.party = repObject.data.party.replace('Democratic', 'Democrat');
         return response.data;
       }, function (error) {
         console.log(error);
