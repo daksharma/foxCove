@@ -64,6 +64,11 @@ angular.module('foxCove', [
         type: $stateParams.type
       };
     }
+  })
+  
+  .state('dev', {
+    templateUrl: 'app/comments/comments-view.html',
+    url: '/dev/',
   });
 
   // DEFAULT route
