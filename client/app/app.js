@@ -42,7 +42,15 @@ angular.module('foxCove', [
     templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/rep/:bioguide_id',
     controller: function($scope, $stateParams) {
-      $scope.bioguide_id = $stateParams.bioguide_id;
+      $scope.leg_id = $stateParams.leg_id;
+    }
+  })
+
+  .state('stateRepProfile', {
+    templateUrl: 'app/person-profile/person-profile-view.html',
+    url: '/srep/:leg_id',
+    controller: function($scope, $stateParams) {
+      $scope.leg_id = $stateParams.leg_id;
     }
   })
 

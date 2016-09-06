@@ -78,8 +78,8 @@ angular.module('app.localResults', [])
   $scope.loadProfile = function (rep) {
     if (rep.bioguide_id) {
       $state.go('repProfile', {bioguide_id: rep.bioguide_id});
-    } else if (rep.leg_id) {
-      $state.go('repProfile', {leg_id: rep.leg_id}); // Gonna build out the profile to work for both state and federal legislators
+    } else if (rep.id) {
+      $state.go('stateRepProfile', {leg_id: rep.id});
     }
   };
 
