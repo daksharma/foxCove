@@ -30,7 +30,7 @@ angular.module('app.personProfile',[])
   };
 
   $scope.getBio = function(rep) {
-    RepBio.getBioFromRepName({searchString: rep.firstname + '%20' + rep.lastname})
+    RepBio.getBioFromRepName({searchString: (rep.nickname || rep.firstname) + '%20' + rep.lastname})
       .then(function(results) {
         rep.bio = results.split('\n')[0] || 'No biographical information available at this time for ' + rep.firstname + ' ' + rep.lastname;
       });
