@@ -66,7 +66,7 @@ angular.module('app.helperFactories', [])
     return $http.post('/getStateRepBills', leg_id)
       .then(function(response) {
         repObject.bills = response.data;
-        console.log(repObject.bills);
+        // TODO: Slice bill title into subject and description.
         return response.data;
       }, function(error) {
         console.log(error);
