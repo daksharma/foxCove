@@ -40,4 +40,11 @@ var userSchema = mongoose.Schema({
     }
 })
 
+var commentSchema = mongoose.Schema({
+    page: String,
+    username: String,
+    timestamp: String,
+    content: String
+})
+
 module.exports = db;
