@@ -1,2 +1,391 @@
-CAL000407
-{"last_name": "Ting", "updated_at": "2016-09-05 07:17:00", "sources": [{"url": "http://assembly.ca.gov/assemblymembers"}], "full_name": "Philip Y. Ting", "old_roles": {"20132014": [{"term": "20132014", "end_date": null, "district": "19", "chamber": "lower", "state": "ca", "party": "Democratic", "type": "member", "start_date": null}, {"term": "20132014", "committee_id": "CAC000267", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Job Creation for the New Economy", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000480", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Innovative Green Financing Mechanisms", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000474", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Government Efficiency, Technology and Innovation", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000411", "chamber": "lower", "state": "ca", "subcommittee": "Subcommittee No. 2 on Education Finance", "committee": "Standing Committee on Budget", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000466", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on California's Clean Energy Economy", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000467", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on California's High Technology", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000487", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Status of Boys and Men of Color in California", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000322", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Standing Committee on Environmental Safety and Toxic Materials", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000493", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Coastal Protection", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000424", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Regional Transportation Solutions", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000607", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Campus Climate", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000492", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Asia/California Trade and Investment Promotion", "position": "Chair", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000485", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Sea Level Rise and the California Economy", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000319", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Standing Committee on Business, Professions and Consumer Protection", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000465", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Select Committee on Biotechnology", "position": "member", "type": "committee member"}, {"term": "20132014", "committee_id": "CAC000336", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Standing Committee on Revenue and Taxation", "position": "member", "type": "committee member"}]}, "id": "CAL000407", "first_name": "Philip", "middle_name": "Y.", "district": "19", "chamber": "lower", "state": "ca", "party": "Democratic", "csrfmiddlewaretoken": "6W0EVxLP4KAC1iZ0gGYjHaREUO0HtFaK", "email": "", "all_ids": ["CAL000407", "CAL000496"], "leg_id": "CAL000407", "active": true, "transparencydata_id": "8915b51577ed4fcbb536df7f14d416a3", "nickname": "", "photo_url": "http://assembly.ca.gov/sites/assembly.ca.gov/files/memberphotos/ad19-ting_0.jpg", "roles": [{"term": "20152016", "end_date": null, "district": "19", "chamber": "lower", "state": "ca", "party": "Democratic", "type": "member", "start_date": null}, {"term": "20152016", "committee_id": "CAC000798", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Higher Education in San Diego County", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000706", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "California's Clean Energy Economy", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000731", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Budget", "position": "Chair", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000691", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Utilities and Commerce", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000755", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Business and Professions", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000792", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Coastal Protection", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000727", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Status of Boys and Men of Color", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000735", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Campus Climate", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000805", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Regional Planning in the San Francisco Bay Area", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000785", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Asia/California Trade and Investment Promotion", "position": "Chair", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000716", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Civic Engagement", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000724", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Judiciary", "position": "member", "type": "committee member"}, {"term": "20152016", "committee_id": "CAC000723", "chamber": "lower", "state": "ca", "subcommittee": null, "committee": "Biotechnology", "position": "member", "type": "committee member"}], "url": "http://asmdc.org/members/a19", "created_at": "2012-12-07 15:00:50", "+district": "19", "offices": [{"fax": null, "name": "Capitol Office", "phone": "916-319-2019", "address": "P.O. Box 942849, Room 6026\nSacramento, CA 94249-0019", "type": "capitol", "email": null}, {"fax": null, "name": "District Office", "phone": "415-557-2312", "address": "455 Golden Gate Avenue, Suite 14600\nSan Francisco, CA 94102", "type": "district", "email": null}], "+party": "Democratic", "suffixes": ""}
+State rep matching to US rep data: key: us rep, val state:rep
+  
+  leg_id; id,
+  photo_url: photo_url,
+  name: full_name,
+  title: String,
+  firstname: first_name,
+  nickname: nickname,
+  middlename: middle_name,
+  lastname: last_name,
+  name_suffix: suffixes,
+  party: party,
+  state: state,
+  district: district,
+  chamber: chamber,
+  in_office: active,
+  phone: phone,
+  fax: fax,
+  website: url,
+  congress_office: offices,
+  transparencydata_id: transparencydata_id,
+  oc_email: email
+
+
+{
+	"last_name": "Ting",
+	"updated_at": "2016-09-05 07:17:00",
+	"sources": [
+		{
+			"url": "http://assembly.ca.gov/assemblymembers"
+		}
+	],
+	"full_name": "Philip Y. Ting",
+	"old_roles": {
+		"20132014": [
+			{
+				"term": "20132014",
+				"end_date": null,
+				"district": "19",
+				"chamber": "lower",
+				"state": "ca",
+				"party": "Democratic",
+				"type": "member",
+				"start_date": null
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000267",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Job Creation for the New Economy",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000480",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Innovative Green Financing Mechanisms",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000474",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Government Efficiency, Technology and Innovation",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000411",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": "Subcommittee No. 2 on Education Finance",
+				"committee": "Standing Committee on Budget",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000466",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on California's Clean Energy Economy",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000467",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on California's High Technology",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000487",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Status of Boys and Men of Color in California",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000322",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Standing Committee on Environmental Safety and Toxic Materials",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000493",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Coastal Protection",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000424",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Regional Transportation Solutions",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000607",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Campus Climate",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000492",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Asia/California Trade and Investment Promotion",
+				"position": "Chair",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000485",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Sea Level Rise and the California Economy",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000319",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Standing Committee on Business, Professions and Consumer Protection",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000465",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Select Committee on Biotechnology",
+				"position": "member",
+				"type": "committee member"
+			},
+			{
+				"term": "20132014",
+				"committee_id": "CAC000336",
+				"chamber": "lower",
+				"state": "ca",
+				"subcommittee": null,
+				"committee": "Standing Committee on Revenue and Taxation",
+				"position": "member",
+				"type": "committee member"
+			}
+		]
+	},
+	"id": "CAL000407",
+	"first_name": "Philip",
+	"middle_name": "Y.",
+	"district": "19",
+	"chamber": "lower",
+	"state": "ca",
+	"party": "Democratic",
+	"csrfmiddlewaretoken": "6W0EVxLP4KAC1iZ0gGYjHaREUO0HtFaK",
+	"email": "",
+	"all_ids": [
+		"CAL000407",
+		"CAL000496"
+	],
+	"leg_id": "CAL000407",
+	"active": true,
+	"transparencydata_id": "8915b51577ed4fcbb536df7f14d416a3",
+	"nickname": "",
+	"photo_url": "http://assembly.ca.gov/sites/assembly.ca.gov/files/memberphotos/ad19-ting_0.jpg",
+	"roles": [
+		{
+			"term": "20152016",
+			"end_date": null,
+			"district": "19",
+			"chamber": "lower",
+			"state": "ca",
+			"party": "Democratic",
+			"type": "member",
+			"start_date": null
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000798",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Higher Education in San Diego County",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000706",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "California's Clean Energy Economy",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000731",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Budget",
+			"position": "Chair",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000691",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Utilities and Commerce",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000755",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Business and Professions",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000792",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Coastal Protection",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000727",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Status of Boys and Men of Color",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000735",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Campus Climate",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000805",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Regional Planning in the San Francisco Bay Area",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000785",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Asia/California Trade and Investment Promotion",
+			"position": "Chair",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000716",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Civic Engagement",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000724",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Judiciary",
+			"position": "member",
+			"type": "committee member"
+		},
+		{
+			"term": "20152016",
+			"committee_id": "CAC000723",
+			"chamber": "lower",
+			"state": "ca",
+			"subcommittee": null,
+			"committee": "Biotechnology",
+			"position": "member",
+			"type": "committee member"
+		}
+	],
+	"url": "http://asmdc.org/members/a19",
+	"created_at": "2012-12-07 15:00:50",
+	"+district": "19",
+	"offices": [
+		{
+			"fax": null,
+			"name": "Capitol Office",
+			"phone": "916-319-2019",
+			"address": "P.O. Box 942849, Room 6026\nSacramento, CA 94249-0019",
+			"type": "capitol",
+			"email": null
+		},
+		{
+			"fax": null,
+			"name": "District Office",
+			"phone": "415-557-2312",
+			"address": "455 Golden Gate Avenue, Suite 14600\nSan Francisco, CA 94102",
+			"type": "district",
+			"email": null
+		}
+	],
+	"+party": "Democratic",
+	"suffixes": ""
+}
