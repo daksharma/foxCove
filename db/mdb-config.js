@@ -28,4 +28,34 @@ var sampleSchema = mongoose.Schema({
 
 var Sample = mongoose.model('Sample', sampleSchema);
 
+
+
+// State Reps Below
+
+var stateRepSchema = mongoose.Schema({
+  leg_id: String,
+  photo_url: String,
+  name: String,
+  title: String,
+  firstname: String,
+  nickname: String,
+  middlename: String,
+  lastname: String,
+  name_suffix: String,
+  party: String,
+  state: String,
+  district: String,
+  chamber: String,
+  in_office: Boolean,
+  phone: String,
+  fax: String,
+  website: String,
+  webform: String,
+  congress_office: String,
+  transparencydata_id: String,
+  oc_email: String
+});
+
+var StateRep = mongoose.model('StateRep', stateRepSchema);
+
 module.exports = db;
