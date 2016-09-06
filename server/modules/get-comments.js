@@ -1,6 +1,7 @@
 var db = require('../../db/mdb-config');
 
 module.exports = function(req, res) {
+
   db.getComments(req, res)
 }
   // res.send({comments: [{
@@ -15,5 +16,3 @@ module.exports = function(req, res) {
   // }
 
   // ]})
-
-

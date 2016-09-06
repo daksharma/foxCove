@@ -3,9 +3,11 @@
   <h1 class="head">Comments</h1>
   <div>
     <div class="graff">
+
     <input type="text" placeholder="enter your name" ng-model="user">
     <input type="text" placeholder="enter your comment" ng-model="text">
     <button ng-click="postComment(text, user); user = ''; text = ''; getComments('/rep/B000711');">post</button>
+
     </div>
   </div>
   <br/>
