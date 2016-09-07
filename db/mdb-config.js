@@ -50,7 +50,8 @@ var commentSchema = mongoose.Schema({
     page: String,
     username: String,
     timestamp: String,
-    content: String
+    content: String,
+    deleted: Boolean
 })
 
 var Comment = mongoose.model('Comment', commentSchema)
@@ -62,7 +63,8 @@ db.saveComment = function(req, res) {
     page: current.page,
     username: current.username,
     timestamp: current.time,
-    content: current.content
+    content: current.content,
+    deleted: false
   });
 
   newComment.save(function(err, comment) {
@@ -76,12 +78,23 @@ db.saveComment = function(req, res) {
 }
 
 db.getComments = function(req, res)  {
-  Comment.find({page: req.body.page}).sort({timestamp: -1}).exec(function(err, comment){
+  Comment.find({page: req.body.page, deleted: false}).sort({timestamp: -1}).exec(function(err, comment){
     if (err) {
       res.status(500).send(err);
     }
     else {
       res.status(200).send(comment);
+    }
+  })
+}
+
+db.deleteComment = function(req, res)  {
+  Comment.findByIdAndUpdate(req.body.comment._id, {$set: { deleted: true }}, function (err, comment) {
+    if (err) {
+      res.status(500).send(err);
+    }
+    else{
+      res.status(200).send(comment)
     }
   })
 }
