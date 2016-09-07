@@ -31,8 +31,9 @@ var getLocalGeoData  = require('./server/modules/get-local-geo');
 var getAffiliation   = require('./server/modules/get-affiliations');
 var getStateLegs     = require('./server/modules/get-state-legs');
 var bills            = require('./server/modules/bills');
-var getComments      = require('./server/modules/get-comments');
-var postComment      = require('./server/modules/post-comment');
+var getComments      = require('./server/modules/comments-modules/get-comments');
+var postComment      = require('./server/modules/comments-modules/post-comment');
+var deleteComment    = require('./server/modules/comments-modules/delete-comment');
 
 var app = module.exports = express();
 
@@ -124,6 +125,10 @@ app.post('/getComments', function(req, res) {
 app.post('/postComment', function(req, res) {
   postComment(req, res);
 });
+
+app.post('/deleteComment', function(req, res) {
+  deleteComment(req, res)
+})
 
 app.post('/getRepNews', function(req, res) {
   newsfeed.bingNews(req.body.titleAndRepName, res.send.bind(res));

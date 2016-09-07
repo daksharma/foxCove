@@ -276,25 +276,36 @@ angular.module('app.helperFactories', [])
 .factory('UserComments', function($http) {
   function getComments(page) {
     return $http.post('/getComments', {page: page})
-                .then(function (res) {
-                  return res.data;
-                }, function (error) {
-                  console.log(error)
-                });
+      .then(function (res) {
+        return res.data;
+      }, function (error) {
+        console.log(error)
+      });
   }
 
   function postComment(comment) {
     return $http.post('/postComment', {comment: comment})
-                .then(function (res) {
-                  return res.data;
-                }, function (error) {
-                  console.log(error)
-                });
+      .then(function (res) {
+        return res.data;
+      }, function (error) {
+        console.log(error)
+      });
+  }
+
+  function deleteComment(comment) {
+    return $http.post('/deleteComment', {comment: comment})
+      .then(function (res) {
+        return res.data;
+      }, function (error) {
+        console.log(error)
+      });
+
   }
 
   return {
     getComments: getComments,
-    postComment: postComment
+    postComment: postComment,
+    deleteComment: deleteComment
   }
 })
 .factory('RepNews', function($http) {
