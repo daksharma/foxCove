@@ -61,16 +61,20 @@
         </span>
       </p>
     </div>
-  </div>
-
-  <div class="row graff" style="margin-top: 1rem" data-ng-if="map">
     <div class="medium-6 columns">
       <!--MOVED THIS ONE TO THE FRONT, BUT IT CAN BE MOVED ELSEWHERE-->
       <h3 class="head">Local Taxes (in design)</h3>
       <p>Total sales tax in {{location}}: {{taxes.total}}</p>
       <ul>
-      <li data-ng-repeat="item in taxes.breakdowns">{{item}}</li>
+        <li data-ng-repeat="item in taxes.breakdowns">{{item}}</li>
       </ul>
+    </div>
+  </div>
+
+  <div class="row graff" style="margin-top: 1rem" data-ng-if="map">
+    <div class="medium-4 columns">
+      <h3 class="head"></h3>
+      <p></p>
     </div>
     <div class="medium-4 columns">
       <h3 class="head"></h3>
