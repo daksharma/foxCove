@@ -18,8 +18,11 @@ module.exports = function(searchString, res, callback) {
       try {
         var parsed = JSON.parse(body);
         bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
-
-        callback(bio.includes('may refer to:') ? '' : bio);
+        if (bio.includes('From a page move') || bio.includes('may refer to:')) {
+          cb('');
+        } else {
+          cb(bio);
+        }
       } catch( err ) {
         console.log('There was a problem with Wikipedia.');
         callback('');
