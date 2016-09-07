@@ -16,7 +16,8 @@ angular.module('app.bill', [])
       .then(function(billInfo){
         $scope.introDate = billInfo.introduced_date;
         $scope.officialIntro = billInfo.titles[0][2];
-        $scope.billTitle = (billInfo.titles[2] ? billInfo.titles[2][2] : undefined);
+        $scope.altTitle = (billInfo.titles[2] ? billInfo.titles[2][2] : undefined);
+        $scope.billTitle = billInfo.title;
         $scope.curBillStatus = billInfo.current_status_description;
         $scope.sponsor = billInfo.sponsor;
         $scope.cosponsors = billInfo.cosponsors;
