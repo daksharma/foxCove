@@ -26,7 +26,7 @@ angular.module('app.personProfile',[])
 
           // Uncomment code presentation. use this until better api is found with less limitations
           // this is to limit the api calls per month-- at least during this testing phase.
-          // $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
+          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
       $scope.nope(person.bioguide_id);
