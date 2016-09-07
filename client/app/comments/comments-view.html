@@ -1,12 +1,11 @@
-<div class="row" data-ng-controller="Comments" ng-init="getComments('/rep/B000711')">
-
-  <h1 class="head">Comments</h1>
+<div class="row" data-ng-controller="Comments" ng-init="getComments(pageName);">
+  <h3 class="head">Comments</h3>
   <div>
     <div class="graff">
 
     <input type="text" placeholder="enter your name" ng-model="user">
     <input type="text" placeholder="enter your comment" ng-model="text">
-    <button ng-click="postComment(text, user); user = ''; text = ''; getComments('/rep/B000711');">post</button>
+    <button ng-click="postComment(text, user, pageName); user = ''; text = ''; getComments(pageName);">post</button>
 
     </div>
   </div>

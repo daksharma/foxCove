@@ -276,27 +276,40 @@ angular.module('app.helperFactories', [])
     getBillsFromRepId: getBillsFromRepId
   };
 })
-.factory('UserComments', function($http){
+.factory('UserComments', function($http) {
   function getComments(page) {
     return $http.post('/getComments', {page: page})
-      .then(function(res){
-        return res.data;
-      }, function(error) {
-        console.log(error)
-      })
-  };
+                .then(function (res) {
+                  return res.data;
+                }, function (error) {
+                  console.log(error)
+                });
+  }
 
   function postComment(comment) {
     return $http.post('/postComment', {comment: comment})
-      .then(function(res){
-        return res.data;
-      }, function(error) {
-        console.log(error)
-      })
+                .then(function (res) {
+                  return res.data;
+                }, function (error) {
+                  console.log(error)
+                });
   }
 
   return {
     getComments: getComments,
     postComment: postComment
+  }
+})
+.factory('RepNews', function($http) {
+  function getRepNews(titleAndRepName) {
+    return $http.post('/getRepNews', {titleAndRepName : titleAndRepName})
+                .then(function(newsData){
+                  return newsData.data.value;
+                }, function(error) {
+                  console.log(error);
+                });
+  }
+  return {
+    getRepNews : getRepNews
   }
 });

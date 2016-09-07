@@ -1,5 +1,6 @@
 body {
-	background-color : #FBF7EB; }
+	background-color : #FBF7EB;
+}
 
 .foxCoveTitle,
 .foxCoveTitle:hover,
@@ -46,8 +47,8 @@ body {
 	height                : 100px;
 	width                 : 100px;
 	cursor                : pointer;
-	border-style 					: solid;
-	border-width 					: 1px;
+	border-style          : solid;
+	border-width          : 1px;
 	border-radius         : 15px;
 	-webkit-border-radius : 15px;
 	-moz-border-radius    : 15px;

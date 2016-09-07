@@ -86,12 +86,14 @@
 
     <!--USE THE THREE DIVS BELOW FOR ANYTHING YOU WANT, JUST UNCOMMENT-->
 
-    <!--<div class="column">
+    <div class="column" data-ng-if="newsData">
       <div class="callout">
-        <p class="head"></p>
-        <p></p>
+        <p class="head">In the News</p>
+        <ul>
+          <li data-ng-repeat="repNews in newsData"><a class="link" ng-href="{{repNews.url}}">{{repNews.name}}</a></li>
+        </ul>
       </div>
-    </div>-->
+    </div>
 
     <!--<div class="column">
       <div class="callout">
@@ -118,5 +120,9 @@
       </div>
     </div>
 
+  </div>
+  <div class="row large-up-1 graff">
+    <a ui-sref=".comments">show comments</a>
+    <div ui-view></div>
   </div>
 </div>
