@@ -25,6 +25,7 @@ angular.module('app.personProfile',[])
           $scope.getBills($scope.rep);
 
           // Uncomment code presentation. use this until better api is found with less limitations
+          // no need to bother with html. it will only show if there is news data.
           // $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
