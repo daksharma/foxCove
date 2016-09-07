@@ -96,12 +96,9 @@ body {
 	border           : #1A7EB3;
 }
 
+.Independent,
+.Unknown,
 .Nonpartisan {
-	background-color : #EAE651;
-	border           : #EAE651;
-}
-
-.Unknown {
 	background-color : #EAE651;
 	border           : #EAE651;
 }

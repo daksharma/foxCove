@@ -44,7 +44,7 @@ angular.module('app.personProfile',[])
       Rep: 'US Congressperson representing ' + rep.state.toUpperCase() + ' state District ' + rep.district +  '.'
     }
     return rep.firstname + ' ' + (rep.middlename || '') + ' ' + rep.lastname + ' is a ' + (titles[rep.title] ||
-      'representative of ' + rep.state.toUpperCase() + ' District ' + rep.district + ' in the state\'s ' + rep.chamber + ' house.');
+      'representative of ' + rep.state.toUpperCase() + ' District ' + rep.district + ' in the state\'s ' + (rep.chamber || '') + ' house.');
   }
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
