@@ -160,6 +160,7 @@ db.getStateRep = function(req, res) {
 };
 
 db.updateStateRep = function(req, res) {
+  console.log(req.body)
   var query = {leg_id: req.body.leg_id}
   StateRep.update(query, ...req.body.fields, function(err, rep) {
     if (err) {

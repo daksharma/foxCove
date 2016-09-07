@@ -21,9 +21,9 @@
     <div class="medium-7 large-6 columns">
       <h1 class="head"><span data-ng-if="rep.title">{{rep.title}}. </span>{{rep.firstname}} {{rep.lastname}}</h1>
       <p class="subheader graff">{{rep.bio}}</p>
-      <div class="">
+      <div >
         <form>
-          <div class="row graff">
+          <div class="row graff" data-ng-if="rep.title">
             <div class="small-12 columns">
               <label>Sponsored Bills
                 <select name="billSelect" ng-model="model.bill">
@@ -48,6 +48,7 @@
   <div class="row column">
     <hr>
   </div>
+
 
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
     <div class="column" data-ng-if="rep.affiliations.industries">
@@ -105,6 +106,17 @@
         <p></p>
       </div>
     </div>-->
+
+    <!--THE ROW BELOW THIS COMMENT IS ONLY VISIBLE ON STATE REP VIEW-->
+
+    <div class="row graff" data-ng-if="!rep.title && bills">
+      <div class="callout">
+        <p class="head">Subjects of legislation sponsored by {{rep.name}}:</p>
+        <ul>
+          <p ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at'" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>
