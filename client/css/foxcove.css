@@ -182,6 +182,11 @@ body {
 	color       : #FF530D
 }
 
+.graff-smaller {
+	font-size: 75%;
+	font-family : 'Scope One', serif;
+}
+
 .graff {
 	font-family : 'Scope One', serif;
 }
