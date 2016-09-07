@@ -19,7 +19,7 @@
     </div>
 
     <div class="medium-7 large-6 columns">
-      <h1 class="head"><span data-ng-if="rep.title">{{rep.title}}. </span>{{rep.firstname}} {{rep.lastname}}</h1>
+      <h1 class="head"><span data-ng-if="rep.title">{{rep.title}}. </span>{{rep.nickname || rep.firstname}} {{rep.lastname}}</h1>
       <p class="subheader graff">{{rep.bio}}</p>
       <div >
         <form>
@@ -51,6 +51,11 @@
 
 
   <div class="row small-up-1 medium-up-2 large-up-3 graff">
+    <div class="column">
+      <!--Comments-->
+        <div class="comments" ui-view="comments"></div>
+      <!--Comments-->
+    </div>
     <div class="column" data-ng-if="rep.affiliations.industries">
       <div class="callout">
         <p class="head">{{rep.firstname}}'s top industry contributors:</p>
@@ -58,11 +63,6 @@
           <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
-
-        <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-        <!-- <p class="lead">People have things to say!</p>
-        <p class="subheader">We can do a thing with that.</p> -->
-
       </div>
     </div>
     <div class="column" data-ng-if="rep.affiliations.companies">
@@ -113,16 +113,11 @@
 
     <div class="column" data-ng-if="!rep.title && bills">
       <div class="callout">
-        <p class="head">Subjects of legislation sponsored by {{rep.name}}:</p>
+        <p class="head">Legislation sponsored by {{rep.name}}:</p>
         <ul>
           <p ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at' | limitTo:10" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
         </ul>
       </div>
     </div>
-
-  </div>
-  <div class="row large-up-1 graff">
-    <a ui-sref=".comments">show comments</a>
-    <div ui-view></div>
   </div>
 </div>

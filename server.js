@@ -141,7 +141,7 @@ app.post('/getMap', function(req, res) {
     } else { // If no make http call
         https.get({
           hostname: 'api.mapbox.com',
-          path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',14/750x750.png64?access_token=' + process.env.MAPBOX_API
+          path: '/v4/mapbox.wheatpaste/' + req.body[0] + ',' + req.body[1] + ',14/750x500.png64?access_token=' + process.env.MAPBOX_API
         }, function(res) {
           if (res) {
             res.pipe(

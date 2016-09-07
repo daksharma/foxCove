@@ -11,7 +11,13 @@
   <!-- /Navigation -->
   <div class="row" style="margin-top: 1rem" data-ng-if="map">
     <div class="medium-6 columns medium-push-6" style="margin-top: .5rem">
+
       <img class="thumbnail" data-ng-src="{{map}}">
+
+      <!--Comments-->
+      <div class="comments" style="margin-top: 1rem" ui-view="comments"></div>
+      <!--Comments-->
+
     </div>
     <div class="medium-6 columns medium-pull-6" style="margin-top: .5rem" data-ng-if="reps">
       <h3 class="head">Your US Legislators</h3>
@@ -20,8 +26,10 @@
           <li class="column grid-list" data-ng-repeat="rep in reps | orderBy : '-title'" data-ng-class="{active : isSelected(rep)}">
             <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{rep.title}} {{rep.name}} ({{rep.affiliation}})">
               <span class="resize circular {{rep.affiliation}} feature" style="background-image: url({{rep.thumb}})" alt="{{rep.name}}" data-ng-click="loadProfile(rep)">
-                <span class="secondary badge"><img data-ng-src="images/{{rep.affiliation}}.svg" width="16px"></span>
+                <span class="secondary badge">
+                  <img data-ng-src="images/{{rep.affiliation}}.svg" width="16px">
                 </span>
+              </span>
             </span>
           </li>
         </ul>
@@ -64,29 +72,22 @@
       <li data-ng-repeat="item in taxes.breakdowns">{{item}}</li>
       </ul>
     </div>
-<!--     <div class="medium-4 columns">
-      <h3 class="head"></h3>
-      <p></p>
-    </div> -->
-    <a ui-sref=".comments">show comments</a>
-    <div class="medium-6 columns" ui-view>
+    <div class="medium-4 columns">
       <h3 class="head"></h3>
       <p></p>
     </div>
-<!--     <div class="medium-4 columns">
+
+    <div class="medium-4 columns">
       <h3 class="head"></h3>
       <p></p>
-    </div> -->
+    </div>
   </div>
-
-<!--   <a ui-sref=".comments">show comments</a>
-  <div ui-view></div> -->
 
   <!--THREE MORE DIVS JUST LIKE THE ROW ABOVE-->
 
   <div class="row graff" style="margin-top: 1rem">
     <div class="medium-4 columns">
-      <div ui-view="board"></div>
+      <div></div>
     </div>
     <div class="medium-4 columns">
       <h3 class="head"></h3>
