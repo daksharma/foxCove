@@ -21,6 +21,12 @@ body {
 	cursor: pointer;
 }
 
+.comments {
+	margin-top: 1rem;
+	padding: 2rem;
+	width: 750;
+}
+
 /* Federal rep thumb style */
 
 .circular {

@@ -58,11 +58,6 @@
           <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
         </ul>
         <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
-
-        <!-- <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-        <!-- <p class="lead">People have things to say!</p>
-        <p class="subheader">We can do a thing with that.</p> -->
-
       </div>
     </div>
     <div class="column" data-ng-if="rep.affiliations.companies">
@@ -119,8 +114,10 @@
         </ul>
       </div>
     </div>
-
   </div>
+</div>
+
+</div>
   <div class="row large-up-1 graff">
     <a ui-sref=".comments">show comments</a>
     <div ui-view></div>
