@@ -34,7 +34,7 @@ angular.module('foxCove', [
     views: {
       '': {
         templateUrl: 'app/local-results/local-results-view.html',
-        controller: function($scope, $stateParams, $state) {
+        controller: function($scope, $stateParams) {
           $scope.location = $stateParams.zipcode;
           $scope.pageName = $stateParams.zipcode;
         } 
@@ -58,52 +58,107 @@ angular.module('foxCove', [
   // .state('searchZip.comments', {
   //   templateUrl: 'app/comments/comments-view.html'
   // })
-  
+
   .state('repProfile', {
-    templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/rep/:bioguide_id',
-    controller: function($scope, $stateParams) {
-      $scope.leg_id = $stateParams.leg_id;
-      $scope.pageName = "rep/" + $stateParams.bioguide_id;
+    views: {
+      '': {
+        templateUrl: 'app/person-profile/person-profile-view.html',
+        controller: function($scope, $stateParams) {
+          $scope.leg_id = $stateParams.leg_id;
+          $scope.pageName = "rep/" + $stateParams.bioguide_id;
+        } 
+      },
+      'comments@repProfile': {
+        templateUrl: 'app/comments/comments-view.html',
+        controller: 'Comments'
+      }
     }
   })
   
-  .state('repProfile.comments', {
-    url: '/comments',
-    templateUrl: 'app/comments/comments-view.html'
-  })
+  // .state('repProfile', {
+  //   templateUrl: 'app/person-profile/person-profile-view.html',
+  //   url: '/rep/:bioguide_id',
+  //   controller: function($scope, $stateParams) {
+  //     $scope.leg_id = $stateParams.leg_id;
+  //     $scope.pageName = "rep/" + $stateParams.bioguide_id;
+  //   }
+  // })
+  
+  // .state('repProfile.comments', {
+  //   url: '/comments',
+  //   templateUrl: 'app/comments/comments-view.html'
+  // })
   
   .state('stateRepProfile', {
-    templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/srep/:leg_id',
-    controller: function($scope, $stateParams) {
-      $scope.leg_id = $stateParams.leg_id;
-      $scope.pageName = "srep/" + $stateParams.leg_id;
+    views: {
+      '': {
+        templateUrl: 'app/person-profile/person-profile-view.html',
+        controller: function($scope, $stateParams) {
+          $scope.leg_id = $stateParams.leg_id;
+          $scope.pageName = "srep/" + $stateParams.leg_id;
+        } 
+      },
+      'comments@stateRepProfile': {
+        templateUrl: 'app/comments/comments-view.html',
+        controller: 'Comments'
+      }
     }
   })
+
+  // .state('stateRepProfile', {
+  //   templateUrl: 'app/person-profile/person-profile-view.html',
+  //   url: '/srep/:leg_id',
+  //   controller: function($scope, $stateParams) {
+  //     $scope.leg_id = $stateParams.leg_id;
+  //     $scope.pageName = "srep/" + $stateParams.leg_id;
+  //   }
+  // })
   
-  .state('stateRepProfile.comments', {
-    url: '/comments',
-    templateUrl: 'app/comments/comments-view.html'
-  })
+  // .state('stateRepProfile.comments', {
+  //   url: '/comments',
+  //   templateUrl: 'app/comments/comments-view.html'
+  // })
   
-  .state('billSummary',{
-    templateUrl: 'app/billsummary/bill-summary.html',
+  .state('billSummary', {
     url: '/bill/:congress/:type/:number',
-    controller: function ($scope, $stateParams) {
-      $scope.bill = {
-        congress: $stateParams.congress,
-        number: $stateParams.number,
-        type: $stateParams.type
-      };
-      $scope.pageName = $stateParams.congress + "/" + $stateParams.number + "/" + $stateParams.type;
+    views: {
+      '': {
+        templateUrl: 'app/billsummary/bill-summary.html',
+        controller: function ($scope, $stateParams) {
+          $scope.bill = {
+            congress: $stateParams.congress,
+            number: $stateParams.number,
+            type: $stateParams.type
+          };
+          $scope.pageName = $stateParams.congress + "/" + $stateParams.number + "/" + $stateParams.type;
+        } 
+      },
+      'comments@billSummary': {
+        templateUrl: 'app/comments/comments-view.html',
+        controller: 'Comments'
+      }
     }
   })
+
+  // .state('billSummary',{
+  //   templateUrl: 'app/billsummary/bill-summary.html',
+  //   url: '/bill/:congress/:type/:number',
+  //   controller: function ($scope, $stateParams) {
+  //     $scope.bill = {
+  //       congress: $stateParams.congress,
+  //       number: $stateParams.number,
+  //       type: $stateParams.type
+  //     };
+  //     $scope.pageName = $stateParams.congress + "/" + $stateParams.number + "/" + $stateParams.type;
+  //   }
+  // })
   
-  .state('billSummary.comments', {
-    url: '/comments',
-    templateUrl: 'app/comments/comments-view.html'
-  })
+  // .state('billSummary.comments', {
+  //   url: '/comments',
+  //   templateUrl: 'app/comments/comments-view.html'
+  // })
   
   .state('dev', {
     templateUrl: 'app/comments/comments-view.html',
