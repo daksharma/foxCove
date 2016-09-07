@@ -30,7 +30,7 @@ module.exports.getNews = function(inputPackage, outputPackage, nextCB){
 
 };
 
-
+// us this until we find better api to meets our need with fine tuned results
 module.exports.bingNews = function(queryParam, callback) {
   var bingHttpRequestOptions = {
     url : 'https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=' + queryParam + '&count=5&offset=0&mkt=en-us&safeSearch=Moderate&Category=politics',
