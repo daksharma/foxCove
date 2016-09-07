@@ -19,9 +19,9 @@ module.exports = function(searchString, res, callback) {
         var parsed = JSON.parse(body);
         bio = parsed.query.pages[Object.keys(parsed.query.pages)[0]].extract;
         if (bio.includes('From a page move') || bio.includes('may refer to:')) {
-          cb('');
+          callback('');
         } else {
-          cb(bio);
+          callback(bio);
         }
       } catch( err ) {
         console.log('There was a problem with Wikipedia.');
