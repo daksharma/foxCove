@@ -20,7 +20,6 @@ angular.module('d3directive', [])
           .value(function(d) {
             return d.rate;
           });
-
         var svg = d3.select(element[0])
           .append('svg')
           .style('width', '100%')
@@ -101,7 +100,6 @@ angular.module('d3directive', [])
           //       return color(d.data.rate);
           //     }
           //   })
-          
         }
       }
     };
