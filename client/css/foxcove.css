@@ -166,6 +166,12 @@ body {
 	letter-spacing : 4px;
 }
 
+.comments-bar {
+	font-family    : 'Scope One', serif;
+	font-size      : 110%;
+	letter-spacing : 2px;
+}
+
 .err {
 	position       : relative;
 	left           : 10px;
