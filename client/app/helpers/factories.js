@@ -305,7 +305,7 @@ angular.module('app.helperFactories', [])
     getComments: getComments,
     postComment: postComment,
     deleteComment: deleteComment
-  };
+  }
 })
 .factory('RepNews', function($http) {
   function getRepNews(titleAndRepName, bioguide_id) {
