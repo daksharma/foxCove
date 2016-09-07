@@ -77,9 +77,9 @@ app.post('/saveStateRepRecord', function(req, res) {
   mongoDb.saveStateRep(req, res, res.send.bind(res));
 });
 
-app.post('/updateStateRepRecord', function(req, res) {
-  mongoDb.updateStateRep(req, res, res.send.bind(res));
-});
+// app.post('/updateStateRepRecord', function(req, res) {
+//   mongoDb.updateStateRep(req, res, res.send.bind(res));
+// });
 
 app.post('/getStateRepBills', function(req, res) {
   getStateRep.bills(req.body.leg_id, res, res.send.bind(res));
