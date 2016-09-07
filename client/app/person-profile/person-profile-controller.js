@@ -32,13 +32,20 @@ angular.module('app.personProfile',[])
       $scope.nope(person.bioguide_id);
     }
   };
-
   $scope.getBio = function(rep) {
     RepBio.getBioFromRepName({searchString: (rep.nickname || rep.firstname) + '%20' + rep.lastname})
       .then(function(results) {
-        rep.bio = results.split('\n')[0] || 'No biographical information available at this time for ' + rep.firstname + ' ' + rep.lastname;
+        rep.bio = results.split('\n')[0] || $scope.makeBio($scope.rep);
       });
   };
+  $scope.makeBio = function(rep) {
+    var titles = {
+      Sen: 'US Senator representing the state of ' + rep.state.toUpperCase() + '.',
+      Rep: 'US Congressperson representing ' + rep.state.toUpperCase() + ' state District ' + rep.district +  '.'
+    }
+    return rep.firstname + ' ' + (rep.middlename || '') + ' ' + rep.lastname + ' is a ' + (titles[rep.title] ||
+      'representative of ' + rep.state.toUpperCase() + ' District ' + rep.district + ' in the state\'s ' + rep.chamber + ' house.');
+  }
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
