@@ -49,6 +49,7 @@
     "chai": "^1.9.0",
     "cheerio": "^0.22.0",
     "civic-info": "0.0.5",
+    "d3": "^4.2.2",
     "dotenv": "^2.0.0",
     "express": "^4.4.5",
     "express-partials": "~0.2.0",
