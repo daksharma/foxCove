@@ -1,4 +1,5 @@
-<div class="row" data-ng-controller="Comments" ng-init="getComments('/rep/B000711')">
+<div class="row" data-ng-controller="Comments" ng-init="getComments(location);">
+<script>var page = window.location.pathname; console.log("PAGE", page)</script>
 
   <h3 class="head">Comments</h3>
   <div>
@@ -6,7 +7,7 @@
 
     <input type="text" placeholder="enter your name" ng-model="user">
     <input type="text" placeholder="enter your comment" ng-model="text">
-    <button ng-click="postComment(text, user); user = ''; text = ''; getComments('/rep/B000711');">post</button>
+    <button ng-click="postComment(text, user, location); user = ''; text = ''; getComments(location);">post</button>
 
     </div>
   </div>

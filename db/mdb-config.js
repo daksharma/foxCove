@@ -76,7 +76,7 @@ db.saveComment = function(req, res) {
 }
 
 db.getComments = function(req, res)  {
-  Comment.find({page: req.body.page}).exec(function(err, comment){
+  Comment.find({page: req.body.page}).sort({timestamp: -1}).exec(function(err, comment){
     if (err) {
       res.status(500).send(err);
     }
