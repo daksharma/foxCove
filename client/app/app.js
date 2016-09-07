@@ -31,6 +31,7 @@ angular.module('foxCove', [
     url: '/zip/:zipcode',
     controller: function($scope, $stateParams) {
       $scope.location = $stateParams.zipcode;
+      $scope.pageName = $stateParams.zipcode;
     }
   })
   .state('searchZip.comments', {
@@ -42,14 +43,24 @@ angular.module('foxCove', [
     url: '/rep/:bioguide_id',
     controller: function($scope, $stateParams) {
       $scope.leg_id = $stateParams.leg_id;
+      $scope.pageName = "rep/" + $stateParams.bioguide_id;
     }
+  })
+  .state('repProfile.comments', {
+    url: '/comments',
+    templateUrl: 'app/comments/comments-view.html'
   })
   .state('stateRepProfile', {
     templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/srep/:leg_id',
     controller: function($scope, $stateParams) {
       $scope.leg_id = $stateParams.leg_id;
+      $scope.pageName = "srep/" + $stateParams.leg_id;
     }
+  })
+  .state('stateRepProfile.comments', {
+    url: '/comments',
+    templateUrl: 'app/comments/comments-view.html'
   })
   .state('billSummary',{
     templateUrl: 'app/billsummary/bill-summary.html',
@@ -60,9 +71,13 @@ angular.module('foxCove', [
         number: $stateParams.number,
         type: $stateParams.type
       };
+      $scope.pageName = $stateParams.congress + "/" + $stateParams.number + "/" + $stateParams.type;
     }
   })
-  
+  .state('billSummary.comments', {
+    url: '/comments',
+    templateUrl: 'app/comments/comments-view.html'
+  })
   .state('dev', {
     templateUrl: 'app/comments/comments-view.html',
     url: '/dev/',
