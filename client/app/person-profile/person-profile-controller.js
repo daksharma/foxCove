@@ -1,6 +1,6 @@
 angular.module('app.personProfile',[])
 
-.controller('ProfileController', ['$scope','RepProfile', 'StateRepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', 'RepNews',function($scope, RepProfile, StateRepProfile, RepBio, $state, Affiliations, RepBills, RepNews) {
+.controller('ProfileController', ['$scope','RepProfile', 'StateRepProfile', 'RepBio','$state', 'Affiliations', 'RepBills', 'RepNews', 'RepNyTimesNews', function($scope, RepProfile, StateRepProfile, RepBio, $state, Affiliations, RepBills, RepNews, RepNyTimesNews) {
 
   $scope.build = function() {
     var person = $state.params;
@@ -25,7 +25,8 @@ angular.module('app.personProfile',[])
           $scope.getBills($scope.rep);
 
           // Uncomment code presentation. use this until better api is found with less limitations
-          // $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
+          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
+          // $scope.getNyTimesNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
         });
     } else {
       $scope.nope(person.bioguide_id);
@@ -91,6 +92,14 @@ angular.module('app.personProfile',[])
            .then(function(data) {
              $scope.newsData = data;
            });
-  }
+  };
+
+  $scope.getNyTimesNews = function(title, firstName, lastName) {
+    var titleName = title + "%20" + firstName + "%20" + lastName;
+    RepNyTimesNews.getNyTimesRepNews(titleName)
+                  .then(function(data) {
+                    $scope.nyNews = data;
+                  });
+  };
 
 }]);

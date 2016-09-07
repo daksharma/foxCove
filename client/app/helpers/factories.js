@@ -302,4 +302,18 @@ angular.module('app.helperFactories', [])
   return {
     getRepNews : getRepNews
   }
+})
+.factory('RepNyTimesNews', function($http){
+  function getNyTimesRepNews(titleAndRepName) {
+    return $http.post('/getNyTimesNews', {titleAndRepName : titleAndRepName})
+                .then(function(newsData){
+                  console.log(newsData.data.response.docs);
+                  return newsData.data.response.docs;
+                }, function(error) {
+                  console.log(error);
+                });
+  }
+  return {
+    getNyTimesRepNews : getNyTimesRepNews
+  }
 });

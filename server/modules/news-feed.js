@@ -46,3 +46,27 @@ module.exports.bingNews = function(queryParam, callback) {
   };
   request(bingHttpRequestOptions, bingRequestCallBack);
 };
+
+// TODO: potentially useless since all of the links don't actually work.
+module.exports.nyTimesNews = function (queryParam, callback) {
+  var nyTimesRequestOptions = {
+    url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+    qs: {
+      'api-key': process.env.NY_TIMES_NEWS_API,
+      'q': queryParam,
+      'fq': queryParam,
+      'sort': "newest",
+      'fl': "headline,web_url",
+      'page': 5,
+      'facet_filter': "true"
+    }
+  };
+  var nyTimesRequestCallback = function(error, response, data) {
+    if(error) {
+      console.log(error);
+    } else {
+      callback(data);
+    }
+  };
+  request(nyTimesRequestOptions, nyTimesRequestCallback);
+};

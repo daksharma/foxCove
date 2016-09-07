@@ -129,6 +129,10 @@ app.post('/getRepNews', function(req, res) {
   newsfeed.bingNews(req.body.titleAndRepName, res.send.bind(res));
 });
 
+app.post('/getNyTimesNews', function (req, res) {
+  newsfeed.nyTimesNews(req.body.titleAndRepName, res.send.bind(res));
+});
+
 // This routine is going to require some TLC to move. For some reason it
 // loses write access to the filesystem when it goes to a module. TODO.
 
