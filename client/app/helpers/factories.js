@@ -24,7 +24,6 @@ angular.module('app.helperFactories', [])
     return $http.post('/getRep', bioguide_id)
       .then(function (response) {
         repObject = response.data;
-        console.log(repObject);
         return response.data;
       }, function (error) {
         console.log(error);
@@ -35,7 +34,6 @@ angular.module('app.helperFactories', [])
     return $http.post('/sponsorship', bioguide_id)
       .then(function(response) {
         repObject.sponsorships = response.data.results;
-        console.log('repObject:', repObject);
         return response.results;
       }, function(error) {
           console.error(error);
@@ -257,7 +255,6 @@ angular.module('app.helperFactories', [])
   function getBillsFromRepId(ref) {
     return $http.post('/getBills', ref)
       .then(function(res){
-        console.log(res.data);
         return res.data;
       }, function(error) {
         console.log(error);
