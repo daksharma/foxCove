@@ -18,7 +18,7 @@ angular.module('app.comments', [])
       });
   };
   $scope.deleteComment = function(comment) {
-    console.log("deleting!", comment)
+    console.log("deleting!", comment);
     UserComments.deleteComment(comment)
       .then(function(data){
         console.log('deleted ', data)
