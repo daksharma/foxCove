@@ -112,10 +112,10 @@
     <!--THE ROW BELOW THIS COMMENT IS ONLY VISIBLE ON STATE REP VIEW-->
 
     <div class="column" data-ng-if="!rep.title && bills">
-      <div class="callout">
+      <div class="callout"" >
         <p class="head">Legislation sponsored by {{rep.name}}:</p>
         <ul>
-          <p ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at' | limitTo:10" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
+          <p class="graff-smaller" ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at' | limitTo:10" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
         </ul>
       </div>
     </div>
