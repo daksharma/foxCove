@@ -17,4 +17,5 @@ angular.module('app.comments', [])
         console.log(data)
       })
   };
+  // $scope.deleteComment = function()
 }]);
