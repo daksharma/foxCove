@@ -299,14 +299,13 @@ angular.module('app.helperFactories', [])
       }, function (error) {
         console.log(error)
       });
-
   }
 
   return {
     getComments: getComments,
     postComment: postComment,
     deleteComment: deleteComment
-  }
+  };
 })
 .factory('RepNews', function($http) {
   function getRepNews(titleAndRepName) {
@@ -319,5 +318,5 @@ angular.module('app.helperFactories', [])
   }
   return {
     getRepNews : getRepNews
-  }
+  };
 });

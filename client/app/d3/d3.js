@@ -14,7 +14,7 @@ angular.module('d3directive', [])
         var width = d3.select(element[0]).node().offsetWidth;
         var radius = 75;
         var color = d3.scaleOrdinal()
-          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"])
+          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
         var pie = d3.pie()
           .sort(null)
@@ -47,7 +47,7 @@ angular.module('d3directive', [])
           if( !data ){
             return;
           }
-          
+
           var totalRate = data.totalRate;
           data = data.rates;
 
@@ -62,7 +62,7 @@ angular.module('d3directive', [])
             .style("fill", function(d) {
               return color(d.data.rate);
             });
-        };
+        }
       }
     };
   }]);
