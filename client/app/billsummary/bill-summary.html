@@ -10,7 +10,7 @@
   </div>
   <div class="row medium-8 large-7 columns graff" style="margin-top: 1rem;">
     <div class="blog-post">
-      <h4 class="head">{{billTitle}}</h4> <small data-ng-if="introDate">Introduced: {{introDate | date}}</small>
+      <h4 class="head">{{billTitle  || altTitle}}</h4> <small data-ng-if="introDate">Introduced: {{introDate | date}}</small>
       <div class="callout">
         <p>
           <span class="head" data-ng-if="officialIntro">Official Desciption:</span> {{officialIntro}}
