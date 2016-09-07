@@ -9,8 +9,8 @@ angular.module('app.personProfile',[])
         .then(function(results) {
           $scope.rep = results;
           $scope.rep.img = results.photo_url;
-          $scope.rep.firstname = results.first_name;
-          $scope.rep.lastname = results.last_name;
+          $scope.rep.firstname = results.firstname || results.first_name;
+          $scope.rep.lastname = results.lastname || results.last_name;
           $scope.getBio($scope.rep);
           $scope.getStateRepBills(person);
         });

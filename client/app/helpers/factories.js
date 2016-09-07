@@ -52,11 +52,21 @@ angular.module('app.helperFactories', [])
   var repObject = {};
 
   function getRepFromLegId(leg_id) {
-    return $http.post('/getStateRep', leg_id)
+    return $http.get('/getStateRepRecord?leg_id=' + leg_id.leg_id) // Check the DB for this rep.
       .then(function (response) {
-        repObject.data = response.data;
-        repObject.data.party = repObject.data.party.replace('Democratic', 'Democrat');
-        return response.data;
+        if (response.data) {
+          repObject.data = response.data;
+          return response.data;
+        }
+        return $http.post('/getStateRep', leg_id)
+        .then(function (response) {
+          repObject.data = response.data;
+          repObject.data.party = repObject.data.party.replace('Democratic', 'Democrat');
+          $http.post('/saveStateRepRecord', response.data);
+          return response.data;
+        }, function (error) {
+          console.log(error);
+        });
       }, function (error) {
         console.log(error);
       });
