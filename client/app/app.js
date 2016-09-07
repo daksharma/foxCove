@@ -33,6 +33,10 @@ angular.module('foxCove', [
       $scope.location = $stateParams.zipcode;
     }
   })
+  .state('searchZip.comments', {
+    url: '/comments',
+    templateUrl: 'app/comments/comments-view.html'
+  })
   .state('repProfile', {
     templateUrl: 'app/person-profile/person-profile-view.html',
     url: '/rep/:bioguide_id',
