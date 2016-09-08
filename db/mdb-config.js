@@ -182,6 +182,28 @@ db.getStateRep = function(req, res) {
 //   })
 // };
 
+var newsUSRepSchema = mongoose.Schema({
+  bioguide_id: String,
+  articleAndUrls : Array
+});
 
+var RepsNews = mongoose.model('RepsNews', newsUSRepSchema);
+
+db.saveRepNews = function(bioguide_id, articleAndUrls, callback) {
+  var newRepsNews = new RepsNews({
+    bioguide_id: bioguide_id,
+    articleAndUrls : articleAndUrls
+  });
+
+  newRepsNews.save(function(error, repNews) {
+    return (error) ? callback(error) : callback(repNews);
+  });
+};
+
+db.getRepNewsArticle = function(req, callback) {
+  RepsNews.findOne({bioguide_id: req.query.bioguide_id}).exec(function(error, repNews) {
+    return (error) ? callback(error) : callback(repNews);
+  });
+};
 
 module.exports = db;
