@@ -68,7 +68,7 @@ module.exports = function(grunt) {
         // LINT js files in following directories:
         'client/app/**/*.js',
         'server/**/*.js',
-        'server.js'
+        'server.js',
       ],
       options: {
         force: 'true',
@@ -126,6 +126,7 @@ module.exports = function(grunt) {
     grunt.config('TAX_API', process.env.TAX_API);
     grunt.config('MAPBOX_API', process.env.MAPBOX_API);
     grunt.config('MAPBOX_PUBLIC', process.env.MAPBOX_PUBLIC);
+    grunt.config('BING_NEWS_API', process.env.BING_NEWS_API);
     grunt.config.merge({
       shell: {
         develop: {
@@ -142,6 +143,7 @@ module.exports = function(grunt) {
             'heroku config:set TAX_API=' + grunt.config.get(['TAX_API']),
             'heroku config:set MAPBOX_API=' + grunt.config.get(['MAPBOX_API']),
             'heroku config:set MAPBOX_PUBLIC=' + grunt.config.get(['MAPBOX_PUBLIC']),
+            'heroku config:set BING_NEWS_API=' + grunt.config.get(['BING_NEWS_API']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku develop:master',
@@ -151,7 +153,7 @@ module.exports = function(grunt) {
         },
         stable: {
           command: [
-            'heroku create',
+            'heroku create foxcove',
             'heroku local',
             'heroku config:set SUNLIGHT_API=' + grunt.config.get(['SUNLIGHT_API']),
             'heroku config:set MONGO_DB_URI=' + grunt.config.get(['MONGO_DB_URI']),
@@ -163,6 +165,7 @@ module.exports = function(grunt) {
             'heroku config:set TAX_API=' + grunt.config.get(['TAX_API']),
             'heroku config:set MAPBOX_API=' + grunt.config.get(['MAPBOX_API']),
             'heroku config:set MAPBOX_PUBLIC=' + grunt.config.get(['MAPBOX_PUBLIC']),
+            'heroku config:set BING_NEWS_API=' + grunt.config.get(['BING_NEWS_API']),
             'echo The following ENVIRONMENT variables have assigned to heroku config',
             'heroku config',
             'git push -f heroku master',

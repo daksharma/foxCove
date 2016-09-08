@@ -73,7 +73,7 @@ angular.module('app.personProfile',[])
           $scope.bills = ['Sorry, no records of sponsored bills available.'];
         }
     });
-  }
+  };
   $scope.loadBill = function (bill) {
     try {
       bill = JSON.parse(bill);
@@ -99,6 +99,6 @@ angular.module('app.personProfile',[])
            .then(function(data) {
              $scope.newsData = data;
            });
-  }
+  };
 
 }]);
