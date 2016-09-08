@@ -26,7 +26,7 @@ angular.module('app.personProfile',[])
 
           // Uncomment code presentation. use this until better api is found with less limitations
           // this is to limit the api calls per month-- at least during this testing phase.
-          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname);
+          $scope.getNews($scope.rep.title, $scope.rep.firstname, $scope.rep.lastname, $scope.rep.bioguide_id);
         });
     } else {
       $scope.nope(person.bioguide_id);
@@ -42,10 +42,10 @@ angular.module('app.personProfile',[])
     var titles = {
       Sen: 'US Senator representing the state of ' + rep.state.toUpperCase() + '.',
       Rep: 'US Congressperson representing ' + rep.state.toUpperCase() + ' state District ' + rep.district +  '.'
-    }
+    };
     return rep.firstname + ' ' + (rep.middlename || '') + ' ' + rep.lastname + ' is a ' + (titles[rep.title] ||
       'representative of ' + rep.state.toUpperCase() + ' District ' + rep.district + ' in the state\'s ' + (rep.chamber || '') + ' house.');
-  }
+  };
   $scope.getAffiliation = function(rep) {
     Affiliations.getAffiliations(rep)
       .then(function(results) {
@@ -93,11 +93,11 @@ angular.module('app.personProfile',[])
     $state.go('home');
   };
 
-  $scope.getNews = function(title, firstName, lastName) {
+  $scope.getNews = function(title, firstName, lastName, bioguide_id) {
     var titleName = title + "%20" + firstName + "%20" + lastName;
-    RepNews.getRepNews(titleName)
+    RepNews.getRepNews(titleName, bioguide_id)
            .then(function(data) {
-             $scope.newsData = data;
+             $scope.newsData = data.articleAndUrls;
            });
   };
 

@@ -131,7 +131,11 @@ app.post('/deleteComment', function(req, res) {
 })
 
 app.post('/getRepNews', function(req, res) {
-  newsfeed.bingNews(req.body.titleAndRepName, res.send.bind(res));
+  newsfeed.makeBingApiCall(req.body.titleAndRepName, req.body.bioguide_id, res.send.bind(res));
+});
+
+app.get('/getRepNewsArticles', function(req, res) {
+  mongoDb.getRepNewsArticle(req, res.send.bind(res));
 });
 
 // This routine is going to require some TLC to move. For some reason it

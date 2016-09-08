@@ -308,13 +308,20 @@ angular.module('app.helperFactories', [])
   };
 })
 .factory('RepNews', function($http) {
-  function getRepNews(titleAndRepName) {
-    return $http.post('/getRepNews', {titleAndRepName : titleAndRepName})
-                .then(function(newsData){
-                  return newsData.data.value;
-                }, function(error) {
-                  console.log(error);
-                });
+  function getRepNews(titleAndRepName, bioguide_id) {
+    return $http.get('/getRepNewsArticles?bioguide_id=' + bioguide_id)
+      .then(function(data) {
+        if (data !== null && data.data !== "") {
+          return data.data;
+        } else {
+          return $http.post('/getRepNews', {titleAndRepName: titleAndRepName, bioguide_id: bioguide_id})
+            .then(function (newsData) {
+              return newsData.data;
+            }, function (error) {
+              console.log(error);
+            });
+        }
+      });
   }
   return {
     getRepNews : getRepNews
