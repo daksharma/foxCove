@@ -24,17 +24,15 @@ angular.module('d3directive', [])
         var svg = d3.select(element[0])
           .append('svg')
           .style('width', '100%')
-          .style('height', '100%')
+          .style('height', '200px')
           .append('g')
           .attr('class', 'canvas')
-          .style('width', '100%')
-          .style('height', '100%');
 
         var width = parseInt(d3.select("svg").style("width"));
         var height = parseInt(d3.select("svg").style("height"));
         var radius = Math.min(width, height) / 2;
 
-        svg.attr('transform', "translate(" + ( width / 2 ) + "," + height / 2 + ")");
+        svg.attr('transform', "translate(" + ( width / 2 - ( width / 5 ) - 75 ) + "," + height / 2 + ")");
 
         // WATCH scope.data
         scope.$watch('data', function(newData, oldData) {
@@ -49,13 +47,14 @@ angular.module('d3directive', [])
         var arc = d3.arc()
           .outerRadius(radius - 10)
           // CHANGE size of hole
-          .innerRadius(radius - 30);
+          .innerRadius(radius - 35);
 
         var pie = d3.pie()
           .sort(null)
           .value(function(d) {
             return d.rate;
-          });
+          })
+          .startAngle();
 
         function render(data){
 
@@ -68,7 +67,7 @@ angular.module('d3directive', [])
           var width = parseInt(d3.select("svg").style("width"));
           var height = parseInt(d3.select("svg").style("height"));
           var radius = Math.min(width, height) / 2;
-          var totalRate = data.totalRate;
+          var totalRate = [ data.totalRate ];
           data = data.rates;
 
           var g = svg.selectAll('.arc')
@@ -80,27 +79,28 @@ angular.module('d3directive', [])
             .attr('d', arc)
             .style("fill", function(d){
               return color(d.data.rate);
-            });
+            })
+            .append("svg:title")
+            .text(function(d){
+              return d.data.name + ': ' + d.data.rate + '%';
+            })
 
-          // Labels
-          // 
-          // svg.selectAll('.canvas')
-          //   .style('height', '100%')
-          //   .style('width', '100%')
-          //   .data(pie(data))
-          //   .enter()
-          //   .append('text')
-          //   .attr('transform', function(d){
-          //     return 'translate(' + arc.centroid(d) + ')';
-          //   })
-          //   .text(function(d){
-          //     return d.data.name;
-          //   })
-          //   .style('fill', function(d){
-          //     if( data.length !== 1 ){
-          //       return color(d.data.rate);
-          //     }
-          //   })
+          svg.selectAll('.canvas')
+            .style('height', '100%')
+            .style('width', '100%')
+            .data(totalRate)
+            .enter()
+            .append('text')
+            .text(function(d){
+              return d.toFixed(1) + '%';
+            })
+            .attr('transform', "translate(-39,10)")
+            .style('fill', function(d){
+                return color(d);
+            })
+            .style('font-size', '250%')
+            .style('font-weight', '700');
+
         }
       }
     };
