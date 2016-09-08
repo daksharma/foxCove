@@ -42,7 +42,7 @@
           <span data-tooltip aria-haspopup="true" class="has-tip" tabindex="1" title="{{leg.title}} {{leg.full_name}} ({{leg.party}})">
             <span class="matrix-resize matrix-square {{leg.party}} matrix" style="background-image: url({{leg.photo_url}})" alt="{{leg.full_name}}" data-ng-click="loadProfile(leg)">
               <!--This State Legislator profile adaptation isn't in place yet, but when it is it will work the exact same as the federal-->
-              <span class="secondary badge down"><img data-ng-src="images/{{leg.party}}.svg" width="16px"></span>
+              <span class="secondary badge down"><img data-ng-img-err="images/Unknown.svg" data-ng-src="images/{{leg.party}}.svg" width="16px"></span>
             </span>
           </span>
         </li>
