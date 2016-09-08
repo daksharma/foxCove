@@ -22,12 +22,14 @@ angular.module('d3directive', [])
           .style('height', '100%')
           .append('g')
           .attr('class', 'canvas')
+          .style('width', '100%')
+          .style('height', '100%');
 
         var width = parseInt(d3.select("svg").style("width"));
         var height = parseInt(d3.select("svg").style("height"));
         var radius = Math.min(width, height) / 2;
 
-        svg.attr('transform', "translate(" + ( width / 2 - 40 ) + "," + height / 2 + ")");
+        svg.attr('transform', "translate(" + ( width / 2 ) + "," + height / 2 + ")");
 
         // WATCH scope.data
         scope.$watch('data', function(newData, oldData) {
@@ -75,23 +77,25 @@ angular.module('d3directive', [])
               return color(d.data.rate);
             })
 
-          svg.selectAll('.canvas')
-            .style('height', '100%')
-            .style('width', '100%')
-            .data(pie(data))
-            .enter()
-            .append('text')
-            .attr('transform', function(d){
-              return 'translate(' + arc.centroid(d) + ')';
-            })
-            .text(function(d){
-              return d.data.name;
-            })
-            .style('fill', function(d){
-              if( data.length !== 1 ){
-                return color(d.data.rate);
-              }
-            })
+          // Labels
+          // 
+          // svg.selectAll('.canvas')
+          //   .style('height', '100%')
+          //   .style('width', '100%')
+          //   .data(pie(data))
+          //   .enter()
+          //   .append('text')
+          //   .attr('transform', function(d){
+          //     return 'translate(' + arc.centroid(d) + ')';
+          //   })
+          //   .text(function(d){
+          //     return d.data.name;
+          //   })
+          //   .style('fill', function(d){
+          //     if( data.length !== 1 ){
+          //       return color(d.data.rate);
+          //     }
+          //   })
 
         }
       }
