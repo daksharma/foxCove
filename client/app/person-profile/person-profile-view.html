@@ -49,76 +49,78 @@
     <hr>
   </div>
 
-
-  <div class="row small-up-1 medium-up-2 large-up-3 graff">
-    <div class="column" data-ng-if="rep.affiliations.industries">
-      <div class="callout">
-        <p class="head">Top Industry Contributors</p>
-        <ul>
-          <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}
-        </ul>
-        <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
+  <div class="row" style="margin-top: 1rem">
+    <div class="medium-6 columns medium-push-6 graff">
+      <div class="column">
+        <!--Comments-->
+          <div class="comments" ui-view="comments"></div>
+        <!--Comments-->
       </div>
     </div>
-    <div class="column" data-ng-if="rep.affiliations.companies">
-      <div class="callout">
-        <p class="head">Top Company Contributors</p>
-        <ul>
-          <li data-ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: {{format(donor.total, "$")}}
-        </ul>
-        <p><a href="{{rep.affiliations.companyLink}}">more...</a></p>
+    <div class="medium-6 columns medium-pull-6">
+      <div data-ng-if="rep.affiliations.industries">
+        <div class="callout graff">
+          <p class="head">Top Industry Contributors</p>
+          <ul>
+            <li data-ng-repeat="industry in rep.affiliations.industries">{{industry.industry_name}}: {{format(industry.total, "$")}}</li>
+          </ul>
+          <p><a href="{{rep.affiliations.industryLink}}">more...</a></p>
+        </div>
       </div>
+      <div data-ng-if="rep.affiliations.companies">
+        <div class="callout graff">
+          <p class="head">Top Company Contributors</p>
+          <ul>
+            <li data-ng-repeat="donor in rep.affiliations.companies">{{donor.org_name}}: {{format(donor.total, "$")}}</li>
+          </ul>
+          <p><a href="{{rep.affiliations.companyLink}}">more...</a></p>
+        </div>
+      </div>
+      <!--The ng-if directive hides this div if there are no results-->
+      <div data-ng-if="rep.affiliations.positions[0]">
+        <div class="callout graff">
+          <p class="head">Other Positions Held</p>
+          <ul data-ng-show="rep.affiliations.positions[0]">
+            <li data-ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!--USE THE THREE DIVS BELOW FOR ANYTHING YOU WANT, JUST UNCOMMENT-->
+
+      <div data-ng-if="newsData">
+        <div class="callout graff">
+          <p class="head">In the News</p>
+          <ul>
+            <li data-ng-repeat="repNews in newsData"><a class="link" ng-href="{{repNews.url}}">{{repNews.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!--THE ROW BELOW THIS COMMENT IS ONLY VISIBLE ON STATE REP VIEW-->
+
+      <div data-ng-if="!rep.title && bills">
+        <div class="callout graff"" >
+          <p class="head">Legislation sponsored by {{rep.name}}:</p>
+          <ul>
+            <p class="" ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at' | limitTo:10" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
+          </ul>
+        </div>
+      </div>
+
+      <!--<div class="column">
+        <div class="callout graff">
+          <p class="head"></p>
+          <p></p>
+        </div>
+      </div>-->
+
+      <!--<div class="column">
+        <div class="callout graff">
+          <p class="head"></p>
+          <p></p>
+        </div>
+      </div>-->
     </div>
-    <div class="column">
-      <!--Comments-->
-        <div class="comments" ui-view="comments"></div>
-      <!--Comments-->
-    </div>
-    <!--The ng-if directive hides this div if there are no results-->
-    <div class="column" data-ng-if="rep.affiliations.positions[0]">
-      <div class="callout">
-        <p class="head">Other Positions Held</p>
-        <ul data-ng-show="rep.affiliations.positions[0]">
-          <li data-ng-repeat="position in rep.affiliations.positions">{{position.title}} of {{position.organization}}
-        </ul>
-      </div>
-    </div>
-
-    <!--USE THE THREE DIVS BELOW FOR ANYTHING YOU WANT, JUST UNCOMMENT-->
-
-    <div class="column" data-ng-if="newsData">
-      <div class="callout">
-        <p class="head">In the News</p>
-        <ul>
-          <li data-ng-repeat="repNews in newsData"><a class="link" ng-href="{{repNews.url}}">{{repNews.name}}</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!--<div class="column">
-      <div class="callout">
-        <p class="head"></p>
-        <p></p>
-      </div>
-    </div>-->
-
-    <!--<div class="column">
-      <div class="callout">
-        <p class="head"></p>
-        <p></p>
-      </div>
-    </div>-->
-
-    <!--THE ROW BELOW THIS COMMENT IS ONLY VISIBLE ON STATE REP VIEW-->
-
-    <div class="column" data-ng-if="!rep.title && bills">
-      <div class="callout"" >
-        <p class="head">Legislation sponsored by {{rep.name}}:</p>
-        <ul>
-          <p class="graff-smaller" ng-repeat="bill in bills | orderBy: '-last_action_at' || '-created_at' | limitTo:10" value="{{bill}}">{{ bill.popular_title || bill.short_title || bill.official_title || bill.title }}</p>
-        </ul>
-      </div>
-    </div>
-
   </div>
 </div>
